@@ -13,7 +13,10 @@ $params = ArrayHelper::merge(
 return [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        'app\modules\lectors\Bootstrap',
+    ],
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

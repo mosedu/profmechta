@@ -26,16 +26,16 @@ $weblocalconfig = [
                 ],
             ],
         ],
-        'i18n' => [
-            'class' => 'yii\i18n\I18N',
-            'translations' => [
-                'lector' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'sourceLanguage' => 'ru',
-                    'basePath' => '@app/modules/lectors/messages',
-                ]
-            ],
-        ],
+//        'i18n' => [
+//            'class' => 'yii\i18n\I18N',
+//            'translations' => [
+//                'lector' => [
+//                    'class' => 'yii\i18n\PhpMessageSource',
+//                    'sourceLanguage' => 'ru',
+//                    'basePath' => '@app/modules/lectors/messages',
+//                ]
+//            ],
+//        ],
     ],
 ];
 

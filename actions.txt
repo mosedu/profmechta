@@ -93,5 +93,19 @@ git remote add origin https://github.com/mosedu/profmechta.git
 
 добавил ключик для удаленного git
 
+------------------------------------------------------------------------------------------------
+
+Для генерации CRUD добавил в конфиг
+         'i18n' => [
+                                       'class' => 'yii\i18n\I18N',
+                                       'translations' => [
+                                           'lector' => [
+                                               'class' => 'yii\i18n\PhpMessageSource',
+                                               'sourceLanguage' => 'ru',
+                                               'basePath' => '@app/modules/lectors/messages',
+                                           ]
+                                       ],
+                                   ],
+
 
 
