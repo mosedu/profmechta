@@ -197,4 +197,38 @@ Project is already initialized in '.'
 php d:\php566\composer.phar require "codeception/specify=*" --dev
 php d:\php566\composer.phar require "codeception/verify=*" --dev
 
+------------------------------------------------------------------------------------------------
+
+правим codeception.yml
+
+D:\projects\web\profmechta>php D:\projects\web\profmechta\vendor\codeception\codeception\codecept build
+Building Actor classes for suites: functional, unit
+ -> FunctionalTesterActions.php generated successfully. 0 methods added
+\FunctionalTester includes modules: Filesystem, Yii2
+ -> UnitTesterActions.php generated successfully. 0 methods added
+\UnitTester includes modules: Asserts, Yii2
+
+D:\projects\web\profmechta>php D:\projects\web\profmechta\vendor\codeception\codeception\codecept run unit
+Codeception PHP Testing Framework v2.2.6
+Powered by PHPUnit 5.6.5 by Sebastian Bergmann and contributors.
+
+←[1mUnit Tests (8) ←[22m--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------
+←[32;1m+←[39;22m ←[35;1mContactFormTest:←[39;22m Email is sent on contact ←[32m(0.13s)←[39m
+←[32;1m+←[39;22m ←[35;1mLoginFormTest:←[39;22m Login no user ←[32m(0.02s)←[39m
+←[32;1m+←[39;22m ←[35;1mLoginFormTest:←[39;22m Login wrong password ←[32m(0.00s)←[39m
+←[32;1m+←[39;22m ←[35;1mLoginFormTest:←[39;22m Login correct ←[32m(0.03s)←[39m
+←[32;1m+←[39;22m ←[35;1mUserTest:←[39;22m Find user by id ←[32m(0.01s)←[39m
+←[32;1m+←[39;22m ←[35;1mUserTest:←[39;22m Find user by access token ←[32m(0.00s)←[39m
+←[32;1m+←[39;22m ←[35;1mUserTest:←[39;22m Find user by username ←[32m(0.01s)←[39m
+←[32;1m+←[39;22m ←[35;1mUserTest:←[39;22m Validate user ←[32m(0.01s)←[39m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Time: 9.31 seconds, Memory: 24.25MB
+
+←[30;42mOK (8 tests, 29 assertions)←[0m
+
+------------------------------------------------------------------------------------------------
 
