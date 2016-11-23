@@ -3,6 +3,7 @@
 return [
     'TITLE_CREATE' => 'Create',
     'TITLE_UPDATE' => 'Update',
+    'TITLE_LECTORS' => 'Lectors',
     'BUTTON_SAVE' => 'Save',
     'BUTTON_SEND' => 'Send',
     'BUTTON_CREATE' => 'Create',

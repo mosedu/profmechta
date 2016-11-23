@@ -14,12 +14,12 @@ class Bootstrap implements BootstrapInterface
 {
     public function bootstrap($app)
     {
-        $app->i18n->translations['lector'] = [
+        $app->i18n->translations['modules/lectors/*'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'forceTranslation' => true,
             'basePath' => '@app/modules/lectors/messages',
             'fileMap' => [
-                'lector' => 'module.php',
+                'modules/lectors/lector' => 'lector.php',
             ],
         ];
     }

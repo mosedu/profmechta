@@ -3,6 +3,7 @@
 namespace app\modules\lectors\models;
 
 use Yii;
+use app\modules\lectors\Module;
 
 /**
  * This is the model class for table "{{%lector}}".
@@ -49,16 +50,16 @@ class Lector extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'lec_id' => Yii::t('lector', 'LECTOR_ID'),
-            'lec_group' => Yii::t('lector', 'LECTOR_GROUP'),
-            'lec_active' => Yii::t('lector', 'LECTOR_ACTIVE'),
-            'lec_email' => Yii::t('lector', 'LECTOR_EMAIL'),
-            'lec_fam' => Yii::t('lector', 'LECTOR_FAM'),
-            'lec_profession' => Yii::t('lector', 'LECTOR_PROFESSION'),
-            'lec_description' => Yii::t('lector', 'LECTOR_DESCRIPTION'),
-            'lec_pass' => Yii::t('lector', 'LECTOR_PASSWORD'),
-            'lec_created' => Yii::t('lector', 'LECTOR_CREATED'),
-            'lec_key' => Yii::t('lector', 'LECTOR_API_KEY'),
+            'lec_id' => Module::t('lector', 'LECTOR_ID'),
+            'lec_group' => Module::t('lector', 'LECTOR_GROUP'),
+            'lec_active' => Module::t('lector', 'LECTOR_ACTIVE'),
+            'lec_email' => Module::t('lector', 'LECTOR_EMAIL'),
+            'lec_fam' => Module::t('lector', 'LECTOR_FAM'),
+            'lec_profession' => Module::t('lector', 'LECTOR_PROFESSION'),
+            'lec_description' => Module::t('lector', 'LECTOR_DESCRIPTION'),
+            'lec_pass' => Module::t('lector', 'LECTOR_PASSWORD'),
+            'lec_created' => Module::t('lector', 'LECTOR_CREATED'),
+            'lec_key' => Module::t('lector', 'LECTOR_API_KEY'),
         ];
     }
 
