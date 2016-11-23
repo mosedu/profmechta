@@ -8,11 +8,17 @@ $sfCommon = __DIR__ . DIRECTORY_SEPARATOR . 'common.php';
 $sfCommonLocal = __DIR__ . DIRECTORY_SEPARATOR . 'common-local.php';
 $sfConLocal = __DIR__ . DIRECTORY_SEPARATOR . 'console-local.php';
 
-$config = [
+$consoleconfig = [
     'id' => 'basic-console',
 //    'basePath' => dirname(__DIR__),
 //    'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
+    'controllerMap' => [
+        'migrate' => [
+            'class' => \yii\console\controllers\MigrateController::className(),
+            'templateFile' => '@app/views/migration.php',
+        ],
+    ],
     'components' => [
 //        'cache' => [
 //            'class' => 'yii\caching\FileCache',
@@ -39,18 +45,18 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
+    $consoleconfig['bootstrap'][] = 'gii';
+    $consoleconfig['modules']['gii'] = [
         'class' => 'yii\gii\Module',
     ];
 }
 
-$config = ArrayHelper::merge(
+$consoleconfig = ArrayHelper::merge(
     require($sfCommon),
     file_exists($sfCommonLocal) ? require($sfCommonLocal) : [],
-    $config,
+    $consoleconfig,
     file_exists($sfConLocal) ? require($sfConLocal) : []
 );
 
 
-return $config;
+return $consoleconfig;
