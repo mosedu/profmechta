@@ -87,4 +87,11 @@ Apply the above migration? (yes|no) [no]:yes
 
 Migrated up successfully.
 
+------------------------------------------------------------------------------------------------
+
+git remote add origin https://github.com/mosedu/profmechta.git
+
+добавил ключик для удаленного git
+
+
 
