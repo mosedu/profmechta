@@ -1,0 +1,66 @@
+mkdir profmechta
+cd profmechta
+php d:\php566\composer.phar create-project yiisoft/yii2-app-basic ./ 2.0.10
+
+------------------------------------------------------------------------------------------------
+d:\Apache24\conf\extra\httpd-vhosts.conf:
+<VirtualHost *:80>
+    ServerAdmin webmaster@Kozmin.local
+    DocumentRoot "d:\projects\web\profmechta\web"
+    ServerName profmechta.dev
+    ErrorLog "d:\projects\web\logs\profmechta-error.log"
+    CustomLog "d:\projects\web\logs\profmechta-access.log" common
+</VirtualHost>
+
+<Directory "d:\projects\web\profmechta\web">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+
+------------------------------------------------------------------------------------------------
+c:\Windows\System32\drivers\etc\hosts:
+127.0.0.1 profmechta.dev
+
+------------------------------------------------------------------------------------------------
+
+DROP DATABASE IF EXISTS profmechta;
+CREATE DATABASE profmechta;
+GRANT ALL PRIVILEGES ON profmechta.* TO 'uprofmechta'@'%' IDENTIFIED BY 'pprofmechta' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON profmechta.* TO 'uprofmechta'@'localhost' IDENTIFIED BY 'pprofmechta' WITH GRANT OPTION;
+
+------------------------------------------------------------------------------------------------
+
+d:\projects\web\profmechta\web\.htaccess
+
+RewriteEngine on
+
+###############################################################################
+#                                                                             #
+#           Begin rewrite rules for "Under construction" page                 #
+#                                                                             #
+###############################################################################
+# RewriteCond %{REQUEST_URI} !/construct.html$ [NC]
+# RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|gif) [NC]
+# RewriteRule .* /construct.html? [R=302,L]
+
+
+###############################################################################
+#                                                                             #
+#                  Rewrite rules for Yii start script                         #
+#                                                                             #
+###############################################################################
+# If a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Otherwise forward it to index.php
+RewriteRule . index.php
+
+# AuthName Enter_your_username_and_password
+# AuthType Basic
+# AuthUserFile  /home/mosobr.tv/vopros.mosobr.tv/www/.htpasswd
+# Require valid-user
+
+------------------------------------------------------------------------------------------------
+
