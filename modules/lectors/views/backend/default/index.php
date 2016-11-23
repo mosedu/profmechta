@@ -27,16 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'lec_id',
 //            'lec_group',
-//            'lec_active',
 //            'lec_email:email',
             'lec_fam',
             'lec_profession',
             'lec_description:ntext',
+            'lec_active',
             // 'lec_pass',
             // 'lec_created',
             // 'lec_key',
 
-//            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
