@@ -37,7 +37,7 @@ return [
         ],
         'setExecutable' => [
             'yii',
-//            'tests/codeception/bin/yii',
+            'tests/bin/yii',
 //            'yii_test',
         ],
         'setCookieValidationKey' => [

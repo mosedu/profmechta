@@ -184,3 +184,17 @@ init --env=Development
 
 ------------------------------------------------------------------------------------------------
 
+php d:\php566\composer.phar require "codeception/codeception" --dev
+
+
+> php d:\php566\composer.phar exec codecept bootstrap
+You are running composer with xdebug enabled. This has a major impact on runtime performance. See https://getcomposer.org/xdebug
+
+Project is already initialized in '.'
+
+------------------------------------------------------------------------------------------------
+
+php d:\php566\composer.phar require "codeception/specify=*" --dev
+php d:\php566\composer.phar require "codeception/verify=*" --dev
+
+
