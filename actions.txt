@@ -65,3 +65,26 @@ RewriteRule . index.php
 ------------------------------------------------------------------------------------------------
 
 создали модуль lectors
+
+yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations  add_lector_table
+
+D:\projects\web\profmechta>yii migrate/up 1 --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations
+Yii Migration Tool (based on Yii v2.0.10)
+
+Total 1 new migration to be applied:
+        m161123_094307_add_lector_table
+
+Apply the above migration? (yes|no) [no]:yes
+*** applying m161123_094307_add_lector_table
+    > create table {{%lector}} ... done (time: 0.047s)
+    > create index idx_lec_email on {{%lector}} (lec_email) ... done (time: 0.057s)
+    > create index idx_lec_key on {{%lector}} (lec_key) ... done (time: 0.046s)
+    > create index idx_lec_active on {{%lector}} (lec_active) ... done (time: 0.041s)
+*** applied m161123_094307_add_lector_table (time: 0.255s)
+
+
+1 migration was applied.
+
+Migrated up successfully.
+
+
