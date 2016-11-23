@@ -27,6 +27,7 @@ return [
         'db' => [
             'class' => 'yii\db\Connection',
             'charset' => 'utf8',
+            'dsn' => '',
         ],
     ],
     'params' => $params,

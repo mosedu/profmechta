@@ -109,3 +109,78 @@ git remote add origin https://github.com/mosedu/profmechta.git
 
 
 
+
+------------------------------------------------------------------------------------------------
+
+После генерации оставил только в модуле и бутстрапе подключение i18n
+
+    public static function t($category, $message, $params = [], $language = null)
+    {
+        return Yii::t('modules/lectors/' . $category, $message, $params, $language);
+    }
+
+     public function bootstrap($app)
+     {
+         $app->i18n->translations['modules/lectors/*'] = [
+             'class' => 'yii\i18n\PhpMessageSource',
+             'forceTranslation' => true,
+             'basePath' => '@app/modules/lectors/messages',
+             'fileMap' => [
+                 'modules/lectors/lector' => 'lector.php',
+             ],
+         ];
+     }
+
+
+Перевод теперь берем только из модуля, а не из Yii
+
+------------------------------------------------------------------------------------------------
+
+Для админской части модуля правим настройки и роутинг:
+
+    'modules' => [
+        'lectors' => [
+            'class' => 'app\modules\lectors\Module',
+            'controllerNamespace' => 'app\modules\lectors\controllers\frontend',
+            'viewPath' => '@app/modules/lectors/views/frontend',
+        ],
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'modules' => [
+                'lectors' => [
+                    'class' => 'app\modules\lectors\Module',
+                    'controllerNamespace' => 'app\modules\lectors\controllers\backend',
+                    'viewPath' => '@app/modules/lectors/views/backend',
+                ],
+            ]
+        ],
+
+    ],
+
+........
+
+                [
+                    'class' => 'yii\web\GroupUrlRule',
+                    'prefix' => 'admin',
+                    'routePrefix' => 'admin',
+                    'rules' => [
+                        '' => 'default/index',
+                        '<_m:[\w\-]+>' => '<_m>/default/index',
+                        '<_m:[\w\-]+>/<id:\d+>' => '<_m>/default/view',
+                        '<_m:[\w\-]+>/<id:\d+>/<_a:[\w-]+>' => '<_m>/default/<_a>',
+                        '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
+                        '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',
+                        '<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
+                    ],
+                ],
+
+------------------------------------------------------------------------------------------------
+
+Скопировали папку environments и init из yii2-app-advanced к нам
+Подправил содержание environments\index.php и папки environments\dev
+
+init --env=Development
+
+
+------------------------------------------------------------------------------------------------
+
