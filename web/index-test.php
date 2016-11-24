@@ -13,7 +13,7 @@ defined('YII_ENV') or define('YII_ENV', 'test');
 require(__DIR__ . '/../vendor/autoload.php');
 require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
 
-$config = require(__DIR__ . '/../config/web-test-local.php');
+$config = require(__DIR__ . '/../config/web-test.php');
 //$config = require(__DIR__ . '/../config/test.php');
 
 //echo nl2br(print_r($config, true));
