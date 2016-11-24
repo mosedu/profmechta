@@ -16,11 +16,11 @@ $testConfig = [
 //        'user' => [
 //            'identityClass' => 'app\models\User',
 //        ],
-        'urlManager' => [
-            'showScriptName' => true,
-            'enablePrettyUrl' => false,
-            'cache' => false,
-        ],
+//        'urlManager' => [
+//            'showScriptName' => true,
+//            'enablePrettyUrl' => false,
+//            'cache' => false,
+//        ],
 
 //        'request' => [
 //            'cookieValidationKey' => 'test',
@@ -32,6 +32,17 @@ $testConfig = [
 //            ],
 //            */
 //        ],
+        'log' => [
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning', 'info', 'trace', ],
+                    'logFile' => '@app/runtime/logs/testdev.log',
+                    'maxFileSize' => 300,
+                    'maxLogFiles' => 3,
+                ],
+            ],
+        ],
 
     ],
 ];

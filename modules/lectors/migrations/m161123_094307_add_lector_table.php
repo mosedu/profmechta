@@ -13,6 +13,8 @@ class m161123_094307_add_lector_table extends Migration
             $tableOptionsMyISAM = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM';
         }
 
+//        $realName = Yii::$app->db->schema->getRawTableName('{{%lector}}');
+//        Yii::info('m161123_094307_add_lector_table: realName = ' . $realName);
         $this->createTable('{{%lector}}', [
             'lec_id' => $this->primaryKey(),                                               // Schema::TYPE_PK,
             'lec_group' => $this->addComentToField($this->string(16), 'Группа'),                           // Schema::TYPE_STRING . '(16) Comment \'Группа\'',

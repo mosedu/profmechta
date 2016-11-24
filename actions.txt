@@ -404,3 +404,11 @@ Total 1 new migration to be applied:
 1 migration was applied.
 
 Migrated up successfully.
+
+------------------------------------------------------------------------------------------------
+
+Правим файл для конфига тестового web скрипта
+environments\test\config\web-test-local.php
+
+> init --env=Test
+

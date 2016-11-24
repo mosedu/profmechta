@@ -1,16 +1,42 @@
 <?php
 
-return [
+use yii\helpers\ArrayHelper;
+
+$sfCommonWeb = __DIR__ . DIRECTORY_SEPARATOR . 'web.php';
+$sfCommonTest = __DIR__ . DIRECTORY_SEPARATOR . 'test.php';
+
+$testWebConfig = [
     'components' => [
-        'db' => [
-            'dsn' => 'sqlite:' . dirname(__DIR__) . DIRECTORY_SEPARATOR . 'runtime' . DIRECTORY_SEPARATOR . '/sqlite.db',
-            'enableSchemaCache' => false,
+//        'mailer' => [
+//            'useFileTransport' => true,
+//        ],
+        'user' => [
+            'identityClass' => 'app\models\User',
         ],
-        'mailer' => [
-            'useFileTransport' => true,
+        'urlManager' => [
+            'showScriptName' => true,
+            'enablePrettyUrl' => false,
+            'cache' => false,
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
+
+        'request' => [
+            'cookieValidationKey' => 'test',
+            'enableCsrfValidation' => false,
+            // but if you absolutely need it set cookie domain to localhost
+            /*
+            'csrfCookie' => [
+                'domain' => 'localhost',
+            ],
+            */
         ],
+
     ],
 ];
+
+$testWebConfig = ArrayHelper::merge(
+    require($sfCommonWeb),
+    require($sfCommonTest),
+    $testWebConfig
+);
+
+return $testWebConfig;
