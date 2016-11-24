@@ -1,35 +1,44 @@
 <?php
-$params = require(__DIR__ . '/params.php');
-$dbParams = require(__DIR__ . '/test_db.php');
 
 /**
  * Application configuration shared by all test types
  */
-return [
+use yii\helpers\ArrayHelper;
+
+$sfTestLocal = __DIR__ . DIRECTORY_SEPARATOR . 'test-local.php';
+
+$testConfig = [
     'id' => 'basic-tests',
-    'basePath' => dirname(__DIR__),    
-    'language' => 'en-US',
     'components' => [
-        'db' => $dbParams,
         'mailer' => [
             'useFileTransport' => true,
         ],
+//        'user' => [
+//            'identityClass' => 'app\models\User',
+//        ],
         'urlManager' => [
             'showScriptName' => true,
+            'enablePrettyUrl' => false,
+            'cache' => false,
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-        ],        
-        'request' => [
-            'cookieValidationKey' => 'test',
-            'enableCsrfValidation' => false,
-            // but if you absolutely need it set cookie domain to localhost
-            /*
-            'csrfCookie' => [
-                'domain' => 'localhost',
-            ],
-            */
-        ],        
+
+//        'request' => [
+//            'cookieValidationKey' => 'test',
+//            'enableCsrfValidation' => false,
+//            // but if you absolutely need it set cookie domain to localhost
+//            /*
+//            'csrfCookie' => [
+//                'domain' => 'localhost',
+//            ],
+//            */
+//        ],
+
     ],
-    'params' => $params,
 ];
+
+$testConfig = ArrayHelper::merge(
+    $testConfig,
+    file_exists($sfTestLocal) ? require($sfTestLocal) : []
+);
+
+return $testConfig;

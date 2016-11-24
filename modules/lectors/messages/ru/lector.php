@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'BUTTON_TITLE_CREATE' => 'Создать лектора',
     'TITLE_CREATE' => 'Создание лектора',
     'TITLE_UPDATE' => 'Измение лектора',
     'TITLE_LECTORS' => 'Лекторы',

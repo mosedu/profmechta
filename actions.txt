@@ -232,3 +232,175 @@ Time: 9.31 seconds, Memory: 24.25MB
 
 ------------------------------------------------------------------------------------------------
 
+Создаем environments\test, environments\test\config, environments\test\config\test-local.php
+Правим profmechta\environments\index.php
+
+init --env=Test
+
+В папке config появился test-local.php, правим tests\bin\yii на предмет использования этого конфига
+
+
+------------------------------------------------------------------------------------------------
+
+> tests\bin\yii migrate/up
+Exception 'yii\base\InvalidConfigException' with message 'The configuration for the "user" component must contain a "class" element.'
+
+in D:\projects\web\profmechta\vendor\yiisoft\yii2\di\ServiceLocator.php:202
+
+Stack trace:
+#0 D:\projects\web\profmechta\vendor\yiisoft\yii2\di\ServiceLocator.php(258): yii\di\ServiceLocator->set('user', Array)
+#1 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Component.php(169): yii\di\ServiceLocator->setComponents(Array)
+#2 D:\projects\web\profmechta\vendor\yiisoft\yii2\BaseYii.php(521): yii\base\Component->__set('components', Array)
+#3 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(yii\console\Application), Array)
+#4 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Application.php(206): yii\base\Object->__construct(Array)
+#5 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\Application.php(89): yii\base\Application->__construct(Array)
+#6 D:\projects\web\profmechta\tests\bin\yii(24): yii\console\Application->__construct(Array)
+#7 {main}
+
+
+------------------------------------------------------------------------------------------------
+
+
+> tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations
+Yii Migration Tool (based on Yii v2.0.10)
+
+Creating migration history table "migration"...Done.
+Total 1 new migration to be applied:
+        m161123_094307_add_lector_table
+
+Apply the above migration? (yes|no) [no]:yes
+*** applying m161123_094307_add_lector_table
+    > create table {{%lector}} ...Exception 'yii\db\Exception' with message 'SQLSTATE[HY000]: General error: 1 near "Comment": syntax error
+Failed to prepare SQL: CREATE TABLE `lector` (
+        `lec_id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+        `lec_group` varchar(16) Comment '╨У╤А╤Г╨┐╨┐╨░',
+        `lec_active` smallint Default 1 Comment '╨Я╨╛╨║╨░╨╖╤Л╨▓╨░╤В╤М',
+        `lec_email` varchar(64) Comment '╨н╨╗╨╡╨║╤В╤А╨╛╨╜╨╜╨░╤П ╨┐╨╛╤З╤В╨░',
+        `lec_fam` varchar(64) Comment '╨д╨Ш╨Ю',
+        `lec_profession` varchar(64) Comment '╨Я╤А╨╛╤Д╨╡╤Б╤Б╨╕╤П',
+        `lec_description` text Comment '╨Ю╨┐╨╕╤Б╨░╨╜╨╕╨╡',
+        `lec_pass` varchar(255) Comment '╨Я╨░╤А╨╛╨╗╤М',
+        `lec_created` datetime Comment '╨б╨╛╨╖╨┤╨░╨╜',
+        `lec_key` varchar(255) Comment 'API key'
+) CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM'
+
+in D:\projects\web\profmechta\vendor\yiisoft\yii2\db\Command.php:230
+
+Error Info:
+Array
+(
+    [0] => HY000
+    [1] => 1
+    [2] => near "Comment": syntax error
+)
+
+
+
+------------------------------------------------------------------------------------------------
+
+> tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations --interactive=0
+Yii Migration Tool (based on Yii v2.0.10)
+
+Total 1 new migration to be applied:
+        m161123_094307_add_lector_table
+
+*** applying m161123_094307_add_lector_table
+    > create table {{%lector}} ...Exception 'yii\db\Exception' with message 'SQLSTATE[HY000]: General error: 1 near "Comment": syntax error
+Failed to prepare SQL: CREATE TABLE `lector` (
+        `lec_id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+        `lec_group` varchar(16) Comment '╨У╤А╤Г╨┐╨┐╨░',
+        `lec_active` smallint Default 1 Comment '╨Я╨╛╨║╨░╨╖╤Л╨▓╨░╤В╤М',
+        `lec_email` varchar(64) Comment '╨н╨╗╨╡╨║╤В╤А╨╛╨╜╨╜╨░╤П ╨┐╨╛╤З╤В╨░',
+        `lec_fam` varchar(64) Comment '╨д╨Ш╨Ю',
+        `lec_profession` varchar(64) Comment '╨Я╤А╨╛╤Д╨╡╤Б╤Б╨╕╤П',
+        `lec_description` text Comment '╨Ю╨┐╨╕╤Б╨░╨╜╨╕╨╡',
+        `lec_pass` varchar(255) Comment '╨Я╨░╤А╨╛╨╗╤М',
+        `lec_created` datetime Comment '╨б╨╛╨╖╨┤╨░╨╜',
+        `lec_key` varchar(255) Comment 'API key'
+) CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM'
+
+in D:\projects\web\profmechta\vendor\yiisoft\yii2\db\Command.php:230
+
+Error Info:
+Array
+(
+    [0] => HY000
+    [1] => 1
+    [2] => near "Comment": syntax error
+)
+
+Stack trace:
+#0 D:\projects\web\profmechta\vendor\yiisoft\yii2\db\Command.php(838): yii\db\Command->prepare(false)
+#1 D:\projects\web\profmechta\vendor\yiisoft\yii2\db\Migration.php(261): yii\db\Command->execute()
+#2 D:\projects\web\profmechta\modules\lectors\migrations\m161123_094307_add_lector_table.php(24): yii\db\Migration->createTable('{{%lector}}', Array, 'CHARACTER SET u...')
+#3 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(651): m161123_094307_add_lector_table->up()
+#4 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(163): yii\console\controllers\BaseMigrateController->migrateUp('m161123_094307_...')
+#5 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#6 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#7 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#8 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('up', Array)
+#9 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Module.php(454): yii\console\Controller->runAction('up', Array)
+#10 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate/up', Array)
+#11 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate/up', Array)
+#12 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 D:\projects\web\profmechta\tests\bin\yii(27): yii\base\Application->run()
+#14 {main}
+
+
+------------------------------------------------------------------------------------------------
+
+Правим миграцию
+
+> tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations --interactive=0
+Yii Migration Tool (based on Yii v2.0.10)
+
+Total 1 new migration to be applied:
+        m161123_094307_add_lector_table
+
+*** applying m161123_094307_add_lector_table
+    > create table {{%lector}} ...Exception 'yii\base\NotSupportedException' with message 'yii\db\sqlite\QueryBuilder::addCommentOnColumn is not supported by SQLite.'
+
+in D:\projects\web\profmechta\vendor\yiisoft\yii2\db\sqlite\QueryBuilder.php:305
+
+Stack trace:
+#0 D:\projects\web\profmechta\vendor\yiisoft\yii2\db\Command.php(770): yii\db\sqlite\QueryBuilder->addCommentOnColumn('{{%lector}}', 'lec_group', '\xD0\x93\xD1\x80\xD1\x83\xD0\xBF\xD0\xBF\xD0\xB0')
+#1 D:\projects\web\profmechta\vendor\yiisoft\yii2\db\Migration.php(264): yii\db\Command->addCommentOnColumn('{{%lector}}', 'lec_group', '\xD0\x93\xD1\x80\xD1\x83\xD0\xBF\xD0\xBF\xD0\xB0')
+#2 D:\projects\web\profmechta\modules\lectors\migrations\m161123_094307_add_lector_table.php(27): yii\db\Migration->createTable('{{%lector}}', Array, '')
+#3 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(651): m161123_094307_add_lector_table->up()
+#4 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(163): yii\console\controllers\BaseMigrateController->migrateUp('m161123_094307_...')
+#5 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#6 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#7 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Controller.php(154): yii\base\InlineAction->runWithParams(Array)
+#8 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('up', Array)
+#9 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Module.php(454): yii\console\Controller->runAction('up', Array)
+#10 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate/up', Array)
+#11 D:\projects\web\profmechta\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate/up', Array)
+#12 D:\projects\web\profmechta\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 D:\projects\web\profmechta\tests\bin\yii(27): yii\base\Application->run()
+#14 {main}
+
+
+------------------------------------------------------------------------------------------------
+
+Теперь есть метод для вставки комментария к полю:
+$this->addComentToField($this->smallInteger()->defaultValue(1), 'Показывать'),
+
+> tests\bin\yii  migrate/down --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations --interactive=0
+> tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations --interactive=0
+Yii Migration Tool (based on Yii v2.0.10)
+
+Creating migration history table "migration"...Done.
+Total 1 new migration to be applied:
+        m161123_094307_add_lector_table
+
+*** applying m161123_094307_add_lector_table
+    > create table {{%lector}} ... done (time: 0.089s)
+    > create index idx_lec_email on {{%lector}} (lec_email) ... done (time: 0.099s)
+    > create index idx_lec_key on {{%lector}} (lec_key) ... done (time: 0.091s)
+    > create index idx_lec_active on {{%lector}} (lec_active) ... done (time: 0.082s)
+*** applied m161123_094307_add_lector_table (time: 0.449s)
+
+
+1 migration was applied.
+
+Migrated up successfully.

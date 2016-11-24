@@ -19,4 +19,14 @@ class Migration extends yii\db\Migration {
         Yii::$app->db->schema->getTableSchemas();
     }
 
+    /**
+     * @param $field
+     * @param $comment
+     * @return mixed
+     */
+    public function addComentToField($field, $comment) {
+        return (strtolower($this->db->driverName) == 'mysql') ? $field->comment($comment) : $field;
+    }
+
+
 }

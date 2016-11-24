@@ -10,6 +10,7 @@ $sfWebLocal = __DIR__ . DIRECTORY_SEPARATOR . 'web-local.php';
 $webconfig = [
     'id' => 'basic-web',
     'language' => 'ru-RU',
+    'name' => 'Профмечта',
     'components' => [
         'request' => [],
         'user' => [

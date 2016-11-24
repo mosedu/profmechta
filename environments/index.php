@@ -59,4 +59,18 @@ return [
             'config/web-local.php',
         ],
     ],
+    'Test' => [
+        'path' => 'test',
+        'setWritable' => [
+            'runtime',
+            'web/assets',
+        ],
+        'setExecutable' => [
+            'yii',
+            'tests/bin/yii',
+        ],
+//        'setCookieValidationKey' => [
+//            'config/web-local.php',
+//        ],
+    ],
 ];
