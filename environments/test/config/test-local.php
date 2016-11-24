@@ -14,5 +14,16 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'log' => [
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning', 'info', 'trace', ],
+                    'logFile' => '@app/runtime/logs/testdev.log',
+                    'maxFileSize' => 300,
+                    'maxLogFiles' => 3,
+                ],
+            ],
+        ],
     ],
 ];

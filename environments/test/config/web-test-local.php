@@ -7,9 +7,6 @@ $sfCommonTest = __DIR__ . DIRECTORY_SEPARATOR . 'test.php';
 
 $testWebConfig = [
     'components' => [
-//        'mailer' => [
-//            'useFileTransport' => true,
-//        ],
         'user' => [
             'identityClass' => 'app\models\User',
         ],
@@ -18,7 +15,6 @@ $testWebConfig = [
             'enablePrettyUrl' => false,
             'cache' => false,
         ],
-
         'request' => [
             'cookieValidationKey' => 'test',
             'enableCsrfValidation' => false,
