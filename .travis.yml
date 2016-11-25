@@ -3,6 +3,7 @@ php:
   - '5.6'
 
 install:
+  - composer global require "fxp/composer-asset-plugin:^1.2.0"
   - composer install
   - init --env=Test
   - tests\bin\yii  migrate/up --migrationPath=modules\lectors\migrations --interactive=0
