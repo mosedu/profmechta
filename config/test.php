@@ -5,6 +5,15 @@
  */
 use yii\helpers\ArrayHelper;
 
+$sfBaseParams = __DIR__ . '/params.php';
+$sfTestParams = __DIR__ . '/test-params.php';
+
+$testParams = ArrayHelper::merge(
+    require($sfParams),
+    file_exists($sfTestParams) ? require($sfTestParams) : []
+);
+
+
 $sfTestLocal = __DIR__ . DIRECTORY_SEPARATOR . 'test-local.php';
 
 $testConfig = [
@@ -15,6 +24,7 @@ $testConfig = [
         ],
 
     ],
+    'params' => $testParams,
 ];
 
 $testConfig = ArrayHelper::merge(

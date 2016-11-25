@@ -412,3 +412,22 @@ environments\test\config\web-test-local.php
 
 > init --env=Test
 
+------------------------------------------------------------------------------------------------
+
+> php vendor\codeception\codeception\codecept run unit,functional --coverage-html
+Codeception PHP Testing Framework v2.2.6
+Powered by PHPUnit 5.6.5 by Sebastian Bergmann and contributors.
+
+
+  [Codeception\Exception\ModuleException]
+  Codeception\Coverage\Filter: The blacklist functionality has been removed from PHPUnit 5, please remove blacklist section from configuration.
+
+Правим codeception.yml
+
+> php vendor\codeception\codeception\codecept build
+> php vendor\codeception\codeception\codecept run unit,functional --coverage-html
+
+получили в папке tests\_output\coverage отчет о покрытии
+
+------------------------------------------------------------------------------------------------
+
