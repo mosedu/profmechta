@@ -431,3 +431,10 @@ Powered by PHPUnit 5.6.5 by Sebastian Bergmann and contributors.
 
 ------------------------------------------------------------------------------------------------
 
+tests\bin\yii  migrate/up --migrationPath=modules\lectors\migrations --interactive=0
+
+/home/travis/build.sh: line 57: testsbinyii: command not found
+
+The command "testin\yii  migrate/up --migrationPath=modules\lectors\migrations --interactive=0" failed and exited with 127 during .
+
+Your build has been stopped.
