@@ -447,3 +447,9 @@ Your build has been stopped.
 
 php vendor\codeception\codeception\codecept generate:test unit modules/lectors/models/Lector
 php vendor\codeception\codeception\codecept run unit modules/lectors/models/LectorTest
+
+------------------------------------------------------------------------------------------------
+
+добавляем слайдер slick
+php d:\php566\composer.phar require "evgeniyrru/yii2-slick" "*"
+

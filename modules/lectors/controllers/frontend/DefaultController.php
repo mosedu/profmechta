@@ -38,7 +38,7 @@ class DefaultController extends Controller
         $searchModel = new LectorSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('list', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
