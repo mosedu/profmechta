@@ -438,3 +438,12 @@ tests\bin\yii  migrate/up --migrationPath=modules\lectors\migrations --interacti
 The command "testin\yii  migrate/up --migrationPath=modules\lectors\migrations --interactive=0" failed and exited with 127 during .
 
 Your build has been stopped.
+
+------------------------------------------------------------------------------------------------
+
+тут было много правок файла travis.yml - правил пути к исполняемым файлам - они должны быть со слешами как деление
+
+------------------------------------------------------------------------------------------------
+
+php vendor\codeception\codeception\codecept generate:test unit modules/lectors/models/Lector
+php vendor\codeception\codeception\codecept run unit modules/lectors/models/LectorTest

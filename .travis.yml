@@ -10,3 +10,6 @@ install:
   - vendor/codeception/codeception/codecept build
 
 script: vendor/codeception/codeception/codecept run unit,functional
+
+notifications:
+  slack: temocenter:5XKQ5uwq6ajrrG7tltArEqM2

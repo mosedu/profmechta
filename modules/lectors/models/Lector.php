@@ -4,6 +4,11 @@ namespace app\modules\lectors\models;
 
 use Yii;
 use app\modules\lectors\Module;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+use yii\db\ActiveRecord;
+use yii\behaviors\AttributeBehavior;
+use yii\base\Security;
 
 /**
  * This is the model class for table "{{%lector}}".
@@ -24,6 +29,50 @@ class Lector extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            'timestampBehavior' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['lec_created'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => [],
+                ],
+                'value' => (strtolower($this->db->driverName) == 'mysql') ? new Expression('NOW()') : 'NOW',
+            ],
+            [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'lec_key',
+//                    ActiveRecord::EVENT_BEFORE_UPDATE => 'attribute2',
+                ],
+                'value' => function ($event) {
+                           return (new Security())->generateRandomString(32);
+                },
+            ],
+            [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'lec_pass',
+//                    ActiveRecord::EVENT_BEFORE_UPDATE => 'attribute2',
+                ],
+                'value' => function ($event) {
+                           return (new Security())->generateRandomString(6);
+                },
+            ],
+            [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'lec_active',
+                ],
+                'value' => 0,
+            ],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return '{{%lector}}';
@@ -35,6 +84,7 @@ class Lector extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['lec_description', 'lec_fam', 'lec_profession'], 'required'],
             [['lec_active'], 'integer'],
             [['lec_description'], 'string'],
             [['lec_created'], 'safe'],

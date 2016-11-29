@@ -66,12 +66,13 @@ class DefaultController extends Controller
         $model = new Lector();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->lec_id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            return $this->redirect(['index']);
+//            return $this->redirect(['view', 'id' => $model->lec_id]);
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
