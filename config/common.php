@@ -16,6 +16,7 @@ return [
     'bootstrap' => [
         'log',
         'app\modules\lectors\Bootstrap',
+        'app\modules\lessons\Bootstrap',
     ],
     'components' => [
         'cache' => [

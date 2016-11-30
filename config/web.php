@@ -66,6 +66,11 @@ $webconfig = [
             'controllerNamespace' => 'app\modules\lectors\controllers\frontend',
             'viewPath' => '@app/modules/lectors/views/frontend',
         ],
+        'lessons' => [
+            'class' => 'app\modules\lessons\Module',
+            'controllerNamespace' => 'app\modules\lessons\controllers\frontend',
+            'viewPath' => '@app/modules/lessons/views/frontend',
+        ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'modules' => [
@@ -73,6 +78,11 @@ $webconfig = [
                     'class' => 'app\modules\lectors\Module',
                     'controllerNamespace' => 'app\modules\lectors\controllers\backend',
                     'viewPath' => '@app/modules/lectors/views/backend',
+                ],
+                'lessons' => [
+                    'class' => 'app\modules\lessons\Module',
+                    'controllerNamespace' => 'app\modules\lessons\controllers\backend',
+                    'viewPath' => '@app/modules/lessons/views/backend',
                 ],
             ]
         ],

@@ -4,10 +4,10 @@ namespace app\modules\lectors\models;
 
 use Yii;
 use app\modules\lectors\Module;
-use yii\behaviors\TimestampBehavior;
-use yii\db\Expression;
 use yii\db\ActiveRecord;
 use yii\behaviors\AttributeBehavior;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 use yii\base\Security;
 
 /**

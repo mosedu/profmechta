@@ -453,3 +453,19 @@ php vendor\codeception\codeception\codecept run unit modules/lectors/models/Lect
 добавляем слайдер slick
 php d:\php566\composer.phar require "evgeniyrru/yii2-slick" "*"
 
+------------------------------------------------------------------------------------------------
+
+Добавляем новый модуль лекций
+
+yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\lessons\migrations  add_lesson_table
+yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\lessons\migrations  add_connect_lector_lesson_table
+
+Вносим миграции в файл трависа.
+
+Добавляем таблицы в наше тестовое окружение
+php tests/bin/yii  migrate/up --migrationPath=modules/lessons/migrations --interactive=0
+
+Добавляем новый тест
+php vendor\codeception\codeception\codecept generate:test unit modules/lessons/models/Lesson
+
+php vendor\codeception\codeception\codecept run unit modules/lessons/models/LessonTest

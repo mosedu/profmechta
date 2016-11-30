@@ -33,7 +33,7 @@ $obView = $this;
         'itemContainer' => 'div',
 
         // HTML attributes for widget container
-        'containerOptions' => ['class' => 'lector-slider col-xs-10 col-xs-offset-1'],
+        'containerOptions' => ['class' => 'lector-slider col-xs-8 col-xs-offset-2'],
 
         // Items for carousel. Empty array not allowed, exception will be throw, if empty
         'items' => ArrayHelper::map(
