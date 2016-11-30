@@ -3,6 +3,8 @@
 namespace app\modules\lessons\models;
 
 use Yii;
+use app\modules\lectors\models\Lector;
+use app\modules\lessons\models\Lesson;
 
 /**
  * This is the model class for table "{{%leslect}}".
@@ -48,14 +50,38 @@ class Leslect extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLector() {
+        return $this->hasOne(
+            Lector::className(),
+            [
+                'lec_id' => 'll_lector_id',
+            ]
+        );
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLesson() {
+        return $this->hasOne(
+            Lesson::className(),
+            [
+                'les_id' => 'll_lesson_id',
+            ]
+        );
+    }
+
+    /**
      * @param array $aFilter
      */
     public static function clearDates($aFilter = []) {
         Yii::info('clearDates() aFilter = ' . print_r($aFilter, true));
         self::updateAll(
             [
-                'll_lesson_id' => '',
-                'll_lector_id' => '',
+                'll_lesson_id' => 0,
+                'll_lector_id' => 0,
                 'll_date' => null,
             ],
             $aFilter

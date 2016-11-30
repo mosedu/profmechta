@@ -3,17 +3,16 @@
 namespace app\modules\lessons\controllers\backend;
 
 use Yii;
-use app\modules\lessons\models\Lesson;
-use app\modules\lessons\models\LessonSearch;
+use app\modules\lessons\models\Leslect;
 use app\modules\lessons\models\LeslectSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DefaultController implements the CRUD actions for Lesson model.
+ * LeslectController implements the CRUD actions for Leslect model.
  */
-class DefaultController extends Controller
+class LeslectController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class DefaultController extends Controller
     }
 
     /**
-     * Lists all Lesson models.
+     * Lists all Leslect models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LessonSearch();
+        $searchModel = new LeslectSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,39 +45,31 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a single Lesson model.
+     * Displays a single Leslect model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
-
-        $searchModel = new LeslectSearch();
-
-        $params = Yii::$app->request->queryParams;
-        $params[$searchModel->formName()]['ll_lesson_id'] = $id;
-        $dataProvider = $searchModel->search($params);
-
         return $this->render('view', [
-            'model' => $model,
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Lesson model.
+     * Creates a new Leslect model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id = 0)
     {
-        $model = new Lesson();
+        $model = new Leslect();
+        if( $id != 0 ) {
+            $model->ll_lesson_id = $id;
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-//            return $this->redirect(['view', 'id' => $model->les_id]);
+            return $this->redirect(['lessons/view', 'id' => $model->ll_lesson_id]);
         }
 
         return $this->render('create', [
@@ -87,7 +78,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Updates an existing Lesson model.
+     * Updates an existing Leslect model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,38 +88,37 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-//            return $this->redirect(['view', 'id' => $model->les_id]);
+            return $this->redirect(['view', 'id' => $model->ll_id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
-     * Deletes an existing Lesson model.
+     * Deletes an existing Leslect model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-//        $this->findModel($id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Lesson model based on its primary key value.
+     * Finds the Leslect model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Lesson the loaded model
+     * @return Leslect the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Lesson::findOne($id)) !== null) {
+        if (($model = Leslect::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

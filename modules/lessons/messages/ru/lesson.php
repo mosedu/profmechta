@@ -5,6 +5,12 @@ return [
     'TITLE_CREATE' => 'Создание лекции',
     'TITLE_UPDATE' => 'Измение лекции',
     'TITLE_LESSONS' => 'Лекции',
+
+    'BUTTON_TITLE_CREATE_DATE' => 'Добавить дату',
+    'TITLE_CREATE_DATE' => 'Создание даты лекции',
+    'TITLE_UPDATE_DATE' => 'Изменение даты лекции',
+    'TITLE_DATES' => 'Даты лекций',
+
     'BUTTON_SAVE' => 'Сохранить',
     'BUTTON_CREATE' => 'Создать',
     'BUTTON_UPDATE' => 'Сохранить',

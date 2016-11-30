@@ -42,12 +42,24 @@ class LeslectSearch extends Leslect
     public function search($params)
     {
         $query = Leslect::find();
+        $query->with(['lector']);
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
+        $aDataConf = [
             'query' => $query,
-        ]);
+            'sort'=> [
+                'defaultOrder' => isset($params['sort']) ? $params['sort'] : ['ll_date' => SORT_DESC, ]
+            ]
+        ];
+
+        if( isset($params['pagesize']) ) {
+            $aDataConf['pagination'] = [
+                'pageSize' => $params['pagesize'],
+            ];
+        }
+
+        $dataProvider = new ActiveDataProvider($aDataConf);
 
         $this->load($params);
 

@@ -469,3 +469,12 @@ php tests/bin/yii  migrate/up --migrationPath=modules/lessons/migrations --inter
 php vendor\codeception\codeception\codecept generate:test unit modules/lessons/models/Lesson
 
 php vendor\codeception\codeception\codecept run unit modules/lessons/models/LessonTest
+
+
+У SQLite проблемы с запросами вида Update ... Limit 1, потому что надо компилить с SQLITE_ENABLE_UPDATE_DELETE_LIMIT
+Запросы вида Insert Into `profmechta_leslect` Set ll_lesson_id = .. тоже не идут, надо Insert Into .. () values ()
+
+------------------------------------------------------------------------------------------------
+
+php d:\php566\composer.phar require "kartik-v/yii2-widget-datetimepicker"
+php d:\php566\composer.phar require "kartik-v/yii2-widget-select2"

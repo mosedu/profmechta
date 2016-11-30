@@ -8,6 +8,7 @@ use app\modules\lectors\models\LectorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * DefaultController implements the CRUD actions for Lector model.
@@ -92,6 +93,44 @@ class DefaultController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    /**
+     * Updates an existing Lector model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionList()
+    {
+        $sQuery = trim(Yii::$app->request->post('term', ''));
+        $a = explode(' ', $sQuery);
+        if( count($a) > 1 ) {
+            $sQuery = $a[0];
+        }
+
+        $aData = ArrayHelper::map(
+            Lector::find()
+                ->where([
+                    'or',
+                    ['like', 'lec_fam', $sQuery],
+                    ['like', 'lec_profession', $sQuery],
+                ])
+                ->orderBy(['lec_fam' => SORT_ASC, ])
+                ->all(),
+            'lec_id',
+            function($ob) {
+                return [
+                    'id' => $ob->lec_id,
+                    'text' => $ob->lec_fam,
+                    'profession' => $ob->lec_profession,
+                    'description' => $ob->lec_description,
+                ];
+            }
+        );
+
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['results' => array_values($aData), 'total' => count($aData), ];
     }
 
     /**
