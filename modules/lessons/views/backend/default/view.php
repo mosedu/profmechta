@@ -56,6 +56,9 @@ Url::remember();
                 'class' => 'yii\grid\ActionColumn',
                 'buttonOptions' => $buttonOptions,
                 'template' => '{update} {delete}',
+                'contentOptions' => [
+                    'style' => 'white-space: nowrap;',
+                ],
                 'buttons' => [
                     'update' => function ($url, $model, $key) use($buttonOptions) {
                         $url = Url::to(['leslect/update', 'id' => $model->ll_id]);

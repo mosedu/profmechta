@@ -60,7 +60,7 @@ class LessonSearch extends Lesson
         // grid filtering conditions
         $query->andFilterWhere([
             'les_id' => $this->les_id,
-            'les_active' => $this->les_active,
+            'les_active' => ($this->les_active == '') ? self::LESSON_STATUS_ACTIVE : $this->les_active,
             'les_created' => $this->les_created,
         ]);
 
@@ -69,4 +69,5 @@ class LessonSearch extends Lesson
 
         return $dataProvider;
     }
+
 }

@@ -21,6 +21,8 @@ use yii\db\Expression;
  */
 class Lesson extends \yii\db\ActiveRecord
 {
+    const LESSON_STATUS_ACTIVE = 1;
+    const LESSON_STATUS_HIDDEN = 0;
 
     /**
      * @inheritdoc
@@ -112,4 +114,28 @@ class Lesson extends \yii\db\ActiveRecord
         }
         return $n;
     }
+
+    /**
+     *
+     * Статусы лекций
+     *
+     * @return array
+     *
+     */
+    public static function getAllStatuses() {
+        return [
+            self::LESSON_STATUS_ACTIVE => 'Видимо',
+            self::LESSON_STATUS_HIDDEN => 'Удалено',
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus() {
+        $aStatus = self::getAllStatuses();
+        return (isset($aStatus[$this->les_active]) ? $aStatus[$this->les_active] : '??');
+    }
+
+
 }

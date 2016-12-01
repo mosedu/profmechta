@@ -5,6 +5,8 @@ namespace app\modules\lessons\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
+use app\modules\lessons\models\Lesson;
 use app\modules\lessons\models\Leslect;
 
 /**
@@ -78,5 +80,25 @@ class LeslectSearch extends Leslect
         ]);
 
         return $dataProvider;
+    }
+
+    /**
+     *
+     * выдача ближайшей лекции
+     *
+     */
+    public function findNearest() {
+        $tName = self::tableName();
+        $ob = self::find()
+            ->select($tName . '.*')
+            ->leftJoin(Lesson::tableName() . ' lesson', '`lesson`.`les_id` = ' . $tName . '.`ll_lesson_id`')
+            ->where([
+                'and',
+                ['>', '.ll_date', new Expression('NOW()')],
+                ['les_active' => Lesson::LESSON_STATUS_ACTIVE],
+            ])
+            ->orderBy(['ll_date' => SORT_ASC])
+            ->one();
+        return $ob;
     }
 }

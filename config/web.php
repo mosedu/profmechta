@@ -24,6 +24,16 @@ $webconfig = [
             'class' => 'yii\swiftmailer\Mailer',
         ],
 
+        'view' => [
+            'theme' => [
+                'basePath' => '@app/themes/v01',
+                'baseUrl' => '@web/themes/v01',
+                'pathMap' => [
+                    '@app/views' => '@app/themes/v01',
+                ],
+            ],
+        ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

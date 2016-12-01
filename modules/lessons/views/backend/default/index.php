@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\modules\lessons\Module;
+use app\modules\lessons\models\Lesson;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\lessons\models\LessonSearch */
@@ -10,6 +11,10 @@ use app\modules\lessons\Module;
 
 $this->title = Module::t('lesson', 'TITLE_LESSONS');
 $this->params['breadcrumbs'][] = $this->title;
+$buttonOptions = [
+    'class' => 'btn btn-default',
+    'style' => 'white-space: nowrap;',
+];
 ?>
 <div class="lesson-index">
 
@@ -28,14 +33,51 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'les_id',
             'les_title',
             'les_description:ntext',
-            'les_active',
+//            'les_active',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'les_active',
+                'filter' => Lesson::getAllStatuses(),
+                'content' => function ($model, $key, $index, $column) {
+                    return Html::encode($model->status);
+                },
+            ],
+
 //            'les_created',
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'contentOptions' => [
-                    'style' => 'white-space: nowrap;',
-                ]
+//                'template' => '{view}'
+                'contentOptions' => $buttonOptions,
+                'buttons' => [
+                    'view' => function ($url, $model, $key) use($buttonOptions) {
+                        $options = array_merge([
+                            'title' => Yii::t('yii', 'View'),
+                            'aria-label' => Yii::t('yii', 'View'),
+                            'data-pjax' => '0',
+                        ], $buttonOptions);
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+                    },
+                    'update' => function ($url, $model, $key) use($buttonOptions) {
+                        $options = array_merge([
+                            'title' => Yii::t('yii', 'Update'),
+                            'aria-label' => Yii::t('yii', 'Update'),
+                            'data-pjax' => '0',
+                        ], $buttonOptions);
+                        return ($model->les_active == Lesson::LESSON_STATUS_ACTIVE) ? Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options) : '';
+                    },
+                    'delete' => function ($url, $model, $key) use($buttonOptions) {
+                        $options = array_merge([
+                            'title' => Yii::t('yii', 'Delete'),
+                            'aria-label' => Yii::t('yii', 'Delete'),
+                            'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                            'data-method' => 'post',
+                            'data-pjax' => '0',
+                        ], $buttonOptions);
+                        return ($model->les_active == Lesson::LESSON_STATUS_ACTIVE) ? Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options) : '';
+                    },
+
+    ],
             ],
         ],
     ]); ?>

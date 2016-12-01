@@ -9,6 +9,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+use app\modules\lessons\models\LeslectSearch;
+
+
 class SiteController extends Controller
 {
     /**
@@ -60,7 +63,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $oLessonSearch = new LeslectSearch();
+        $oNearesrLesson = $oLessonSearch->findNearest();
+        return $this->render(
+            'index',
+            [
+                'nearestLesson' => $oNearesrLesson,
+            ]
+        );
     }
 
     /**
