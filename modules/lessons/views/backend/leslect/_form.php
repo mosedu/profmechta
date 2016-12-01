@@ -11,7 +11,9 @@ use yii\web\JsExpression;
 /* @var $model app\modules\lessons\models\Leslect */
 /* @var $form yii\widgets\ActiveForm */
 
-
+if( !empty($model->ll_date) ) {
+    $model->ll_date = date('d.m.Y H:i', strtotime($model->ll_date));
+}
 $aPluginDateOptions = [
     'autoclose' => true,
     'format' => 'dd.mm.yyyy hh:ii',
@@ -21,11 +23,23 @@ $aPluginDateOptions = [
 //    'minutesDisabled' => [0, 30],
 ];
 
+$sObLector = '';
+if( !$model->isNewRecord ) {
+    $sObLector = [
+        'id' => $model->lector->lec_id,
+        'text' => $model->lector->lec_fam,
+        'profession' => $model->lector->lec_profession,
+        'description' => $model->lector->lec_description,
+    ];
+}
+
 $aPluginLectorOptions = [
     'language' => 'ru',
     'pluginOptions' => [
         'allowClear' => true,
-//        'initSelection' => new JsExpression('function (element, callback) {
+//        'initValueText' => '654654654', // $model->isNewRecord ? '' : $model->lector->lec_fam,
+        'initSelection' => new JsExpression('function (element, callback) {
+            callback(' . json_encode($sObLector) . ');
 //                    if( element.val() > 0 ) {
 //                        $.ajax({
 //                            method: "POST",
@@ -46,37 +60,48 @@ $aPluginLectorOptions = [
 //                            }
 //                        });
 //                    }
-//                }'),
+                }'),
         'ajax' =>[
             'method' => 'POST',
             'url' => \yii\helpers\Url::to(["/admin/lectors/default/list"]),
             'dataType' => 'json',
             'withCredentials' => true,
-            'data' => new JsExpression('function (params, page) {
-                        console.log("data("+params.term+", "+page+")", params);
-                        return {
-                            term: params.term,
-                            limit: 3,
-                            start: (page - 1) * 10,
-                            "_": (new Date()).getSeconds()
-                        };
-                    }'),
+            'data' => new JsExpression('function (params) {
+                var pagesize = 3;
+                console.log("data("+params.term+")", params);
+                return {
+                    term: params.term,
+                    limit: pagesize,
+                    start: ("page" in params) ? (params.page - 1) * pagesize : 0,
+                    "_": (new Date()).getSeconds()
+                };
+            }'),
 
-//            'results' => new JsExpression('function (data, page) {
-//                                console.log("results("+page+") data = ", data);
-//                                var more = (page * 10) < data.total; // whether or not there are more results available
-//                                return {results: data.list, more: more};
-//                             }'),
+//            'processResults' => new JsExpression('function (data, params) {
+//                var pagesize = 3;
+//                params.page = params.page || 1;
+//                console.log("results() data = ", data , "params = ", params);
+//
+//                return {
+//                    results: data.results,
+//                    pagination: {
+//                        more: (params.page * pagesize) < parseInt(data.total)
+//                    }
+//                };
+//             }'),
 //            'id' => new JsExpression(
 //                'function(item){return item.id;}'
 //            ),
         ],
-        'templateResult' => new JsExpression('function(city) { return city.text; }'),
-        'templateSelection' => new JsExpression('function (city) { return city.text; }'),
-//        'formatResult' => new JsExpression(
-//            'function (item) {
-//                        return item.val + "<span class=\\"description\\">" + item.description + "</span>";
-//                        return formatSelect(item, "text", "district");
+//        'templateResult' => new JsExpression('function(city) { return city.text; }'),
+        'templateSelection' => new JsExpression('function (item) { return item.text; }'),
+        'templateResult' => new JsExpression(
+            'function (item) {
+                        if (item.loading) {
+                            return item.text;
+                        }
+                        return item.text + "<span class=\\"description\\" style=\\"display: block; font-size: 0.9em;\\">" + item.profession + "</span>"; //  color: #777777;
+                        return formatSelect(item, "text", "district");
 /*
                         console.log("formatResult() item = ", item);
                         var markup = \'<div class="row-fluid">\'
@@ -85,8 +110,8 @@ $aPluginLectorOptions = [
                             + \'</div>\';
                         return markup; // item.text;
 */
-//                    }'
-//        ),
+                    }'
+        ),
         'escapeMarkup' => new JsExpression('function (m) { return m; }'),
     ],
 
@@ -108,11 +133,10 @@ $aPluginLectorOptions = [
 ?>
 
 <div class="leslect-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
     <?= '' // $form->field($model, 'll_lesson_id')->textInput() ?>
-    <?= $form->field($model, 'll_lesson_id')->hiddenInput() ?>
+    <?= $form->field($model, 'll_lesson_id', ['template' => "{input}"])->hiddenInput() ?>
     <div class="row">
         <div class="col-xs-8">
             <?= '' // $form->field($model, 'll_lector_id')->textInput() ?>

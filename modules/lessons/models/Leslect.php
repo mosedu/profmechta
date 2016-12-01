@@ -30,6 +30,25 @@ class Leslect extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [
+                ['ll_date'],
+                'filter',
+                'filter' => function ($value) {
+                    $value = trim($value);
+                    if( preg_match('|([\\d]{1,2})\\.([\\d]{1,2})\\.([\\d]{4})\\s*([\\d]{1,2}):([\\d]{1,2})|', $value, $a) ) {
+                        $t = mktime(
+                            intval($a[4]),
+                            intval($a[5]),
+                            0,
+                            intval($a[2]),
+                            intval($a[1]),
+                            intval($a[3])
+                        );
+                        $value = date('Y-m-d H:i:s', $t);
+                    }
+                    return $value;
+                }
+            ],
             [['ll_lesson_id', 'll_lector_id'], 'required'],
             [['ll_lesson_id', 'll_lector_id'], 'integer'],
             [['ll_date'], 'safe'],
@@ -49,6 +68,17 @@ class Leslect extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * Очищаем запись вместо удаления
+     */
+    public function clear() {
+        $this->ll_lesson_id = null;
+        $this->ll_lector_id = null;
+        $this->ll_date = null;
+        $bRet = $this->save(false);
+        Yii::info('clear('.$this->ll_id.') = ' . ($bRet ? 'true' : 'false') . ' errors = ' . print_r($this->getErrors(), true));
+        return $bRet;
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

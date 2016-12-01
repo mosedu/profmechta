@@ -104,20 +104,28 @@ class DefaultController extends Controller
     public function actionList()
     {
         $sQuery = trim(Yii::$app->request->post('term', ''));
+        $nLimit = intval(Yii::$app->request->post('limit', 10));
+        $nStart = intval(Yii::$app->request->post('start', 0));
         $a = explode(' ', $sQuery);
         if( count($a) > 1 ) {
             $sQuery = $a[0];
         }
 
+        $aWhere = [
+            'or',
+            ['like', 'lec_fam', $sQuery],
+            ['like', 'lec_profession', $sQuery],
+        ];
+
+        $oQuery = Lector::find()
+            ->where($aWhere)
+            ->orderBy(['lec_fam' => SORT_ASC, ]);
+//            ->offset($nStart)
+//            ->limit($nLimit);
+        $nCount = $oQuery->count();
+
         $aData = ArrayHelper::map(
-            Lector::find()
-                ->where([
-                    'or',
-                    ['like', 'lec_fam', $sQuery],
-                    ['like', 'lec_profession', $sQuery],
-                ])
-                ->orderBy(['lec_fam' => SORT_ASC, ])
-                ->all(),
+            $oQuery->all(),
             'lec_id',
             function($ob) {
                 return [
@@ -130,7 +138,7 @@ class DefaultController extends Controller
         );
 
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        return ['results' => array_values($aData), 'total' => count($aData), ];
+        return ['results' => array_values($aData), 'total' => $nCount, ];
     }
 
     /**

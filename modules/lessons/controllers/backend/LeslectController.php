@@ -8,6 +8,7 @@ use app\modules\lessons\models\LeslectSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 
 /**
  * LeslectController implements the CRUD actions for Leslect model.
@@ -69,7 +70,8 @@ class LeslectController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['lessons/view', 'id' => $model->ll_lesson_id]);
+            return $this->redirect(Url::previous());
+//            return $this->redirect(['lessons/view', 'id' => $model->ll_lesson_id]);
         }
 
         return $this->render('create', [
@@ -88,12 +90,14 @@ class LeslectController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ll_id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            return $this->redirect(Url::previous());
+//            return $this->redirect(['lessons/view', 'id' => $model->ll_lesson_id]);
+//            return $this->redirect(['view', 'id' => $model->ll_id]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -104,9 +108,13 @@ class LeslectController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->clear();
 
-        return $this->redirect(['index']);
+        return $this->redirect(Url::previous());
+//        $this->findModel($id)->delete();
+
+//        return $this->redirect(['index']);
     }
 
     /**

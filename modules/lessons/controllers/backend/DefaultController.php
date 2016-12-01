@@ -58,6 +58,7 @@ class DefaultController extends Controller
 
         $params = Yii::$app->request->queryParams;
         $params[$searchModel->formName()]['ll_lesson_id'] = $id;
+//        $params['pagesize'] = 2;
         $dataProvider = $searchModel->search($params);
 
         return $this->render('view', [

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\modules\lessons\Module;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\lessons\models\Lesson */
@@ -13,6 +14,12 @@ use yii\grid\GridView;
 $this->title = $model->les_title;
 $this->params['breadcrumbs'][] = ['label' => Module::t('lesson', 'TITLE_LESSONS'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$buttonOptions = [
+    'class' => 'btn btn-default'
+];
+Url::remember();
+
 ?>
 <div class="lesson-view">
 
@@ -27,7 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => null, // $searchModel,
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
-
 //            'll_id',
 //            'll_lesson_id',
             [
@@ -46,7 +52,33 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'll_lector_id',
             'll_date',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'buttonOptions' => $buttonOptions,
+                'template' => '{update} {delete}',
+                'buttons' => [
+                    'update' => function ($url, $model, $key) use($buttonOptions) {
+                        $url = Url::to(['leslect/update', 'id' => $model->ll_id]);
+                        $options = array_merge([
+                            'title' => Yii::t('yii', 'Update'),
+                            'aria-label' => Yii::t('yii', 'Update'),
+                            'data-pjax' => '0',
+                        ], $buttonOptions);
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
+                    },
+                    'delete' => function ($url, $model, $key) use($buttonOptions) {
+                        $url = Url::to(['leslect/delete', 'id' => $model->ll_id]);
+                        $options = array_merge([
+                            'title' => Yii::t('yii', 'Delete'),
+                            'aria-label' => Yii::t('yii', 'Delete'),
+                            'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                            'data-method' => 'post',
+                            'data-pjax' => '0',
+                        ], $buttonOptions);
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
+                    },
+                ],
+            ],
         ],
     ]); ?>
 
