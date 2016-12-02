@@ -5,7 +5,8 @@
 
 
 ?>
-<div class="wrap">
+<div class="wrap" style="max-width: 1800px;">
     <?= $this->render('//site/top-bar') ?>
     <?= $this->render('//site/top-banner', ['nearestLesson' => $nearestLesson]) ?>
+    <?= $this->render('//site/block-mission', []) ?>
 </div>
