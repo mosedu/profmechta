@@ -145,6 +145,7 @@ a.desc:after {
     background-color: #ffffff;
     opacity: 0.78;
     box-shadow: 0 2px 3px 0 rgba(153, 153, 153, 0.5);
+    padding: 12px;
 }
 
 .top-block-title {
@@ -176,13 +177,26 @@ a.desc:after {
 
 .green-margin-title h3 {
     font-size: 32px;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .green-margin-title span.border {
     display: inline-block;
     width: 35px;
     border-top: 4px solid #4ecc66;
+    margin-bottom: 40px;
+}
+
+span.thin-border {
+    display: inline-block;
+    width: 35px;
+    border-top: 2px solid #4ecc66;
+    margin: 0px auto;
+}
+
+.index-mission, .index-about {
+    padding-top: 36px;
+    padding-bottom: 32px;
 }
 
 .sphere-block {
@@ -224,6 +238,18 @@ a.desc:after {
     height: 1px;
     border: 1px solid #4ecc66;
     z-index: -3;
+}
+
+.index-afisha {
+    background-color: #eef3e9;
+    padding-top: 24px;
+    padding-bottom: 32px;
+}
+
+.list-ok {
+    background: #ffffff url(/themes/v01/images/list-ok.png) 0 0 no-repeat;
+    padding-left: 48px;
+    padding-right: 32px;
 }
 
 @media (max-width: 1100px) {

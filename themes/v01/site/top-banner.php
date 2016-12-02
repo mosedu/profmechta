@@ -16,7 +16,7 @@ use yii\bootstrap\NavBar;
 
 ?>
 
-<nav id="w1" class="navbar-default navbar-transparent navbar top-banner-pos" role="navigation">
+<nav id="w1" class="navbar-default navbar-transparent navbar top-banner-pos" role="navigation" style="margin-bottom: 0;">
     <div class="container topbackground">
         <div class="col-xs-6 col-xs-offset-2">
             <div class="top-block-title">
