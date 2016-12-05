@@ -4,6 +4,9 @@
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
 /* @var $nextLessons array of app\modules\lessons\models\Lesson */
 
+if( !isset($nextLessons) ) {
+    $nextLessons = [];
+}
 
 
 $this->title = Yii::$app->name;
