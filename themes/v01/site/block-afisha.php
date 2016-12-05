@@ -3,6 +3,7 @@
 // block-afisha
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
+/* @var $nextLessons array app\modules\lessons\models\Lesson */
 
 ?>
 
@@ -15,7 +16,8 @@
         <div class="col-sm-8">
             <div class="row">
                 <?php
-                for($i=0; $i<4; $i++) {
+                foreach($nextLessons As $nearestLesson) {
+//                for($i=0; $i<4; $i++) {
                     echo $this->render('//lessons/one-lesson-large', ['nearestLesson' => $nearestLesson]);
                 }
                 ?>

@@ -150,8 +150,8 @@ a.desc:after {
 }
 
 .top-banner-block {
-    background-color: #ffffff;
-    opacity: 0.78;
+    background-color: rgba(255,255,255,0.78);
+    /*opacity: 0.78;*/
     box-shadow: 0 2px 3px 0 rgba(153, 153, 153, 0.5);
     padding: 12px;
     text-align: center;
@@ -159,6 +159,22 @@ a.desc:after {
 
 .top-block-title {
     margin-top: 36px;
+}
+
+.image-relative-block {
+    position: relative;
+}
+
+.image-relative-block .date-block {
+    position: absolute;
+    z-index: 1000;
+    bottom: -3px;
+    width: 100%;
+    font-size: 30px;
+    line-height: 30px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 800;
 }
 
 .title-1 {

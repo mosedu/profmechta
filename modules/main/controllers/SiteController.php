@@ -67,11 +67,13 @@ class SiteController extends Controller
     {
         $this->layout = 'main';
         $oLessonSearch = new LeslectSearch();
-        $oNearesrLesson = $oLessonSearch->findNearest();
+        $aNextLessons = $oLessonSearch->findNearest(4);
+        $oNearesrLesson = count($aNextLessons) > 0 ? $aNextLessons[0] : null;
         return $this->render(
             'index',
             [
                 'nearestLesson' => $oNearesrLesson,
+                'nextLessons' => $aNextLessons,
             ]
         );
     }

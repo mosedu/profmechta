@@ -85,12 +85,14 @@ class LeslectSearch extends Leslect
     /**
      *
      * выдача ближайшей лекции
+     * @var $nCou integer количество ближайщих
+     * @return Leslect|array of Leslect
      *
      */
-    public function findNearest() {
+    public function findNearest($nCou = 1) {
         $isMysql = (strtolower($this->db->driverName) == 'mysql');
         $tName = self::tableName();
-        $ob = self::find()
+        $query = self::find()
             ->select($tName . '.*')
             ->leftJoin(Lesson::tableName() . ' lesson', '`lesson`.`les_id` = ' . $tName . '.`ll_lesson_id`')
             ->where([
@@ -98,8 +100,14 @@ class LeslectSearch extends Leslect
                 ['>', self::tableName() . '.ll_date', $isMysql ? new Expression('NOW()') : 'NOW'],
                 ['les_active' => Lesson::LESSON_STATUS_ACTIVE],
             ])
-            ->orderBy(['ll_date' => SORT_ASC])
-            ->one();
+            ->orderBy(['ll_date' => SORT_ASC]);
+        if( $nCou < 2 ) {
+            $ob = $query->one();
+        }
+        else {
+            $query->limit($nCou);
+            $ob = $query->all();
+        }
         return $ob;
     }
 }
