@@ -83,6 +83,7 @@ $webconfig = [
         ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
+            'layout' => '@app/themes/v01/layouts/admin',
             'modules' => [
                 'lectors' => [
                     'class' => 'app\modules\lectors\Module',

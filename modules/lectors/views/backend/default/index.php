@@ -10,6 +10,10 @@ use app\modules\lectors\Module;
 
 $this->title = Module::t('lector', 'TITLE_LECTORS');
 $this->params['breadcrumbs'][] = $this->title;
+$buttonOptions = [
+    'class' => 'btn btn-default',
+];
+
 ?>
 <div class="lector-index">
 
@@ -36,7 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'lec_created',
             // 'lec_key',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'contentOptions' => [
+                    'style' => 'white-space: nowrap;',
+                ],
+                'buttonOptions' => $buttonOptions,
+            ],
         ],
     ]); ?>
 </div>
