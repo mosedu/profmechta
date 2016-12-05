@@ -88,13 +88,14 @@ class LeslectSearch extends Leslect
      *
      */
     public function findNearest() {
+        $isMysql = (strtolower($this->db->driverName) == 'mysql');
         $tName = self::tableName();
         $ob = self::find()
             ->select($tName . '.*')
             ->leftJoin(Lesson::tableName() . ' lesson', '`lesson`.`les_id` = ' . $tName . '.`ll_lesson_id`')
             ->where([
                 'and',
-                ['>', '.ll_date', new Expression('NOW()')],
+                ['>', self::tableName() . '.ll_date', $isMysql ? new Expression('NOW()') : 'NOW'],
                 ['les_active' => Lesson::LESSON_STATUS_ACTIVE],
             ])
             ->orderBy(['ll_date' => SORT_ASC])

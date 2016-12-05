@@ -18,6 +18,7 @@ $webconfig = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
+//            'errorAction' => 'error',
             'errorAction' => 'site/error',
         ],
         'mailer' => [
@@ -53,8 +54,8 @@ $webconfig = [
                         '<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
                     ],
                 ],
-//                '' => 'main/default/index',
-//                'contact' => 'main/contact/index',
+                '' => 'main/site/index',
+                '<_a:(login|logout|contact|about|error)>' => 'main/site/<_a>',
 //                '<_a:error>' => 'main/default/<_a>',
 //                '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset)>' => 'user/default/<_a>',
                 '<_m:[\w\-]+>' => '<_m>/default/index',
@@ -80,6 +81,11 @@ $webconfig = [
             'class' => 'app\modules\lessons\Module',
             'controllerNamespace' => 'app\modules\lessons\controllers\frontend',
             'viewPath' => '@app/modules/lessons/views/frontend',
+        ],
+        'main' => [
+            'class' => 'app\modules\main\Module',
+            'layout' => '@app/themes/v01/layouts/pages',
+            'viewPath' => '@app/themes/v01',
         ],
         'admin' => [
             'class' => 'app\modules\admin\Module',

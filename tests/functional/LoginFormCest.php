@@ -3,7 +3,7 @@ class LoginFormCest
 {
     public function _before(\FunctionalTester $I)
     {
-        $I->amOnRoute('site/login');
+        $I->amOnRoute('main/site/login');
     }
 
     public function openLoginPage(\FunctionalTester $I)
@@ -16,7 +16,7 @@ class LoginFormCest
     public function internalLoginById(\FunctionalTester $I)
     {
         $I->amLoggedInAs(100);
-        $I->amOnPage('/');
+        $I->amOnRoute('main/site/about');
         $I->see('Logout (admin)');
     }
 
@@ -24,7 +24,7 @@ class LoginFormCest
     public function internalLoginByInstance(\FunctionalTester $I)
     {
         $I->amLoggedInAs(\app\models\User::findByUsername('admin'));
-        $I->amOnPage('/');
+        $I->amOnRoute('main/site/about');
         $I->see('Logout (admin)');
     }
 
@@ -52,7 +52,8 @@ class LoginFormCest
             'LoginForm[username]' => 'admin',
             'LoginForm[password]' => 'admin',
         ]);
+        $I->amOnRoute('main/site/about');
         $I->see('Logout (admin)');
-        $I->dontSeeElement('form#login-form');              
+        $I->dontSeeElement('form#login-form');
     }
 }
