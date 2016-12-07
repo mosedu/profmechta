@@ -155,6 +155,7 @@ a.desc:after {
     box-shadow: 0 2px 3px 0 rgba(153, 153, 153, 0.5);
     padding: 12px;
     text-align: center;
+    /*width: 230px;*/
 }
 
 .top-block-title {
@@ -381,5 +382,14 @@ span.thin-border {
         display: none;
     }
 
+    .sphere-block {
+        margin-bottom: 16px;
+    }
+
 }
 
+@media (max-width: 768px) {
+    .top-banner-block {
+        /*display: none;*/
+    }
+}
