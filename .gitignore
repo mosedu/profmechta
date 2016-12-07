@@ -29,4 +29,5 @@ phpunit.phar
 tests/_output/*
 tests/_support/_generated
 /composer.lock
-/web/img/lector/orig
+/web/img
+*-local.php
