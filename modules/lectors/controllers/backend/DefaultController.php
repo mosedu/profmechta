@@ -9,6 +9,11 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\widgets\ActiveForm;
+use yii\web\Request;
+use yii\web\Response;
+use app\components\Imagefile;
+use yii\web\UploadedFile;
 
 /**
  * DefaultController implements the CRUD actions for Lector model.
@@ -66,6 +71,11 @@ class DefaultController extends Controller
     {
         $model = new Lector();
 
+        if( Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) ) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
 //            return $this->redirect(['view', 'id' => $model->lec_id]);
@@ -86,13 +96,39 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->lec_id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        if( Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) ) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
         }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $bRedirect = true;
+            $oFunct = $model->createImageValidator(['maxx' => 500, 'maxy' => 500, 'ratio' => 1,]);
+            Yii::info('$oFunct = ' . print_r($oFunct, true));
+            $oFile = UploadedFile::getInstance($model, 'image');
+            if( $oFile !== null ) {
+                $oImage = new Imagefile(
+                    $oFile->tempName,
+                    $oFile->name,
+                    $oFunct,
+                    $model->generateImageFileName('base')
+                );
+                $bRedirect = $oImage->save();
+                if( !$bRedirect ) {
+                    $model->addErrors([
+                        'image' => ($oImage->hasErrors() ? $oImage->getErrors() : ['Ошибка сохранения файла']),
+                    ]);
+                }
+            }
+            if( $bRedirect ) {
+                return $this->redirect(['index', ]);
+            }
+//            return $this->redirect(['view', 'id' => $model->lec_id]);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**

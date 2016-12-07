@@ -22,5 +22,5 @@ return [
     'LECTOR_API_KEY' => 'API key',
     'USER_BUTTON_SIGNUP' => 'Signup',
     'USER_BUTTON_LOGIN' => 'Login',
-
+    'LECTOR_IMAGE_FILE' => 'Image',
 ];

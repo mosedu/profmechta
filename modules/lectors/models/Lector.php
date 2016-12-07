@@ -9,6 +9,7 @@ use yii\behaviors\AttributeBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\base\Security;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "{{%lector}}".
@@ -26,6 +27,9 @@ use yii\base\Security;
  */
 class Lector extends \yii\db\ActiveRecord
 {
+    public $image; // картинка для вывода в списке лекторов
+
+    public $imageDir = '';
     /**
      * @inheritdoc
      */
@@ -90,8 +94,21 @@ class Lector extends \yii\db\ActiveRecord
             [['lec_created'], 'safe'],
             [['lec_group'], 'string', 'max' => 16],
             [['lec_email', 'lec_fam', 'lec_profession'], 'string', 'max' => 64],
+            [['image'], 'file', 'maxSize' => 1000000, 'extensions' => ['jpg', 'png', 'tif', ], 'skipOnEmpty' => true, ],
+//            [['image'], 'testImage', 'skipOnEmpty' => true, ],
             [['lec_pass', 'lec_key'], 'string', 'max' => 255],
         ];
+    }
+
+    /**
+     *
+     * Валидатор для файла: нужно посмотреть - квадратный ли он
+     *
+     * @param $attribute
+     * @param $params
+     */
+    public function validateCountry($attribute, $params) {
+        $oFile = UploadedFile::getInstance($this, $attribute);
     }
 
     /**
@@ -110,6 +127,7 @@ class Lector extends \yii\db\ActiveRecord
             'lec_pass' => Module::t('lector', 'LECTOR_PASSWORD'),
             'lec_created' => Module::t('lector', 'LECTOR_CREATED'),
             'lec_key' => Module::t('lector', 'LECTOR_API_KEY'),
+            'image' => Module::t('lector', 'LECTOR_IMAGE_FILE'),
         ];
     }
 
@@ -121,4 +139,78 @@ class Lector extends \yii\db\ActiveRecord
     {
         return new LectorQuery(get_called_class());
     }
+
+    /**
+     *
+     * @var string $sType
+     *
+     * @return callable
+     */
+    public function generateImageFileName($sType = '') {
+        $oLector = $this;
+        return function($origFileName) use ($oLector, $sType) {
+            return $oLector->getOriginalImageFileName($sType, $origFileName);
+        };
+    }
+
+    public function generateImageFileUrl($sType = '') {
+        $sWebPath = Yii::getAlias('@app/web');
+        return substr($this->getOriginalImageFileName($sType, ''), strlen($sWebPath));
+    }
+
+    /**
+     *
+     * @param string $sType
+     * @param string $origFileName
+     *
+     */
+    public function getOriginalImageFileName($sType, $origFileName) {
+        $sf = Yii::getAlias('@app/web/img/lector/orig') . DIRECTORY_SEPARATOR . $this->lec_id . (empty($sType) ? '' : ('-' . $sType)) . '.jpg';
+        return $sf;
+    }
+
+    public function getImage($sType = '') {
+        $sf = $this->getOriginalImageFileName($sType, '');
+        if( file_exists($sf) ) {
+            return substr($sf, strlen($_SERVER['DOCUMENT_ROOT']));
+        }
+        return null;
+    }
+
+    /**
+     * @param array $aParams
+     * @return callable
+     */
+    public function createImageValidator($aParams = []) {
+        return function($sImageFile) use ($aParams) {
+            $aErrors = [];
+            $a = getimagesize($sImageFile);
+//            Yii::info('sImageFile = ' . $sImageFile);
+//            Yii::info('aParams = ' . print_r($aParams, true));
+//            Yii::info('a = ' . print_r($a, true));
+            if( isset($aParams['minx']) && ($a[0] < $aParams['minx']) ) {
+                $aErrors[] = 'Ширина картинки должна быть не меньше ' . $aParams['minx'] . 'px';
+            }
+            if( isset($aParams['maxx']) && ($a[0] > $aParams['maxx']) ) {
+                $aErrors[] = 'Ширина картинки должна быть не больше ' . $aParams['maxx'] . 'px';
+            }
+            if( isset($aParams['miny']) && ($a[1] < $aParams['miny']) ) {
+                $aErrors[] = 'Высота картинки должна быть не меньше ' . $aParams['miny'] . 'px';
+            }
+            if( isset($aParams['maxy']) && ($a[1] > $aParams['maxy']) ) {
+                $aErrors[] = 'Высота картинки должна быть не больше ' . $aParams['maxy'] . 'px';
+            }
+            if( isset($aParams['x']) && ($a[0] != $aParams['x']) ) {
+                $aErrors[] = 'Ширина картинки должна быть ' . $aParams['x'] . 'px';
+            }
+            if( isset($aParams['y']) && ($a[1] != $aParams['y']) ) {
+                $aErrors[] = 'Высота картинки должна быть ' . $aParams['y'] . 'px';
+            }
+            if( isset($aParams['ratio']) && (abs($a[0] / $a[1] - $aParams['ratio']) > 0.01 ) ) {
+                $aErrors[] = 'Отношение ширины к высоте у картинки должно быть ' . $aParams['ratio'] . ':1';
+            }
+            return $aErrors;
+        };
+    }
+
 }

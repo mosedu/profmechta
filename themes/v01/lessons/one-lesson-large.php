@@ -26,7 +26,13 @@ if( $nearestLesson !== null ) {
                 <div class="date-block">
                     <?= date('d.m.Y', strtotime($nearestLesson->ll_date)) ?>
                 </div>
-                <img class="lesson-large-image" src="/themes/v01/images/placeholder-240x240.gif"/>
+                <img class="lesson-large-image" src="<?php
+                    $sf = $nearestLesson->lector->getImage('base');
+                    if( empty($sf) ) {
+                        $sf = '/themes/v01/images/placeholder-240x240.gif';
+                    }
+                    echo $sf;
+                ?>"/>
             </div>
 
 <!--            <h1 style="text-align: center;">--><?= '' // Html::encode($nearestLesson->lesson->les_title) ?><!--</h1>-->

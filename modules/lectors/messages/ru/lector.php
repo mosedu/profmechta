@@ -20,4 +20,5 @@ return [
     'LECTOR_GROUP' => 'Группа',
     'LECTOR_ID' => 'ID',
     'LECTOR_API_KEY' => 'API key',
+    'LECTOR_IMAGE_FILE' => 'Изображение',
 ];

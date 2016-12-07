@@ -478,3 +478,7 @@ php vendor\codeception\codeception\codecept run unit modules/lessons/models/Less
 
 php d:\php566\composer.phar require "kartik-v/yii2-widget-datetimepicker"
 php d:\php566\composer.phar require "kartik-v/yii2-widget-select2"
+
+-------------------------------------------------------------------------------------------------
+
+yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations  add_lector_images
