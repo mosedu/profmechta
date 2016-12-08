@@ -137,5 +137,11 @@ class Lesson extends \yii\db\ActiveRecord
         return (isset($aStatus[$this->les_active]) ? $aStatus[$this->les_active] : '??');
     }
 
+    /**
+     * @return string
+     */
+    public function isHidden() {
+        return $this->les_active == self::LESSON_STATUS_HIDDEN;
+    }
 
 }

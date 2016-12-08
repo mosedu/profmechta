@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\web\View;
 use app\modules\lessons\Module;
 use app\modules\lessons\models\Lesson;
 
@@ -15,6 +16,35 @@ $buttonOptions = [
     'class' => 'btn btn-default',
     'style' => 'white-space: nowrap;',
 ];
+
+$sJs = <<<EOT
+jQuery(".togglelesson")
+    .on(
+        "click",
+        function(event) {
+            event.preventDefault();
+            var oLink = jQuery(this),
+                sLink = oLink.attr("href");
+            jQuery.post({
+                type: "POST",
+                url: sLink,
+                data: {},
+                success: function(data, textStatus, jqXHR ) {
+                    console.log("Ok: " + textStatus, data);
+                    window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("Error: " + textStatus, errorThrown);
+                },
+                dataType: "html"
+            });
+            return false;
+        }
+    );
+EOT;
+
+$this->registerJs($sJs, View::POS_READY);
+
 ?>
 <div class="lesson-index">
 
@@ -38,8 +68,21 @@ $buttonOptions = [
                 'class' => 'yii\grid\DataColumn',
                 'attribute' => 'les_active',
                 'filter' => Lesson::getAllStatuses(),
+                'contentOptions' => [
+                    'style' => 'white-space: nowrap;'
+                ],
                 'content' => function ($model, $key, $index, $column) {
-                    return Html::encode($model->status);
+                    $bHidden = $model->isHidden();
+                    return Html::encode($model->status)
+                        . ' '
+                        . Html::a(
+                            '<span class="glyphicon glyphicon-'.($bHidden ? 'ok' : 'remove').'"></span>',
+                            ['default/toggle', 'id'=>$model->les_id],
+                            [
+                                'class' => 'togglelesson btn ' . ($bHidden ? 'btn-success' : 'btn-default'),
+                                'title' => Module::t('lesson', $bHidden ? 'BUTTON_TITLE_SHOW' : 'BUTTON_TITLE_HIDE'),
+                            ]
+                        );
                 },
             ],
 

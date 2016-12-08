@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\web\View;
 use app\modules\lessons\Module;
 use yii\grid\GridView;
 use yii\helpers\Url;
@@ -20,13 +21,49 @@ $buttonOptions = [
 ];
 Url::remember();
 
+$sJs = <<<EOT
+jQuery(".togglelesson")
+    .on(
+        "click",
+        function(event) {
+            event.preventDefault();
+            var oLink = jQuery(this),
+                sLink = oLink.attr("href");
+            jQuery.post({
+                type: "POST",
+                url: sLink,
+                data: {},
+                success: function(data, textStatus, jqXHR ) {
+                    console.log("Ok: " + textStatus, data);
+                    window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("Error: " + textStatus, errorThrown);
+                },
+                dataType: "html"
+            });
+            return false;
+        }
+    );
+EOT;
+
+$this->registerJs($sJs, View::POS_READY);
+
 ?>
 <div class="lesson-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Module::t('lesson', 'BUTTON_TITLE_CREATE_DATE'), ['leslect/create', 'id' => $model->les_id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(
+            Module::t('lesson', $model->isHidden() ? 'BUTTON_TITLE_SHOW' : 'BUTTON_TITLE_HIDE'),
+            ['default/toggle', 'id' => $model->les_id],
+            [
+                'class' => 'btn btn-success pull-right',
+                'id' => 'togglelesson',
+            ]
+        ) ?>
+        <?= Html::a(Module::t('lesson', 'BUTTON_TITLE_CREATE_DATE'), ['leslect/create', 'id' => $model->les_id], ['class' => 'btn btn-success togglelesson']) ?>
     </p>
 
     <?= GridView::widget([

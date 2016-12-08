@@ -125,6 +125,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * правим видимость лекции
+     */
+    public function actionToggle($id) {
+        $model = $this->findModel($id);
+        $model->les_active = $model->les_active == Lesson::LESSON_STATUS_HIDDEN ? Lesson::LESSON_STATUS_ACTIVE : Lesson::LESSON_STATUS_HIDDEN;
+        $model->save();
+        return $this->renderContent($model->getStatus());
+    }
+
+    /**
      * Finds the Lesson model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

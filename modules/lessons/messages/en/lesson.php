@@ -4,6 +4,10 @@ return [
     'TITLE_CREATE' => 'Create',
     'TITLE_UPDATE' => 'Update',
     'TITLE_LECTORS' => 'Lectors',
+
+    'BUTTON_TITLE_HIDE' => 'Hide',
+    'BUTTON_TITLE_SHOW' => 'Show',
+
     'BUTTON_SAVE' => 'Save',
     'BUTTON_SEND' => 'Send',
     'BUTTON_CREATE' => 'Create',
