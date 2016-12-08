@@ -69,21 +69,22 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Lector();
-
-        if( Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) ) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return ActiveForm::validate($model);
-        }
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-//            return $this->redirect(['view', 'id' => $model->lec_id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->actionUpdate(0);
+//        $model = new Lector();
+//
+//        if( Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) ) {
+//            Yii::$app->response->format = Response::FORMAT_JSON;
+//            return ActiveForm::validate($model);
+//        }
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['index']);
+////            return $this->redirect(['view', 'id' => $model->lec_id]);
+//        }
+//
+//        return $this->render('create', [
+//            'model' => $model,
+//        ]);
     }
 
     /**
@@ -94,7 +95,12 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if( $id == 0 ) {
+            $model = new Lector();
+        }
+        else {
+            $model = $this->findModel($id);
+        }
 
         if( Yii::$app->request->isAjax && $model->load(Yii::$app->request->post()) ) {
             Yii::$app->response->format = Response::FORMAT_JSON;

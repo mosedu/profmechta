@@ -6,7 +6,8 @@ use app\modules\lectors\Module;
 /* @var $this yii\web\View */
 /* @var $model app\modules\lectors\models\Lector */
 
-$this->title = Module::t('lector', 'TITLE_UPDATE');
+
+$this->title = Module::t('lector', $model->isNewRecord ? 'TITLE_CREATE' : 'TITLE_UPDATE');
 $this->params['breadcrumbs'][] = ['label' => Module::t('lector', 'TITLE_LECTORS'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
