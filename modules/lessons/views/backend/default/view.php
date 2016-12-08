@@ -59,11 +59,11 @@ $this->registerJs($sJs, View::POS_READY);
             Module::t('lesson', $model->isHidden() ? 'BUTTON_TITLE_SHOW' : 'BUTTON_TITLE_HIDE'),
             ['default/toggle', 'id' => $model->les_id],
             [
-                'class' => 'btn btn-success pull-right',
-                'id' => 'togglelesson',
+                'class' => 'btn btn-success pull-right togglelesson',
+//                'id' => 'togglelesson',
             ]
         ) ?>
-        <?= Html::a(Module::t('lesson', 'BUTTON_TITLE_CREATE_DATE'), ['leslect/create', 'id' => $model->les_id], ['class' => 'btn btn-success togglelesson']) ?>
+        <?= Html::a(Module::t('lesson', 'BUTTON_TITLE_CREATE_DATE'), ['leslect/create', 'id' => $model->les_id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
