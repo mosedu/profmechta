@@ -172,7 +172,7 @@ class Lector extends \yii\db\ActiveRecord
     public function getImage($sType = '') {
         $sf = $this->getOriginalImageFileName($sType, '');
         if( file_exists($sf) ) {
-            return substr($sf, strlen($_SERVER['DOCUMENT_ROOT']));
+            return str_replace('\\', '/', substr($sf, strlen($_SERVER['DOCUMENT_ROOT'])));
         }
         return null;
     }

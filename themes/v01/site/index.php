@@ -19,7 +19,7 @@ $this->title = Yii::$app->name;
     <?= $this->render('//site/block-afisha', ['nextLessons' => $nextLessons]) ?>
     <?= $this->render('//site/block-about', []) ?>
     <?= $this->render('//site/block-subscribe', []) ?>
-    <?= $this->render('//site/block-speaker', ['nearestLesson' => $nearestLesson]) ?>
+    <?= $this->render('//site/block-speaker', ['nextLessons' => $nextLessons]) ?>
     <?= $this->render('//site/block-team') ?>
     <?= $this->render('//site/block-contact') ?>
     <?= $this->render('//site/block-reply') ?>

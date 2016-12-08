@@ -7,6 +7,7 @@ use yii\web\JsExpression;
 // block-speaker
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
+/* @var $nextLessons array */
 
 ?>
 
@@ -18,11 +19,17 @@ use yii\web\JsExpression;
         </div>
         <div class="col-sm-8">
             <div class="row">
-                <div class="col-sm-1 col-sm-offset-1 prev-speaker">&lt;</div>
+                <div class="col-sm-1 col-sm-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1 prev-speaker">&lt;</div>
                 <?php
                     $aSpeaker = [];
-                    for($i=0; $i<6; $i++) {
+//                    for($i=0; $i<6; $i++) {
+                    foreach($nextLessons As $nearestLesson) {
+//                        $aSpeaker[] = $this->render('one_lector', ['model' => $nearestLesson]);
                         $aSpeaker[] = $this->render('one_lector', ['model' => $nearestLesson]);
+                    }
+                    $nCou = count($aSpeaker);
+                    while( count($aSpeaker) < 6 ) {
+                        $aSpeaker[] = $aSpeaker[count($aSpeaker)%$nCou];
                     }
                 ?>
                 <?= Slick::widget([
@@ -31,7 +38,7 @@ use yii\web\JsExpression;
                     'itemContainer' => 'div',
 
                     // HTML attributes for widget container
-                    'containerOptions' => ['class' => 'lector-slider col-sm-8'],
+                    'containerOptions' => ['class' => 'lector-slider col-sm-8 col-md-8 col-xs-8'],
 
                     // Items for carousel. Empty array not allowed, exception will be throw, if empty
                     'items' => $aSpeaker,
@@ -51,13 +58,34 @@ use yii\web\JsExpression;
                         'infinite' => true,
                         'slidesToShow' => 4,
                         'slidesToScroll' => 1,
+                        'respondTo' => 'slider',
+                        'responsive' => [
+                            [
+                                'breakpoint' => 500,
+                                'settings' => [
+                                    'slidesToShow' => 3,
+                                    'slidesToScroll' => 1,
+//                                    'infinite' => true,
+//                                    'dots' => true,
+                                ]
+                            ],
+                            [
+                                'breakpoint' => 360,
+                                'settings' => [
+                                    'slidesToShow' => 2,
+                                    'slidesToScroll' => 1,
+//                                    'infinite' => true,
+//                                    'dots' => true,
+                                ]
+                            ],
+                        ],
                         // note, that for params passing function you should use JsExpression object
                         'onAfterChange' => new JsExpression('function() {console.log("The speaker has shown")}'),
                     ],
 
                 ])
                 ?>
-                <div class="col-sm-1 next-speaker">&gt;</div>
+                <div class="col-xs-1 col-sm-1 col-md-1 next-speaker">&gt;</div>
             </div>
         </div>
     </div>
