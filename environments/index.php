@@ -38,7 +38,7 @@ return [
         'setExecutable' => [
             'yii',
             'tests/bin/yii',
-            'vendor\codeception\codeception\codecept',
+            'vendor/codeception/codeception/codecept',
 //            'yii_test',
         ],
         'setCookieValidationKey' => [
@@ -69,7 +69,7 @@ return [
         'setExecutable' => [
             'yii',
             'tests/bin/yii',
-            'vendor\codeception\codeception\codecept',
+            'vendor/codeception/codeception/codecept',
         ],
 //        'setCookieValidationKey' => [
 //            'config/web-local.php',
