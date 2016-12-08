@@ -34,6 +34,7 @@ return [
         'setWritable' => [
             'runtime',
             'web/assets',
+            'web/img',
         ],
         'setExecutable' => [
             'yii',
@@ -52,6 +53,7 @@ return [
         'setWritable' => [
             'runtime',
             'web/assets',
+            'web/img',
         ],
         'setExecutable' => [
             'yii',
@@ -65,6 +67,7 @@ return [
         'setWritable' => [
             'runtime',
             'web/assets',
+            'web/img',
         ],
         'setExecutable' => [
             'yii',
