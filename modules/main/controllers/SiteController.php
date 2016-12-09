@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\modules\main\models\ContactForm;
+use app\modules\main\models\SubscribeForm;
 use yii\widgets\ActiveForm;
 use yii\web\Response;
 
@@ -127,6 +128,30 @@ class SiteController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Displays subscribe page.
+     *
+     * @return string
+     */
+    public function actionSubscribe()
+    {
+        $model = new SubscribeForm();
+
+        if( Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
+        if ($model->load(Yii::$app->request->post()) /* && $model->contact(Yii::$app->params['adminEmail']) */ ) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
             return $this->refresh();

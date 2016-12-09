@@ -68,7 +68,7 @@ $aLabels = $model->attributeLabels();
 <?php
 
 $sJs = <<<EOT
-var oForm = jQuery('#{$form->options['id']}'),
+var oContactForm = jQuery('#{$form->options['id']}'),
     hasErrors = function(messages) {
         var hasError = false;
         for(var i in messages) {
@@ -80,7 +80,7 @@ var oForm = jQuery('#{$form->options['id']}'),
         return hasError;
     };
 
-oForm
+oContactForm
 .on('beforeSubmit', function(e) {
 //   var \$form = $(this);
 //   console.log("beforeSubmit()");
@@ -92,16 +92,16 @@ oForm
     if( !hasErrors(messages) ) {
         jQuery("#messagetitle").hide();
         jQuery("#okmessagesend").show();
-        oForm.hide();
+        oContactForm.hide();
     }
-//    console.log(oForm);
+//    console.log(oContactForm);
 
 //    if( "result" in messages ) {
 //    }
 })
 .on('submit', function (event) {
 //    console.log("submit()");
-    var formdata = oForm.data().yiiActiveForm,
+    var formdata = oContactForm.data().yiiActiveForm,
         oRes = jQuery("#formresultarea");
 
     event.preventDefault();
@@ -124,7 +124,7 @@ oForm
     }
     return false;
 });
-//console.log("oForm = ", oForm);
+//console.log("oContactForm = ", oContactForm);
 EOT;
 
 $this->registerJs($sJs, View::POS_READY, 'submit_user_form');

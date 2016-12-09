@@ -55,7 +55,7 @@ $webconfig = [
                     ],
                 ],
                 '' => 'main/site/index',
-                '<_a:(login|logout|contact|about|error)>' => 'main/site/<_a>',
+                '<_a:(login|logout|contact|subscribe|about|error)>' => 'main/site/<_a>',
 //                '<_a:error>' => 'main/default/<_a>',
 //                '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset)>' => 'user/default/<_a>',
                 '<_m:[\w\-]+>' => '<_m>/default/index',
