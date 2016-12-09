@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Leslect */
@@ -46,7 +47,7 @@ if( $nearestLesson !== null ) {
                 <p style="text-align: center; font-size: 13px;"><?= Html::encode($nearestLesson->lesson->les_description) ?></p>
             </div>
 
-            <p style="text-align: center;"><?= Html::a('Участвуй', '#', ['class' => 'btn btn-success']) ?></p>
+            <p style="text-align: center;"><?= Html::a('Участвуй', Url::toRoute(['/lessons/default/view', 'id' => $nearestLesson->lesson->les_id,]), ['class' => 'btn btn-success showinmodal', 'title' => $nearestLesson->lesson->les_title]) ?></p>
         </div>
     <!-- /div -->
 

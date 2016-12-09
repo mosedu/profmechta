@@ -51,8 +51,16 @@ class DefaultController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        if( Yii::$app->request->isAjax || Yii::$app->request->isPost ) {
+            return $this->renderPartial('view', [
+                'model' => $model,
+                'isajax' => true,
+            ]);
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 

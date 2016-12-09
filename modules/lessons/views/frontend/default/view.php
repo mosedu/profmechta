@@ -9,9 +9,17 @@ use yii\widgets\DetailView;
 $this->title = $model->les_id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('lesson', 'Lessons'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+if( !isset($isajax) ) {
+    $isajax = false;
+}
+
 ?>
 <div class="lesson-view">
 
+    <?php
+        if( !$isajax ) {
+    ?>
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -24,6 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+
+    <?php
+        }
+    ?>
 
     <?= DetailView::widget([
         'model' => $model,
