@@ -393,6 +393,9 @@ span.thin-border {
     padding: 12px;
 }
 
+.form-control {
+    height: auto;
+}
 @media (max-width: 400px) {
     .image-relative-block .date-block {
         font-size: 22px;

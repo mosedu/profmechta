@@ -1,5 +1,7 @@
 <?php
 
+use app\modules\main\models\ContactForm;
+
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
 /* @var $nextLessons array of app\modules\lessons\models\Lesson */
@@ -57,6 +59,7 @@ $this->title = Yii::$app->name;
         '//site/block-contact',
         [
             'name' => 'contact-block',
+            'model' => new ContactForm(),
         ]
     ) ?>
     <?= $this->render(

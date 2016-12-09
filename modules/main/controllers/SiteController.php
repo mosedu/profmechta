@@ -7,7 +7,9 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+use app\modules\main\models\ContactForm;
+use yii\widgets\ActiveForm;
+use yii\web\Response;
 
 use app\modules\lessons\models\LeslectSearch;
 
@@ -118,6 +120,12 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new ContactForm();
+
+        if( Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
