@@ -69,7 +69,16 @@ $aLabels = $model->attributeLabels();
 
 $sJs = <<<EOT
 var oForm = jQuery('#{$form->options['id']}'),
-    hasErrors = function();
+    hasErrors = function(messages) {
+        var hasError = false;
+        for(var i in messages) {
+            if( messages[i].length > 0 ) {
+                hasError = true;
+                break;
+            }
+        }
+        return hasError;
+    };
 
 oForm
 .on('beforeSubmit', function(e) {
@@ -77,12 +86,15 @@ oForm
 //   console.log("beforeSubmit()");
 })
 .on('afterValidate', function (event, messages) {
-//    console.log("afterValidate()", event);
-//    console.log(messages);
+    console.log("afterValidate()", event);
+    console.log(messages);
+    console.log(hasErrors(messages) ? 'error+' : 'error-');
+    if( !hasErrors(messages) ) {
+        jQuery("#messagetitle").hide();
+        jQuery("#okmessagesend").show();
+        oForm.hide();
+    }
 //    console.log(oForm);
-//    jQuery("#messagetitle").hide();
-//    jQuery("#okmessagesend").show();
-//    oForm.hide();
 
 //    if( "result" in messages ) {
 //    }
