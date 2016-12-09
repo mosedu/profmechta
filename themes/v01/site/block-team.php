@@ -8,14 +8,17 @@ use yii\web\JsExpression;
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
 
+// hidden-sm
+
 ?>
 
 <div class="index-team">
+    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'КОМАНДА']) ?>
 
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
+        <div class="col-md-3 col-sm-1 hidden-xs"></div>
+        <div class="col-md-6 col-sm-10 col-xs-12">
             <div class="row">
                 <?php
                     $aSpeaker = [];

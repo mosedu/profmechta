@@ -6,10 +6,12 @@
 ?>
 
 <div class="index-mission">
+    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'МИССИЯ']) ?>
 
     <div class="row">
-        <div class="col-sm-4 col-sm-offset-2">
+        <div class="col-lg-2 col-md-2"></div>
+        <div class="col-lg-4 col-md-4">
             <?= $this->render(
                 'mission-part',
                 [
@@ -19,7 +21,7 @@
                 ]
             ) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-md-4">
             <?= $this->render(
                 'mission-part',
                 [
@@ -29,9 +31,10 @@
                 ]
             ) ?>
         </div>
-        <div class="col-sm-8 col-sm-offset-2 mission-line">
+        <div class="col-lg-8 col-lg-offset-2  col-md-8  col-md-offset-2 hidden-sm hidden-xs mission-line">
         </div>
-        <div class="col-sm-4 col-sm-offset-3"">
+        <div class="col-lg-3  col-md-3"></div>
+        <div class="col-lg-4  col-md-4">
         <?= $this->render(
             'mission-part',
             [
@@ -41,7 +44,7 @@
             ]
         ) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-lg-4 col-md-4">
             <?= $this->render(
                 'mission-part',
                 [

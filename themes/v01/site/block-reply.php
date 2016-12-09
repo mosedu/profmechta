@@ -11,14 +11,15 @@ use yii\web\JsExpression;
 ?>
 
 <div class="index-speaker">
+    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'ОТЗЫВЫ']) ?>
 
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-md-2 hidden-sm hidden-xs">
         </div>
-        <div class="col-sm-8">
+        <div class="col-md-8 col-sm-12 col-xs-12">
             <div class="row">
-                <div class="col-sm-1 col-sm-offset-1 prev-reply">&lt;</div>
+                <div class="col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-1 col-xs-offset-0"><div class="prev-reply">&lt;</div></div>
                 <?php
                     $aSpeaker = [];
                     for($i=0; $i<6; $i++) {
@@ -31,7 +32,7 @@ use yii\web\JsExpression;
                     'itemContainer' => 'div',
 
                     // HTML attributes for widget container
-                    'containerOptions' => ['class' => 'reply-slider col-sm-8'],
+                    'containerOptions' => ['class' => 'reply-slider col-md-8 col-sm-8 col-xs-10'],
 
                     // Items for carousel. Empty array not allowed, exception will be throw, if empty
                     'items' => $aReply,
@@ -56,8 +57,9 @@ use yii\web\JsExpression;
                     ],
 
                 ])
+
                 ?>
-                <div class="col-sm-1 next-reply">&gt;</div>
+                <div class="col-md-1 col-sm-1 col-xs-1"><div class="next-reply">&gt;</div></div>
             </div>
         </div>
     </div>

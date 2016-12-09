@@ -18,7 +18,7 @@ use yii\bootstrap\NavBar;
                 Yii::getAlias($this->theme->baseUrl . '/images/page-1-temo.png'),
                 [
                     'alt' => Yii::$app->name,
-                    'class' => 'floatleft',
+                    'class' => 'floatleft hidden-sm',
                 ]
             )
             . ' '
@@ -26,10 +26,12 @@ use yii\bootstrap\NavBar;
                 Yii::getAlias($this->theme->baseUrl . '/images/page-1-ptichka.png'),
                 [
                     'alt' => Yii::$app->name,
-                    'class' => 'floatleft ptichka',
+                    'class' => 'floatleft ptichka hidden-sm',
                 ]
             )
-            . Html::encode('Профессия мечты'), // Yii::$app->name,
+//            . Html::encode('Профессия мечты'),
+            . Html::tag('span', Html::encode('Профессия мечты'), ['class' => 'hidden-md hidden-sm']), // Yii::$app->name, 'class' => ' hidden-sm hidden-xs',
+//            . Html::tag('div', Html::encode('Профессия мечты'), ['class' => 'floatleft']), // Yii::$app->name, 'class' => ' hidden-sm hidden-xs',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-default navbar-transparent', //  navbar-fixed-top
@@ -39,18 +41,18 @@ use yii\bootstrap\NavBar;
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'МИССИЯ', 'url' => ['#']],
-            ['label' => 'АФИША', 'url' => ['#']],
-            ['label' => 'О ПРОЕКТЕ', 'url' => ['#']],
-            ['label' => 'СПИКЕРЫ', 'url' => ['#']],
-            ['label' => 'КОМАНДА', 'url' => ['#']],
-            ['label' => 'ОТЗЫВЫ', 'url' => ['#']],
-            ['label' => 'КОНТАКТЫ', 'url' => ['#']],
+            ['label' => 'МИССИЯ', 'url' => ['#mission-block']],
+            ['label' => 'АФИША', 'url' => ['#afisha-block']],
+            ['label' => 'О ПРОЕКТЕ', 'url' => ['#about-block']],
+            ['label' => 'СПИКЕРЫ', 'url' => ['#speaker-block']],
+            ['label' => 'КОМАНДА', 'url' => ['#team-block']],
+            ['label' => 'ОТЗЫВЫ', 'url' => ['#reply-block']],
+            ['label' => 'КОНТАКТЫ', 'url' => ['#adress-block']],
             ['label' => Html::img(
                 Yii::getAlias($this->theme->baseUrl . '/images/page-1-vk.png'),
                 [
                     'alt' => '',
-                    'class' => 'floatleft ptichka',
+                    'class' => 'floatleft ptichka  hidden-sm hidden-xs',
                 ]
             ), 'url' => ['#'], 'encode' => false],
         ],

@@ -25,7 +25,9 @@ use yii\bootstrap\NavBar;
                 <h2 class="title-2">Учись у лучших!</h2>
             </div>
         </div>
-        <?= $this->render('//lessons/one-lesson-large', ['nearestLesson' => $nearestLesson, 'bTopBlock' => true, ]) ?>
+        <div class="col-sm-6 col-xs-6 col-md-3 hidden-sm hidden-xs">
+            <?= $this->render('//lessons/one-lesson-large', ['nearestLesson' => $nearestLesson, 'bTopBlock' => true, ]) ?>
+        </div>
     </div>
 </nav>
 

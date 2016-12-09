@@ -11,9 +11,9 @@ if(  !isset($isUp) ) {
     $isUp = true;
 }
 
-$sBall = '<div class="sphere-ball-block" style="top: ' . ($isUp ? '144px;' : '-16px;') . '; "></div>';
-$sLine = '<div class="sphere-line-block"></div>';
-
+$sBall = '<div class="sphere-ball-block hidden-sm hidden-xs" style="top: ' . ($isUp ? '144px;' : '-16px;') . '; "></div>';
+$sLine = '<div class="sphere-line-block hidden-sm hidden-xs"></div>';
+//  style="max-width: 250px;"
 /*  vertical-align: <?= $isUp ? 'bottom;' : 'top' ?>; */
 /*  border: 1px solid #cccccc; width: 146px; */
 ?>
@@ -26,8 +26,10 @@ $sLine = '<div class="sphere-line-block"></div>';
             <?= $isUp ? ($sLine . $sBall) : '' ?>
         </td>
         <td style="width: 24px;"></td>
-        <td valign="center;" style="max-width: 250px;">
-            <?= $text ?>
+        <td style="vertical-align: middle;">
+            <div class="one-mission-text">
+                <?= $text ?>
+            </div>
         </td>
     </tr>
 </table>

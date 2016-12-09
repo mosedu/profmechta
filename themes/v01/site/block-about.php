@@ -6,6 +6,7 @@
 ?>
 
 <div class="index-about">
+    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'О ПРОЕКТЕ']) ?>
 
     <div class="row" style="margin: 0 0 48px;">

@@ -12,7 +12,7 @@ if( !isset($bTopBlock) ) {
 if( $nearestLesson !== null ) {
     ?>
 
-    <div class="col-sm-6 col-xs-6 col-md-3<?= $bTopBlock ? ' hidden-sm hidden-xs' : '' ?>">
+    <!-- div class="col-sm-6 col-xs-6 col-md-3<?= $bTopBlock ? ' hidden-sm hidden-xs' : '' ?>" -->
         <div class="top-banner-block" style="margin-bottom: 32px;">
             <?php
                 if( $bTopBlock ) {
@@ -48,7 +48,7 @@ if( $nearestLesson !== null ) {
 
             <p style="text-align: center;"><?= Html::a('Участвуй', '#', ['class' => 'btn btn-success']) ?></p>
         </div>
-    </div>
+    <!-- /div -->
 
 <?php
 }

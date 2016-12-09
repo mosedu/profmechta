@@ -8,17 +8,24 @@
 ?>
 
 <div class="index-afisha">
+    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'АФИША СОБЫТИЙ']) ?>
 
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-lg-2 col-md-1 hidden-sm hidden-xs">
         </div>
-        <div class="col-sm-8">
+        <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
             <div class="row">
                 <?php
                 foreach($nextLessons As $nearestLesson) {
 //                for($i=0; $i<4; $i++) {
+                ?>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                <?php
                     echo $this->render('//lessons/one-lesson-large', ['nearestLesson' => $nearestLesson]);
+                ?>
+                </div>
+                <?php
                 }
                 if( count($nextLessons) == 0 ) {
                 ?>

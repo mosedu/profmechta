@@ -12,6 +12,7 @@ use yii\web\JsExpression;
 ?>
 
 <div class="index-speaker">
+    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'СПИКЕРЫ']) ?>
 
     <div class="row">
@@ -19,7 +20,7 @@ use yii\web\JsExpression;
         </div>
         <div class="col-sm-8">
             <div class="row">
-                <div class="col-sm-1 col-sm-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1 prev-speaker">&lt;</div>
+                <div class="col-sm-1 col-sm-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"><div class="prev-speaker">&lt;</div></div>
                 <?php
                     $aSpeaker = [];
 //                    for($i=0; $i<6; $i++) {
@@ -27,10 +28,10 @@ use yii\web\JsExpression;
 //                        $aSpeaker[] = $this->render('one_lector', ['model' => $nearestLesson]);
                         $aSpeaker[] = $this->render('one_lector', ['model' => $nearestLesson]);
                     }
-                    $nCou = count($aSpeaker);
-                    while( count($aSpeaker) < 6 ) {
-                        $aSpeaker[] = $aSpeaker[count($aSpeaker)%$nCou];
-                    }
+//                    $nCou = count($aSpeaker);
+//                    while( count($aSpeaker) < 6 ) {
+//                        $aSpeaker[] = $aSpeaker[count($aSpeaker)%$nCou];
+//                    }
                 ?>
                 <?= Slick::widget([
 
@@ -85,7 +86,7 @@ use yii\web\JsExpression;
 
                 ])
                 ?>
-                <div class="col-xs-1 col-sm-1 col-md-1 next-speaker">&gt;</div>
+                <div class="col-xs-1 col-sm-1 col-md-1"><div class="next-speaker">&gt;</div></div>
             </div>
         </div>
     </div>
