@@ -8,15 +8,13 @@ use yii\web\View;
 /* @var $this yii\web\View */
 /* @var $model app\modules\main\models\SubscribeForm */
 
-
-
 ?>
 
 <div class="index-subscribe">
     <div class="row">
-        <div class="col-md-2 col-sm-1 col-xs-1">
+        <div class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
         </div>
-        <div class="col-md-8 col-sm-10 col-xs-10">
+        <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10">
             <h3 id="oksubscribesend" style="display: none; text-align: center;">О, Вы только что подписались на рассылку!</h3>
             <div class="row">
                 <?php
@@ -38,7 +36,7 @@ use yii\web\View;
                 ]);
                 //                echo $form->field($model, 'username', ['enableAjaxValidation' => true]);
                 ?>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <h3>Хотите быть в курсе?</h3>
                     <h3 style="margin-bottom: 12px;">Подпишитесь на уведомления о лекциях!</h3>
                 </div>
@@ -77,7 +75,7 @@ oSubscribeForm
 })
 .on('submit', function (event) {
 //    console.log("submit()");
-    var formdata = oContactForm.data().yiiActiveForm,
+    var formdata = oSubscribeForm.data().yiiActiveForm,
         oRes = jQuery("#formresultarea");
 
     event.preventDefault();
