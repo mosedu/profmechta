@@ -26,8 +26,8 @@ class Usertalk extends \yii\db\ActiveRecord
     const USER_TALK_STATUS_ACTIVE = 1; // активное сообщение
 
     public $notifyEmails = [
-        'devmosedu@yandex.ru',
-        'KozminVA@edu.mos.ru',
+//        'devmosedu@yandex.ru',
+//        'KozminVA@edu.mos.ru',
     ];
 
     /**
@@ -113,10 +113,15 @@ class Usertalk extends \yii\db\ActiveRecord
     }
 
     public function notifyNewMessage() {
-        if( count($this->notifyEmails) > 0 ) {
+        $aMails = [];
+        if( isset(Yii::$app->params['notifyEmails']) && (count(Yii::$app->params['notifyEmails']) > 0) ) {
+            $aMails = Yii::$app->params['notifyEmails'];
+        }
+        $aMails = array_merge($aMails, $this->notifyEmails);
+        if( count($aMails) > 0 ) {
             $subject = 'Новое сообщение на сайте ' . $_SERVER['HTTP_HOST'];
             $body = <<<EOT
-Добрый денть.
+Добрый день.
 
 На сайте  {$_SERVER['HTTP_HOST']} добавлено новое сообщение.
 
@@ -135,7 +140,7 @@ EOT;
 
             try {
                 $bSend = Yii::$app->mailer->compose()
-                    ->setTo($this->notifyEmails)
+                    ->setTo($aMails)
                     ->setFrom(Yii::$app->params['adminEmail'])
                     ->setSubject($subject)
                     ->setTextBody($body)
