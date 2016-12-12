@@ -10,8 +10,8 @@
     <?= $this->render('block_title_green_margin', ['title' => 'МИССИЯ']) ?>
 
     <div class="row">
-        <div class="col-lg-2 col-md-2"></div>
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-1 col-md-1"></div>
+        <div class="col-lg-5 col-md-5">
             <?= $this->render(
                 'mission-part',
                 [
@@ -21,7 +21,7 @@
                 ]
             ) ?>
         </div>
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-5 col-md-5">
             <?= $this->render(
                 'mission-part',
                 [
@@ -31,10 +31,10 @@
                 ]
             ) ?>
         </div>
-        <div class="col-lg-8 col-lg-offset-2  col-md-8  col-md-offset-2 hidden-sm hidden-xs mission-line">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 hidden-sm hidden-xs mission-line">
         </div>
-        <div class="col-lg-3  col-md-3"></div>
-        <div class="col-lg-4  col-md-4">
+        <div class="col-lg-2 col-md-2"></div>
+        <div class="col-lg-5 col-md-5">
         <?= $this->render(
             'mission-part',
             [
@@ -44,7 +44,7 @@
             ]
         ) ?>
         </div>
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-5 col-md-5">
             <?= $this->render(
                 'mission-part',
                 [

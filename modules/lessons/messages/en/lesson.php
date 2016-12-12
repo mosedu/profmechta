@@ -4,6 +4,7 @@ return [
     'TITLE_CREATE' => 'Create',
     'TITLE_UPDATE' => 'Update',
     'TITLE_LECTORS' => 'Lectors',
+    'TITLE_AFISHA' => 'LESSONS',
 
     'BUTTON_TITLE_HIDE' => 'Hide',
     'BUTTON_TITLE_SHOW' => 'Show',

@@ -14,6 +14,8 @@ use yii\filters\VerbFilter;
  */
 class LeslectController extends Controller
 {
+    public $layout = '/frontend';
+
     /**
      * @inheritdoc
      */
@@ -36,9 +38,9 @@ class LeslectController extends Controller
     public function actionIndex()
     {
         $searchModel = new LeslectSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchNext(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('//lessons/leslectlist', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

@@ -13,8 +13,8 @@ body {
     padding: 0 0; /* 60px; */
 }
 
-.wrap > .container {
-    padding: 70px 15px 20px;
+.wrap > .container-top {
+    padding: 50px 0 20px;
 }
 
 .footer {
@@ -130,6 +130,12 @@ a.desc:after {
     background-color: transparent;
     border-bottom-color: transparent;
     border-top-color: transparent;
+}
+
+.navbar-white {
+    background-color: #ffffff;
+    border-bottom-color: #ffffff;
+    border-top-color: #ffffff;
 }
 
 .navbar-brand .ptichka {
@@ -453,5 +459,23 @@ span.thin-border {
 
     .sphere-block {
         margin-bottom: 16px;
+    }
+
+    .title-1 {
+        font-size: 48px;
+    }
+
+    .title-2 {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title-1 {
+        font-size: 36px;
+    }
+
+    .title-2 {
+        font-size: 48px;
     }
 }

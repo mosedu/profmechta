@@ -17,8 +17,7 @@ use yii\bootstrap\NavBar;
 ?>
 
 <nav id="w1" class="navbar-default navbar-transparent navbar top-banner-pos" role="navigation" style="margin-bottom: 0;">
-<!--    <div class="container topbackground">-->
-        <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-11 col-xs-offset-1">
+        <div class="col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-11 col-xs-offset-1">
             <div class="top-block-title">
                 <h2 class="title-1">Выбери</h2>
                 <h2 class="title-1">профессию мечты</h2>

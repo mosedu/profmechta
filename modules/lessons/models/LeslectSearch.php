@@ -110,4 +110,51 @@ class LeslectSearch extends Leslect
         }
         return $ob;
     }
+
+    /**
+     * Creates data provider instance with search query applied
+     *
+     * @param array $params
+     *
+     * @return ActiveDataProvider
+     */
+    public function searchNext($params)
+    {
+        $query = Leslect::find();
+        $query->with(['lector', 'lesson']);
+
+        // add conditions that should always apply here
+
+        $aDataConf = [
+            'query' => $query,
+            'sort'=> [
+                'defaultOrder' => isset($params['sort']) ? $params['sort'] : ['ll_date' => SORT_ASC, ]
+            ]
+        ];
+
+        $aDataConf['pagination'] = [
+            'pageSize' => isset($params['pagesize']) ? $params['pagesize'] : 8,
+        ];
+
+        $dataProvider = new ActiveDataProvider($aDataConf);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'll_id' => $this->ll_id,
+            'll_lesson_id' => $this->ll_lesson_id,
+            'll_lector_id' => $this->ll_lector_id,
+            'll_date' => $this->ll_date,
+//            ['>', 'll_date', date('Y-m-d H:i:s')],
+        ]);
+
+        return $dataProvider;
+    }
 }

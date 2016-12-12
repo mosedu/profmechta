@@ -1,5 +1,8 @@
 <?php
 
+use yii\helpers\Html;
+use yii\helpers\Url;
+
 // block-afisha
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
@@ -12,9 +15,9 @@
     <?= $this->render('block_title_green_margin', ['title' => 'АФИША СОБЫТИЙ']) ?>
 
     <div class="row">
-        <div class="col-lg-2 col-md-1 hidden-sm hidden-xs">
+        <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
         </div>
-        <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
             <div class="row">
                 <?php
                 foreach($nextLessons As $nearestLesson) {
@@ -45,7 +48,15 @@
             <?php
                 if( count($nextLessons) > 3 ) {
             ?>
-            <a class="btn btn-default" href="#" style="width: 130px; border: 2px solid #4ecd66; color: #4ecd66; font-weight: bold; background-color: transparent;">Еще</a>
+            <?= Html::a(
+                'Еще',
+                Url::toRoute('/lessons/leslect/index'),
+                [
+                    'class' => "btn btn-default",
+                    'style' => "width: 130px; border: 2px solid #4ecd66; color: #4ecd66; font-weight: bold; background-color: transparent;",
+                ])
+            ?>
+<!--            <a class="btn btn-default" href="#" style="width: 130px; border: 2px solid #4ecd66; color: #4ecd66; font-weight: bold; background-color: transparent;">Еще</a>-->
             <?php
                 }
             ?>

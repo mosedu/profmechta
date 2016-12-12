@@ -17,8 +17,8 @@ use yii\web\JsExpression;
     <?= $this->render('block_title_green_margin', ['title' => 'КОМАНДА']) ?>
 
     <div class="row">
-        <div class="col-md-3 col-sm-1 hidden-xs"></div>
-        <div class="col-md-6 col-sm-10 col-xs-12">
+        <div class="col-lg-3 col-md-2 col-sm-1 hidden-xs"></div>
+        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
             <div class="row">
                 <?php
                     $aSpeaker = [];

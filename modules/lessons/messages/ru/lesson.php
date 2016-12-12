@@ -5,6 +5,7 @@ return [
     'TITLE_CREATE' => 'Создание лекции',
     'TITLE_UPDATE' => 'Измение лекции',
     'TITLE_LESSONS' => 'Лекции',
+    'TITLE_AFISHA' => 'АФИША СОБЫТИЙ',
 
     'BUTTON_TITLE_HIDE' => 'Скрыть',
     'BUTTON_TITLE_SHOW' => 'Показать',

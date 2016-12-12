@@ -34,7 +34,7 @@ use yii\bootstrap\NavBar;
 //            . Html::tag('div', Html::encode('Профессия мечты'), ['class' => 'floatleft']), // Yii::$app->name, 'class' => ' hidden-sm hidden-xs',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-default navbar-transparent', //  navbar-fixed-top
+            'class' => 'navbar-default navbar-white navbar-fixed-top', //  navbar-transparent
         ],
     ]);
 
