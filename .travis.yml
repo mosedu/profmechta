@@ -8,6 +8,8 @@ install:
   - php init --env=Test
   - tests/bin/yii  migrate/up --migrationPath=modules/lectors/migrations --interactive=0
   - tests/bin/yii  migrate/up --migrationPath=modules/lessons/migrations --interactive=0
+  - tests/bin/yii  migrate/up --migrationPath=modules/subscribe/migrations --interactive=0
+  - tests/bin/yii  migrate/up --migrationPath=modules/usertalk/migrations --interactive=0
   - vendor/codeception/codeception/codecept build
 
 script: vendor/codeception/codeception/codecept run unit,functional

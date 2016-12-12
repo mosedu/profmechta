@@ -21,6 +21,7 @@ use yii\db\Expression;
  */
 class Subscribe extends \yii\db\ActiveRecord
 {
+    const SUBSCRIBE_STATUS_ACTIVE = 1; // активнsq подписчик
 
     /**
      * @inheritdoc
@@ -41,7 +42,7 @@ class Subscribe extends \yii\db\ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['subscr_status'],
                 ],
-                'value' => 1,
+                'value' => self::SUBSCRIBE_STATUS_ACTIVE,
             ],
             [
                 'class' => AttributeBehavior::className(),

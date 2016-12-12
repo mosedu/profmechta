@@ -52,7 +52,7 @@ $buttonOptions = [
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}',
+                'template' => '{update}', // {delete}
                 'buttonOptions' => $buttonOptions,
             ],
         ],

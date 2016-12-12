@@ -17,16 +17,32 @@ $aLabels = $model->attributeLabels();
 
 <div class="index-contact">
     <h3 id="messagetitle">Поделись с нами своей мечтой</h3>
-    <h3 id="okmessagesend" style="display: none;">Спасибо за поделку.</h3>
+    <h3 id="okmessagesend" style="display: none;">Спасибо за поделение мечтой!</h3>
 
 
     <div class="row">
         <div class="col-md-3 col-sm-1 col-xs-1"></div>
         <div class="col-md-6 col-sm-10 col-xs-10">
             <?php
+//                $form = ActiveForm::begin([
+//                    'id' => 'contact-form',
+//                    'action' => Url::to('contact'),
+//                    'enableAjaxValidation' => true,
+//                    'enableClientValidation' => false,
+//                    'validateOnSubmit' => true,
+//                    'validateOnChange' => false,
+//                    'validateOnBlur' => false,
+//                    'validateOnType' => false,
+//                    'options'=>[
+//                        'enctype'=>'multipart/form-data'
+//                    ],
+//                    'fieldConfig' => [
+//                        'template' => "{input}\n{error}",
+//                    ],
+//                ]);
                 $form = ActiveForm::begin([
-                    'id' => 'contact-form',
-                    'action' => Url::to('contact'),
+                    'id' => 'usertalk-form',
+                    'action' => Url::to('usertalk/default/create'),
                     'enableAjaxValidation' => true,
                     'enableClientValidation' => false,
                     'validateOnSubmit' => true,
@@ -39,18 +55,23 @@ $aLabels = $model->attributeLabels();
                     'fieldConfig' => [
                         'template' => "{input}\n{error}",
                     ],
+
                 ]);
-//                echo $form->field($model, 'username', ['enableAjaxValidation' => true]);
+
+            //                echo $form->field($model, 'username', ['enableAjaxValidation' => true]);
             ?>
             <div class="row">
 <!--                <div class="col-sm-6"><input name="email" type="text" placeholder="Ф.И.О." style="width: 100%;"></div>-->
-                <div class="col-sm-6"><?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => $aLabels['name'], ]) ?></div>
+                <!-- div class="col-sm-6"><?= '' // $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => $aLabels['name'], ]) ?></div -->
+                <div class="col-sm-6"><?= $form->field($model, 'usertalk_fio')->textInput(['maxlength' => true, 'placeholder' => $aLabels['usertalk_fio'], ]) ?></div>
 <!--                <div class="col-sm-6"><input name="email" type="text" placeholder="E-mail" style="width: 100%;"></div>-->
-                <div class="col-sm-6"><?= $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => $aLabels['email'], ]) ?></div>
+                <!-- div class="col-sm-6"><?= '' // $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => $aLabels['email'], ]) ?></div -->
+                <div class="col-sm-6"><?= $form->field($model, 'usertalk_email')->textInput(['maxlength' => true, 'placeholder' => $aLabels['usertalk_email'], ]) ?></div>
             </div>
             <div class="row">
 <!--                <div class="col-sm-12"><textarea name="email" placeholder="Введите свой текст" style="width: 100%;" rows="4"></textarea></div>-->
-                <div class="col-sm-12"><?= $form->field($model, 'body')->textarea(['rows' => 5, 'placeholder' => 'Введите свой текст', ]) ?></div>
+                <!-- div class="col-sm-12"><?= '' // $form->field($model, 'body')->textarea(['rows' => 5, 'placeholder' => 'Введите свой текст', ]) ?></div -->
+                <div class="col-sm-12"><?= $form->field($model, 'usertalk_text')->textarea(['rows' => 5, 'placeholder' => 'Введите свой текст', ]) ?></div>
             </div>
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-4 col-sm-offset-4 col-md-offset-4 col-xs-offset-4" style="text-align: center;">

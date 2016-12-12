@@ -14,7 +14,6 @@ $this->title = Module::t('lesson', 'TITLE_LESSONS');
 $this->params['breadcrumbs'][] = $this->title;
 $buttonOptions = [
     'class' => 'btn btn-default',
-    'style' => 'white-space: nowrap;',
 ];
 
 $sJs = <<<EOT
@@ -74,7 +73,7 @@ $this->registerJs($sJs, View::POS_READY);
                 'content' => function ($model, $key, $index, $column) {
                     $bHidden = $model->isHidden();
                     return Html::encode($model->status)
-                        . ' '
+/*                        . ' '
                         . Html::a(
                             '<span class="glyphicon glyphicon-'.($bHidden ? 'ok' : 'remove').'"></span>',
                             ['default/toggle', 'id'=>$model->les_id],
@@ -82,7 +81,7 @@ $this->registerJs($sJs, View::POS_READY);
                                 'class' => 'togglelesson btn ' . ($bHidden ? 'btn-success' : 'btn-default'),
                                 'title' => Module::t('lesson', $bHidden ? 'BUTTON_TITLE_SHOW' : 'BUTTON_TITLE_HIDE'),
                             ]
-                        );
+                        ) */;
                 },
             ],
 
@@ -90,8 +89,10 @@ $this->registerJs($sJs, View::POS_READY);
 
             [
                 'class' => 'yii\grid\ActionColumn',
-//                'template' => '{view}'
-                'contentOptions' => $buttonOptions,
+                'template' => '{view} {update} {delete}',
+                'contentOptions' => [
+                    'style' => 'white-space: nowrap;',
+                ],
                 'buttons' => [
                     'view' => function ($url, $model, $key) use($buttonOptions) {
                         $options = array_merge([
@@ -110,6 +111,7 @@ $this->registerJs($sJs, View::POS_READY);
                         return ($model->les_active == Lesson::LESSON_STATUS_ACTIVE) ? Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options) : '';
                     },
                     'delete' => function ($url, $model, $key) use($buttonOptions) {
+                        $bHidden = $model->isHidden();
                         $options = array_merge([
                             'title' => Yii::t('yii', 'Delete'),
                             'aria-label' => Yii::t('yii', 'Delete'),
@@ -117,7 +119,15 @@ $this->registerJs($sJs, View::POS_READY);
                             'data-method' => 'post',
                             'data-pjax' => '0',
                         ], $buttonOptions);
-                        return ($model->les_active == Lesson::LESSON_STATUS_ACTIVE) ? Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options) : '';
+//                        return ($model->les_active == Lesson::LESSON_STATUS_ACTIVE) ? Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options) : '';
+                        return Html::a(
+                            '<span class="glyphicon glyphicon-'.($bHidden ? 'ok' : 'remove').'"></span>',
+                            ['default/toggle', 'id'=>$model->les_id],
+                            [
+                                'class' => 'togglelesson btn ' . ($bHidden ? 'btn-success' : 'btn-default'),
+                                'title' => Module::t('lesson', $bHidden ? 'BUTTON_TITLE_SHOW' : 'BUTTON_TITLE_HIDE'),
+                            ]
+                        );
                     },
 
     ],

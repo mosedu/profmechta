@@ -5,6 +5,7 @@ use app\modules\main\models\ContactForm;
 use yii\bootstrap\Modal;
 use yii\web\View;
 use app\modules\subscribe\models\Subscribe;
+use app\modules\usertalk\models\Usertalk;
 
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
@@ -65,7 +66,8 @@ $this->title = Yii::$app->name;
         '//site/block-contact',
         [
             'name' => 'contact-block',
-            'model' => new ContactForm(),
+//            'model' => new ContactForm(),
+            'model' => new Usertalk(),
         ]
     ) ?>
     <?= $this->render(

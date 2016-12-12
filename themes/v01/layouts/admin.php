@@ -40,6 +40,7 @@ AppAsset::register($this);
             ['label' => 'Лекторы', 'url' => ['/admin/lectors']],
             ['label' => 'Лекции', 'url' => ['/admin/lessons']],
             ['label' => 'Подписчики', 'url' => ['/admin/subscribe']],
+            ['label' => 'Сообщения', 'url' => ['/admin/usertalk']],
 //            Yii::$app->user->isGuest ? (
 //                ['label' => 'Login', 'url' => ['/site/login']]
 //            ) : (
