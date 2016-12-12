@@ -481,4 +481,11 @@ php d:\php566\composer.phar require "kartik-v/yii2-widget-select2"
 
 -------------------------------------------------------------------------------------------------
 
-yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations  add_lector_images
+yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\subscribe\migrations  add_subscribe_table
+yii migrate/up --migrationPath=D:\projects\web\profmechta\modules\subscribe\migrations
+
+
+yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\usertalk\migrations  add_usertalk_table
+yii migrate/up --migrationPath=D:\projects\web\profmechta\modules\usertalk\migrations
+
+

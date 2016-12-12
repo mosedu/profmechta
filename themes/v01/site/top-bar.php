@@ -52,7 +52,7 @@ use yii\bootstrap\NavBar;
                 Yii::getAlias($this->theme->baseUrl . '/images/page-1-vk.png'),
                 [
                     'alt' => '',
-                    'class' => 'floatleft ptichka  hidden-sm hidden-xs',
+                    'class' => 'floatleft ptichka hidden-lg hidden-md hidden-sm hidden-xs',
                 ]
             ), 'url' => ['#'], 'encode' => false],
         ],

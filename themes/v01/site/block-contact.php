@@ -53,7 +53,7 @@ $aLabels = $model->attributeLabels();
                 <div class="col-sm-12"><?= $form->field($model, 'body')->textarea(['rows' => 5, 'placeholder' => 'Введите свой текст', ]) ?></div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-4 col-sm-offset-4 col--offset-4 col-xs-offset-4" style="text-align: center;">
+                <div class="col-md-4 col-sm-4 col-xs-4 col-sm-offset-4 col-md-offset-4 col-xs-offset-4" style="text-align: center;">
                     <input type="submit" name="submit" class="btn btn-default subscribe" style="border-color: #ffffff; color: #ffffff; background-color: transparent; " value="Отправить">
                 </div>
             </div>

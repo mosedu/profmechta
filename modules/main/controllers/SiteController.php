@@ -142,7 +142,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionSubscribe()
+    public function actionEmailsubscribe()
     {
         $model = new SubscribeForm();
 

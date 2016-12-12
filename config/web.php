@@ -55,7 +55,7 @@ $webconfig = [
                     ],
                 ],
                 '' => 'main/site/index',
-                '<_a:(login|logout|contact|subscribe|about|error)>' => 'main/site/<_a>',
+                '<_a:(login|logout|contact|emailsubscribe|about|error)>' => 'main/site/<_a>',
 //                '<_a:error>' => 'main/default/<_a>',
 //                '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset)>' => 'user/default/<_a>',
                 '<_m:[\w\-]+>' => '<_m>/default/index',
@@ -87,6 +87,16 @@ $webconfig = [
             'layout' => '@app/themes/v01/layouts/pages',
             'viewPath' => '@app/themes/v01',
         ],
+        'subscribe' => [
+            'class' => 'app\modules\subscribe\Module',
+            'controllerNamespace' => 'app\modules\subscribe\controllers\frontend',
+            'viewPath' => '@app/modules/subscribe/views/frontend',
+        ],
+        'usertalk' => [
+            'class' => 'app\modules\usertalk\Module',
+            'controllerNamespace' => 'app\modules\usertalk\controllers\frontend',
+            'viewPath' => '@app/modules/usertalk/views/frontend',
+        ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'layout' => '@app/themes/v01/layouts/admin',
@@ -100,6 +110,16 @@ $webconfig = [
                     'class' => 'app\modules\lessons\Module',
                     'controllerNamespace' => 'app\modules\lessons\controllers\backend',
                     'viewPath' => '@app/modules/lessons/views/backend',
+                ],
+                'subscribe' => [
+                    'class' => 'app\modules\subscribe\Module',
+                    'controllerNamespace' => 'app\modules\subscribe\controllers\backend',
+                    'viewPath' => '@app/modules/subscribe/views/backend',
+                ],
+                'usertalk' => [
+                    'class' => 'app\modules\usertalk\Module',
+                    'controllerNamespace' => 'app\modules\usertalk\controllers\backend',
+                    'viewPath' => '@app/modules/usertalk/views/backend',
                 ],
             ]
         ],

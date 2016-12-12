@@ -53,7 +53,7 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
         if( Yii::$app->request->isAjax || Yii::$app->request->isPost ) {
-            return $this->renderPartial('view', [
+            return $this->renderPartial('view-modal', [
                 'model' => $model,
                 'isajax' => true,
             ]);

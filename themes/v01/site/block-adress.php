@@ -22,10 +22,12 @@ use yii\web\JsExpression;
             </div>
             <div class="row">
                 <div class="col-sm-6">
+                    <div style="padding: 0; margin: 0; border: 0px none transparent; float: right;">
                     <p class="adress-street">1-й Зборовский переулок, д. 3</p>
                     <p class="adress-phone">+7 495 333-33-33</p>
                     <p class="adress-email">ssddd@adfs.ru</p>
                     <p class="adress-map">Посмотреть на карте</p>
+                    </div>
                 </div>
                 <div class="col-sm-6">
                     <p class="adress-street">1-й Зборовский переулок, д. 3</p>

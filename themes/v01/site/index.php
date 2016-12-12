@@ -1,9 +1,10 @@
 <?php
 
 use app\modules\main\models\ContactForm;
-use app\modules\main\models\SubscribeForm;
+//use app\modules\main\models\SubscribeForm;
 use yii\bootstrap\Modal;
 use yii\web\View;
+use app\modules\subscribe\models\Subscribe;
 
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
@@ -43,7 +44,8 @@ $this->title = Yii::$app->name;
         '//site/block-subscribe',
         [
             'name' => 'subscribe-block',
-            'model' => new SubscribeForm(),
+//            'model' => new SubscribeForm(),
+            'model' => new Subscribe(),
         ]
     ) ?>
     <?= $this->render(

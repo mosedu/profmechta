@@ -20,7 +20,8 @@ use yii\web\View;
                 <?php
                 $form = ActiveForm::begin([
                     'id' => 'subscribe-form',
-                    'action' => Url::to('subscribe'),
+//                    'action' => Url::to('emailsubscribe'),
+                    'action' => Url::to('subscribe/default/newsubscriber'),
                     'enableAjaxValidation' => true,
                     'enableClientValidation' => false,
                     'validateOnSubmit' => true,
@@ -42,7 +43,8 @@ use yii\web\View;
                 </div>
                 <div class="col-md-5 col-sm-5 col-xs-10">
 <!--                    <input name="email" type="text" placeholder="Введите E-mail">-->
-                    <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Введите E-mail', ]) ?>
+                    <?= '' // $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Введите E-mail', ]) ?>
+                    <?= $form->field($model, 'subscr_email')->textInput(['maxlength' => true, 'placeholder' => 'Введите E-mail', ]) ?>
                 </div>
                 <div class="col-md-1 col-sm-1 col-xs-2">
                     <button class="arrow-button" type="submit" style="border: transparent none 0px; background-color: transparent;">

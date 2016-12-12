@@ -47,7 +47,7 @@ if( $nearestLesson !== null ) {
                 <p style="text-align: center; font-size: 13px;"><?= Html::encode($nearestLesson->lesson->les_description) ?></p>
             </div>
 
-            <p style="text-align: center;"><?= Html::a('Участвуй', Url::toRoute(['/lessons/default/view', 'id' => $nearestLesson->lesson->les_id,]), ['class' => 'btn btn-success showinmodal', 'title' => $nearestLesson->lesson->les_title]) ?></p>
+            <p style="text-align: center;"><?= Html::a('Участвуй', Url::toRoute(['/lessons/leslect/view', 'id' => $nearestLesson->ll_id,]), ['class' => 'btn btn-success showinmodal', 'title' => $nearestLesson->lesson->les_title . ', ' . date('d.m.Y H:i', strtotime($nearestLesson->ll_date))]) ?></p>
         </div>
     <!-- /div -->
 

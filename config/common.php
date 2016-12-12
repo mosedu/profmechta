@@ -17,6 +17,7 @@ return [
         'log',
         'app\modules\lectors\Bootstrap',
         'app\modules\lessons\Bootstrap',
+        'app\modules\subscribe\Bootstrap',
     ],
     'components' => [
         'cache' => [
