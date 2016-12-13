@@ -17,24 +17,24 @@
         </div>
     </div>
 
-    <div class="row" style="margin-bottom: 18px;">
+    <div class="row">
         <div class="col-xs-1 hidden-lg  hidden-md  hidden-sm"></div>
-        <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-11 list-ok">
+        <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-11 list-ok" style="margin-bottom: 18px;">
             Формирование у учащихся мотивации к труду, потребности к приобретению потребности;
         </div>
         <div class="col-xs-1 hidden-lg  hidden-md  hidden-sm"></div>
-        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-11 list-ok">
+        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-11 list-ok" style="margin-bottom: 18px;">
             Приобретение практического опыта, соответствующего интересам и потребностям детей;
         </div>
     </div>
 
     <div class="row" style="margin-bottom: 18px;">
         <div class="col-xs-1 hidden-lg  hidden-md  hidden-sm"></div>
-        <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-11 list-ok">
+        <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-11 list-ok" style="margin-bottom: 18px;">
             Развитие у учащихся представлений о перспективах профессионального образования и будущей профессиональной деятельности;
         </div>
         <div class="col-xs-1 hidden-lg  hidden-md  hidden-sm"></div>
-        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-11 list-ok">
+        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-11 list-ok" style="margin-bottom: 18px;">
             Информирование обучающихся об особенностях различных сфер профессиональной деятельности.
         </div>
     </div>

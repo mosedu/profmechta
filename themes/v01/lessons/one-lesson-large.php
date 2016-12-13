@@ -25,7 +25,7 @@ if( $nearestLesson !== null ) {
             <?= '' // nl2br(print_r($nearestLesson->attributes, true))  ?>
             <div class="image-relative-block">
                 <div class="date-block">
-                    <?= date('d.m.Y', strtotime($nearestLesson->ll_date)) ?>
+                    <?= date('d/m/Y', strtotime($nearestLesson->ll_date)) ?>
                 </div>
                 <img class="lesson-large-image" src="<?php
                     $sf = $nearestLesson->lector->getImage('base');

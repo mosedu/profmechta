@@ -38,7 +38,7 @@ class LeslectController extends Controller
     public function actionIndex()
     {
         $searchModel = new LeslectSearch();
-        $dataProvider = $searchModel->searchNext(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchNext(Yii::$app->request->post());
 
         return $this->render('//lessons/leslectlist', [
             'searchModel' => $searchModel,

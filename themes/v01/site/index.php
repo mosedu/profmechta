@@ -2,7 +2,6 @@
 
 use app\modules\main\models\ContactForm;
 //use app\modules\main\models\SubscribeForm;
-use yii\bootstrap\Modal;
 use yii\web\View;
 use app\modules\subscribe\models\Subscribe;
 use app\modules\usertalk\models\Usertalk;
@@ -89,40 +88,4 @@ $this->title = Yii::$app->name;
 </div>
 
 <?php
-
-Modal::begin([
-    'header' => '<span></span>',
-    'id' => 'messagedata',
-    'size' => Modal::SIZE_LARGE,
-]);
-Modal::end();
-
-$sJs = <<<EOT
-var params = {};
-params[$('meta[name=csrf-param]').prop('content')] = $('meta[name=csrf-token]').prop('content');
-
-jQuery('.showinmodal').on("click", function (event){
-    event.preventDefault();
-
-    var ob = jQuery('#messagedata'),
-        oBody = ob.find('.modal-body'),
-        oLink = $(this);
-
-    oBody.text("");
-    oBody.load(
-        oLink.attr('href'),
-        params,
-        function(responseText, textStatus, jqXHR){
-            ob.find('.modal-header span').text(oLink.attr('title'));
-            ob.modal('show');
-        }
-    );
-//    ob.find('.modal-header span').text(oLink.attr('title'));
-//    ob.modal('show');
-
-    return false;
-});
-EOT;
-
-$this->registerJs($sJs, View::POS_READY, 'showmodalmessage');
 

@@ -10,6 +10,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\base\Security;
 use yii\web\UploadedFile;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%lector}}".
@@ -138,6 +139,21 @@ class Lector extends \yii\db\ActiveRecord
     public static function find()
     {
         return new LectorQuery(get_called_class());
+    }
+
+    /**
+     * @return array
+     */
+    public static function getLectorProf() {
+        $a = self::find()
+            ->select('lec_profession')
+            ->distinct()
+            ->asArray()
+            ->orderBy('lec_profession')
+            ->all();
+//        Yii::info('getLectorProf(): ' . print_r($a, true));
+        return array_reduce($a, function($carry, $el){ $carry[] = $el['lec_profession']; return $carry; }, []);
+//        return ArrayHelper::map($a, 'lec_profession', 'lec_profession');
     }
 
     /**

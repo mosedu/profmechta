@@ -16,7 +16,7 @@ use yii\web\JsExpression;
     <?= $this->render('block_title_green_margin', ['title' => 'СПИКЕРЫ']) ?>
 
     <div class="row">
-        <div class="col-lg-2 col-md-1 hidden-sm hidden-xs">
+        <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
         </div>
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="row">

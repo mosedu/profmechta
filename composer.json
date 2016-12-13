@@ -20,7 +20,7 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "evgeniyrru/yii2-slick": "*",
         "kartik-v/yii2-widget-datetimepicker": "^1.4",
-        "kartik-v/yii2-widget-select2": "^2.0"
+        "kartik-v/yii2-widget-select2": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

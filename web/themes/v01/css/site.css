@@ -423,22 +423,40 @@ span.thin-border {
     border-width: 2px;
 }
 
-@media (max-width: 400px) {
-    .image-relative-block .date-block {
-        font-size: 22px;
-    }
+.page-title-block {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background: #26673f url(/themes/v01/images/top-page-background.jpg) top center no-repeat;
+    min-height: 182px;
+    /*margin-bottom: 54px;*/
 }
 
-@media (max-width: 360px) {
-    .image-relative-block .date-block {
-        font-size: 16px;
-    }
+.page-title-block h1 {
+    padding: 60px 15px 0;
+    font-size: 32px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    text-align: center;
+    color: #ffffff;
 }
 
-@media (max-width: 1150px) {
+.leslect-frontend-index {
+    margin-top: 54px;
+    margin-bottom: 54px;
+}
+
+@media (max-width: 1200px) {
     .one-mission-text {
         font-size: 12px;
     }
+
+    .afisha-block .image-relative-block .date-block {
+        font-size: 24px;
+    }
+
 }
 
 /*@media (max-width: 1100px) {*/
@@ -452,7 +470,7 @@ span.thin-border {
 
 /*}*/
 
-@media (max-width: 992px) {
+@media (max-width: 993px) {
     .one-mission-text {
         font-size: 14px;
     }
@@ -468,6 +486,10 @@ span.thin-border {
     .title-2 {
         font-size: 60px;
     }
+
+    .afisha-block .image-relative-block .date-block {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -479,3 +501,22 @@ span.thin-border {
         font-size: 48px;
     }
 }
+
+@media (max-width: 500px) {
+    .afisha-block .image-relative-block .date-block {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 430px) {
+    .afisha-block .image-relative-block .date-block {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .afisha-block .image-relative-block .date-block {
+        font-size: 16px;
+    }
+}
+

@@ -6,6 +6,8 @@
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppV01Asset;
+use yii\bootstrap\Modal;
+use yii\web\View;
 
 AppV01Asset::register($this);
 
@@ -32,7 +34,44 @@ AppV01Asset::register($this);
 <!--        <p class="pull-right">--><?//= '' // Yii::powered() ?><!--</p>-->
 <!--    </div>-->
 <!--</footer>-->
+<?php
+Modal::begin([
+'header' => '<span></span>',
+'id' => 'messagedata',
+'size' => Modal::SIZE_LARGE,
+]);
+Modal::end();
 
+$sJs = <<<EOT
+var params = {};
+params[$('meta[name=csrf-param]').prop('content')] = $('meta[name=csrf-token]').prop('content');
+
+jQuery('.showinmodal').on("click", function (event){
+    event.preventDefault();
+
+    var ob = jQuery('#messagedata'),
+        oBody = ob.find('.modal-body'),
+        oLink = $(this);
+
+    oBody.text("");
+    oBody.load(
+        oLink.attr('href'),
+        params,
+        function(responseText, textStatus, jqXHR){
+            ob.find('.modal-header span').text(oLink.attr('title'));
+            ob.modal('show');
+        }
+    );
+//    ob.find('.modal-header span').text(oLink.attr('title'));
+//    ob.modal('show');
+
+    return false;
+});
+EOT;
+
+$this->registerJs($sJs, View::POS_READY, 'showmodalmessage');
+
+?>
 <?php $this->endBody() ?>
 </body>
 </html>

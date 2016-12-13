@@ -489,3 +489,4 @@ yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\usertalk\m
 yii migrate/up --migrationPath=D:\projects\web\profmechta\modules\usertalk\migrations
 
 
+php d:\php566\composer.phar require kartik-v/yii2-widget-select2
