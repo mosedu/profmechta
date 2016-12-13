@@ -51,8 +51,8 @@ function (element, callback) {
             var err = new Error();
             return err.stack;
         };
-    console.log('search = ', search, element);
-    console.log('callback = ', callback);
+//    console.log('search = ', search, element);
+//    console.log('callback = ', callback);
 //    console.log(stackTrace());
 
 //    if (search != null) {
@@ -85,13 +85,13 @@ EOT;
                 'processResults' => new JsExpression($resultsJs),
             ],
             'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-            'templateResult' => new JsExpression('function(city) { console.log("templateResult: "); return city.lec_fam; }'),
-            'templateSelection' => new JsExpression('function (city) { console.log("templateSelection: ", city); return city.text || city.lec_fam; }'),
+            'templateResult' => new JsExpression('function(city) { return city.lec_fam; }'), // console.log("templateResult: ");
+            'templateSelection' => new JsExpression('function (city) { return city.text || city.lec_fam; }'), // console.log("templateSelection: ", city);
             'initSelection' => new JsExpression($initScript),
         ],
         'pluginEvents' => [
-            "select2:select" => "function(event) { console.log('select', event); console.log( jQuery('#{$sFioId}').val()); jQuery('#".$form->id."').submit(); }",
-            "select2:unselect" => "function(event) { console.log('select', event); console.log( jQuery('#{$sFioId}').val()); jQuery('#".$form->id."').submit(); }",
+            "select2:select" => "function(event) { jQuery('#".$form->id."').submit(); }", // console.log('select', event); console.log( jQuery('#{$sFioId}').val());
+            "select2:unselect" => "function(event) { jQuery('#".$form->id."').submit(); }", // console.log('select', event); console.log( jQuery('#{$sFioId}').val());
         ],
     ];
 
@@ -108,8 +108,8 @@ EOT;
 //            'minimumResultsForSearch' => new JsExpression('Infinity'),
         ],
         'pluginEvents' => [
-            "select2:select" => "function(event) { console.log('select', event); console.log( jQuery('#{$sFioId}').val()); jQuery('#".$form->id."').submit(); }",
-            "select2:unselect" => "function(event) { console.log('select', event); console.log( jQuery('#{$sFioId}').val()); jQuery('#".$form->id."').submit(); }",
+            "select2:select" => "function(event) { jQuery('#".$form->id."').submit(); }", // console.log('select', event); console.log( jQuery('#{$sFioId}').val());
+            "select2:unselect" => "function(event) { jQuery('#".$form->id."').submit(); }", // console.log('select', event); console.log( jQuery('#{$sFioId}').val());
         ],
     ];
 
@@ -121,8 +121,8 @@ EOT;
             'minimumResultsForSearch' => new JsExpression('Infinity'),
         ],
         'pluginEvents' => [
-            "select2:select" => "function(event) { console.log('select', event); console.log( jQuery('#{$sFioId}').val()); jQuery('#".$form->id."').submit(); }",
-            "select2:unselect" => "function(event) { console.log('select', event); console.log( jQuery('#{$sFioId}').val()); jQuery('#".$form->id."').submit(); }",
+            "select2:select" => "function(event) { jQuery('#".$form->id."').submit(); }", // console.log('select', event); console.log( jQuery('#{$sFioId}').val());
+            "select2:unselect" => "function(event) { jQuery('#".$form->id."').submit(); }", // console.log('select', event); console.log( jQuery('#{$sFioId}').val());
         ],
     ];
 
