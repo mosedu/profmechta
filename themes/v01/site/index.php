@@ -83,8 +83,9 @@ $this->title = Yii::$app->name;
                 'name' => 'adress-block',
             ]
         ) ?>
+
+        <?= $this->render('//site/block-footer') ?>
         </div>
-    <?= $this->render('//site/block-footer') ?>
 </div>
 
 <?php
