@@ -490,3 +490,7 @@ yii migrate/up --migrationPath=D:\projects\web\profmechta\modules\usertalk\migra
 
 
 php d:\php566\composer.phar require kartik-v/yii2-widget-select2
+
+yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\talks\migrations  add_reply_table
+yii migrate/up --migrationPath=D:\projects\web\profmechta\modules\talks\migrations
+
