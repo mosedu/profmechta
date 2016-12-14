@@ -3,11 +3,37 @@
 use evgeniyrru\yii2slick\Slick;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
+use app\modules\talks\models\ReplySearch;
 
 // block-reply
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
 
+$aReplyArray = ReplySearch::searchSome(4);
+$aSpeaker = ArrayHelper::map(
+    $aReplyArray,
+    'reply_id',
+    function($ob) {
+        /** @var app\modules\talks\models\Reply $ob */
+        return [
+            'name' => $ob->reply_fio,
+            'text' => $ob->reply_text,
+            'src' => $ob->getImage('base'),
+        ];
+    }
+);
+
+$aReply = [];
+foreach($aSpeaker As $data) {
+    $aReply[] = $this->render(
+        'one_reply',
+        [
+            'aData' => $data,
+        ]
+    );
+}
+
+if( count($aReply) > 0 ) {
 ?>
 
 <div class="index-speaker">
@@ -19,13 +45,9 @@ use yii\web\JsExpression;
         </div>
         <div class="col-md-8 col-sm-12 col-xs-12">
             <div class="row">
-                <div class="col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-1 col-xs-offset-0"><div class="prev-reply">&lt;</div></div>
-                <?php
-                    $aSpeaker = [];
-                    for($i=0; $i<6; $i++) {
-                        $aReply[] = $this->render('one_reply');
-                    }
-                ?>
+                <div class="col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-1 col-xs-offset-0">
+                    <div class="prev-reply">&lt;</div>
+                </div>
                 <?= Slick::widget([
 
                     // HTML tag for container. Div is default.
@@ -48,7 +70,7 @@ use yii\web\JsExpression;
 //                        'nextArrow' => '<div class="slick-next slick-arrow"><a>&gt;</a></div>',
                         'prevArrow' => '.prev-reply',
                         'nextArrow' => '.next-reply',
-                        'dots'     => true,
+                        'dots' => true,
                         'infinite' => true,
                         'slidesToShow' => 1,
                         'slidesToScroll' => 1,
@@ -59,10 +81,14 @@ use yii\web\JsExpression;
                 ])
 
                 ?>
-                <div class="col-md-1 col-sm-1 col-xs-1"><div class="next-reply">&gt;</div></div>
+                <div class="col-md-1 col-sm-1 col-xs-1">
+                    <div class="next-reply">&gt;</div>
+                </div>
             </div>
         </div>
     </div>
 
 </div>
 
+<?php
+}

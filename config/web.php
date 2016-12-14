@@ -92,10 +92,15 @@ $webconfig = [
             'controllerNamespace' => 'app\modules\subscribe\controllers\frontend',
             'viewPath' => '@app/modules/subscribe/views/frontend',
         ],
-        'usertalk' => [
+        'usertalk' => [ // обратная связь
             'class' => 'app\modules\usertalk\Module',
             'controllerNamespace' => 'app\modules\usertalk\controllers\frontend',
             'viewPath' => '@app/modules/usertalk/views/frontend',
+        ],
+        'talks' => [ // отзывы
+            'class' => 'app\modules\talks\Module',
+            'controllerNamespace' => 'app\modules\talks\controllers\frontend',
+            'viewPath' => '@app/modules/talks/views/frontend',
         ],
         'admin' => [
             'class' => 'app\modules\admin\Module',
@@ -120,6 +125,11 @@ $webconfig = [
                     'class' => 'app\modules\usertalk\Module',
                     'controllerNamespace' => 'app\modules\usertalk\controllers\backend',
                     'viewPath' => '@app/modules/usertalk/views/backend',
+                ],
+                'talks' => [ // отзывы
+                    'class' => 'app\modules\talks\Module',
+                    'controllerNamespace' => 'app\modules\talks\controllers\backend',
+                    'viewPath' => '@app/modules/talks/views/backend',
                 ],
             ]
         ],

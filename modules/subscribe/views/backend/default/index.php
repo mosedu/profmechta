@@ -13,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $buttonOptions = [
     'class' => 'btn btn-default',
-    'style' => 'white-space: nowrap;',
 ];
 
 ?>
@@ -54,6 +53,9 @@ $buttonOptions = [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update}', // {delete}
                 'buttonOptions' => $buttonOptions,
+                'contentOptions' => [
+                    'style' => 'white-space: nowrap;',
+                ],
             ],
         ],
     ]); ?>

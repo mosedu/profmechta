@@ -19,6 +19,7 @@ return [
         'app\modules\lessons\Bootstrap',
         'app\modules\subscribe\Bootstrap',
         'app\modules\usertalk\Bootstrap',
+        'app\modules\talks\Bootstrap',
     ],
     'components' => [
         'cache' => [

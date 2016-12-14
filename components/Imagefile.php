@@ -61,8 +61,10 @@ class Imagefile {
             $this->createDir(dirname($sDir));
         }
 
+        Yii::info('createDir('.$sDir.')');
         if( !is_dir($sDir) ) {
-            mkdir($sDir, 0777);
+            $b = mkdir($sDir, 0777);
+            Yii::info('mkdir '.$sDir.' ' . ($b ? 'OK' : 'ERROR'));
         }
     }
 
