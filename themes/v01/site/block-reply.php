@@ -45,7 +45,7 @@ if( count($aReply) > 0 ) {
         </div>
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
             <div class="row">
-                <div class="col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-1 col-xs-offset-0">
+                <div class="col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0">
                     <div class="prev-reply">&lt;</div>
                 </div>
                 <?= Slick::widget([
@@ -54,7 +54,7 @@ if( count($aReply) > 0 ) {
                     'itemContainer' => 'div',
 
                     // HTML attributes for widget container
-                    'containerOptions' => ['class' => 'reply-slider col-md-8 col-sm-8 col-xs-10'],
+                    'containerOptions' => ['class' => 'reply-slider col-md-10 col-sm-10 col-xs-10'],
 
                     // Items for carousel. Empty array not allowed, exception will be throw, if empty
                     'items' => $aReply,
