@@ -5,8 +5,8 @@
 
 ?>
 
+<a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
 <div class="index-mission">
-    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'МИССИЯ']) ?>
 
     <div class="row">

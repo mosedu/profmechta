@@ -10,8 +10,8 @@ use yii\helpers\Url;
 
 ?>
 
+<a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
 <div class="index-afisha">
-    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'АФИША СОБЫТИЙ']) ?>
 
     <div class="row">

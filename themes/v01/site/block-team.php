@@ -11,9 +11,8 @@ use yii\web\JsExpression;
 // hidden-sm
 
 ?>
-
+<a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
 <div class="index-team">
-    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'КОМАНДА']) ?>
 
     <div class="row">

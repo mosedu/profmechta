@@ -10,8 +10,8 @@ use yii\web\JsExpression;
 
 ?>
 
+<a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
 <div class="index-adress">
-    <a name="<?= isset($name) ? $name : mt_rand(1000, 10000) ?>"></a>
     <?= $this->render('block_title_green_margin', ['title' => 'КОНТАКТЫ']) ?>
 
     <div class="row">
