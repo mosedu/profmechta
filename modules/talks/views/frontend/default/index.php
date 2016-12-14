@@ -37,7 +37,7 @@ $buttonOptions = [
             [
                 'class' => 'yii\grid\DataColumn',
                 'attribute' => 'reply_fio',
-                'filter' => Reply::getAllStatuses(),
+//                'filter' => Reply::getAllStatuses(),
 //                'filter' => Lesson::getAllStatuses(),
 //                'contentOptions' => [
 //                    'style' => 'white-space: nowrap;'

@@ -41,9 +41,9 @@ if( count($aReply) > 0 ) {
     <?= $this->render('block_title_green_margin', ['title' => 'ОТЗЫВЫ']) ?>
 
     <div class="row">
-        <div class="col-md-2 hidden-sm hidden-xs">
+        <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
         </div>
-        <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-md-1 col-md-offset-1 col-sm-1 col-sm-offset-1 col-xs-1 col-xs-offset-0">
                     <div class="prev-reply">&lt;</div>
