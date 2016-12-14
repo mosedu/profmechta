@@ -37,8 +37,8 @@ AppV01Asset::register($this);
             ?>
         </div>
         <?= $content ?>
+        <?= $this->render('//site/block-footer') ?>
     </div>
-    <?= $this->render('//site/block-footer') ?>
 </div>
 
 
