@@ -11,6 +11,8 @@ use yii\widgets\ListView;
 ?>
 
 <div style="margin-right: 12px; margin-left: 12px;">
+    <?php
+/*
     <p style="width: 112px; height: 112px; border: 4px solid #4ecc66; border-radius: 56px; background-color: #eeeeee; float: left; overflow: hidden;">
         <?php
         if( isset($aData['src']) ) {
@@ -20,8 +22,9 @@ use yii\widgets\ListView;
         }
         ?>
     </p>
-    <div style="padding-left: 180px;">
+*/    ?>
+<!--    <div style="padding-left: 180px;">-->
         <p style="font-size: 14px; font-weight: normal; font-style: italic; color: #444444;"><?= nl2br(Html::encode($aData['text'])) ?></p>
         <p style="font-size: 14px; font-weight: bold; font-style: italic;"><?= Html::encode($aData['name']) ?></p>
-    </div>
+<!--    </div>-->
 </div>

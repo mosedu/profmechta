@@ -303,8 +303,8 @@ span.thin-border {
 }
 
 .index-subscribe input, .index-contact input, .index-contact textarea {
-    font-size: 28px;
-    padding: 6px;
+    font-size: 22px;
+    padding: 9px;
     border: 1px solid #999999;
     width: 100%;
     border-radius: 2px;
@@ -325,6 +325,7 @@ span.thin-border {
 .next-speaker, .prev-speaker, .next-reply, .prev-reply {
     padding-top: 64px;
     font-size: 48px;
+    cursor: pointer;
     color: #30a546;
 }
 
@@ -361,6 +362,8 @@ span.thin-border {
 
 .next-reply, .prev-reply {
     padding-top: 32px;
+    color: #30a546;
+    cursor: pointer;
 }
 
 .index-adress {
@@ -455,6 +458,7 @@ span.thin-border {
 
     .afisha-block .image-relative-block .date-block {
         font-size: 24px;
+        margin-bottom: -4px;
     }
 
 }
@@ -489,6 +493,7 @@ span.thin-border {
 
     .afisha-block .image-relative-block .date-block {
         font-size: 30px;
+        margin-bottom: -2px;
     }
 }
 
@@ -503,20 +508,26 @@ span.thin-border {
 }
 
 @media (max-width: 500px) {
-    .afisha-block .image-relative-block .date-block {
-        font-size: 22px;
-    }
+    /*.afisha-block .image-relative-block .date-block {*/
+        /*font-size: 22px;*/
+    /*}*/
 }
 
 @media (max-width: 430px) {
     .afisha-block .image-relative-block .date-block {
-        font-size: 20px;
+        font-size: 24px;
+        margin-bottom: -3px;
+    }
+
+    .project-name {
+        display: none;
     }
 }
 
 @media (max-width: 360px) {
     .afisha-block .image-relative-block .date-block {
-        font-size: 16px;
+        font-size: 20px;
+        margin-bottom: -4px;
     }
 }
 

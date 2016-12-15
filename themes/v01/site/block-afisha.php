@@ -24,7 +24,7 @@ use yii\helpers\Url;
                 foreach($nextLessons As $nearestLesson) {
 //                for($i=0; $i<4; $i++) {
                 ?>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-8 col-xs-offset-2">
                 <?php
                     echo $this->render('//lessons/one-lesson-large', ['nearestLesson' => $nearestLesson]);
                 ?>

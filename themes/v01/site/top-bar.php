@@ -19,6 +19,7 @@ use yii\bootstrap\NavBar;
                 [
                     'alt' => Yii::$app->name,
                     'class' => 'floatleft hidden-sm',
+                    'title' => Yii::$app->name,
                 ]
             )
             . ' '
@@ -27,10 +28,11 @@ use yii\bootstrap\NavBar;
                 [
                     'alt' => Yii::$app->name,
                     'class' => 'floatleft ptichka hidden-sm',
+                    'title' => Yii::$app->name,
                 ]
             )
 //            . Html::encode('Профессия мечты'),
-            . Html::tag('span', Html::encode('Профессия мечты'), ['class' => 'hidden-md hidden-sm']), // Yii::$app->name, 'class' => ' hidden-sm hidden-xs',
+            . Html::tag('span', Html::encode('Профессия мечты'), ['class' => 'hidden-md hidden-sm project-name']), // Yii::$app->name, 'class' => ' hidden-sm hidden-xs',
 //            . Html::tag('div', Html::encode('Профессия мечты'), ['class' => 'floatleft']), // Yii::$app->name, 'class' => ' hidden-sm hidden-xs',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [

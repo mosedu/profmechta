@@ -12,9 +12,9 @@ use yii\web\View;
 
 <div class="index-subscribe">
     <div class="row">
-        <div class="col-lg-2 col-md-1 col-sm-1 col-xs-1">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
         </div>
-        <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
             <h3 id="oksubscribesend" style="display: none; text-align: center;">О, Вы только что подписались на рассылку!</h3>
             <div class="row">
                 <?php

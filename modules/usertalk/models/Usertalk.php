@@ -89,7 +89,7 @@ class Usertalk extends \yii\db\ActiveRecord
         return [
             [['usertalk_text', 'usertalk_fio', 'usertalk_email', ], 'required'],
             [['usertalk_email', ], 'email'],
-            [['usertalk_text'], 'string', 'min' => 30, 'max' => 5000, ],
+            [['usertalk_text'], 'string', 'min' => 30, 'max' => 400, ],
             [['usertalk_status', 'usertalk_created_ip'], 'integer'],
             [['usertalk_created'], 'safe'],
             [['usertalk_fio', 'usertalk_email'], 'string', 'max' => 64],
