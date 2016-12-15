@@ -27,8 +27,10 @@ else {
 }
 $sHost = $protocol . $_SERVER['HTTP_HOST'];
 $sBaseUrl = $sHost . '/img/icons/';
+
+/* <link rel="icon" type="image/png" sizes="32x32" href="<?= $sBaseUrl . 'ptichka-32.png' ?>"> */
 ?>
 
     <link href="<?= $sHost . '/favicon.ico' ?>" rel="shortcut icon" type="image/x-icon" />
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= $sBaseUrl . 'ptichka-32.png' ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= $sBaseUrl . 'blue-ptichka-32.ico' ?>">
 

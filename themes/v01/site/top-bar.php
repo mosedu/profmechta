@@ -23,7 +23,7 @@ use yii\bootstrap\NavBar;
             )
             . ' '
             . Html::img(
-                Yii::getAlias($this->theme->baseUrl . '/images/page-1-ptichka.png'),
+                Yii::getAlias($this->theme->baseUrl . '/images/page-1-ptichka-blue.png'), // page-1-ptichka.png
                 [
                     'alt' => Yii::$app->name,
                     'class' => 'floatleft ptichka hidden-sm',
@@ -41,13 +41,13 @@ use yii\bootstrap\NavBar;
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'МИССИЯ', 'url' => ['#mission-block']],
-            ['label' => 'АФИША', 'url' => ['#afisha-block']],
-            ['label' => 'О ПРОЕКТЕ', 'url' => ['#about-block']],
-            ['label' => 'СПИКЕРЫ', 'url' => ['#speaker-block']],
-            ['label' => 'КОМАНДА', 'url' => ['#team-block']],
-            ['label' => 'ОТЗЫВЫ', 'url' => ['#reply-block']],
-            ['label' => 'КОНТАКТЫ', 'url' => ['#adress-block']],
+            ['label' => 'МИССИЯ', 'url' => '/#mission-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
+            ['label' => 'АФИША', 'url' => '/#afisha-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
+            ['label' => 'О ПРОЕКТЕ', 'url' => '/#about-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
+            ['label' => 'СПИКЕРЫ', 'url' => '/#speaker-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
+            ['label' => 'КОМАНДА', 'url' => '/#team-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
+            ['label' => 'ОТЗЫВЫ', 'url' => '/#reply-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
+            ['label' => 'КОНТАКТЫ', 'url' => '/#adress-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
             ['label' => Html::img(
                 Yii::getAlias($this->theme->baseUrl . '/images/page-1-vk.png'),
                 [

@@ -90,3 +90,25 @@ $this->title = Yii::$app->name;
 
 <?php
 
+$sJs = <<<EOT
+jQuery('a.prettyscroll').click(function(e){
+// заменить #block-newID на ID элемента, по которому кликаем
+e.preventDefault();
+var ob = jQuery(this),
+    href = ob.attr("href"),
+    idx = href.indexOf("#"),
+    blockname = idx != -1 ? href.substring(idx+1) : "",
+    oBlock = blockname.length > 0 ? jQuery("a[name='"+blockname+"']") : null;
+//    console.log(href + " -> " + idx + " -> " + blockname);
+//    console.log(oBlock);
+    if( oBlock ) {
+        jQuery('body, html').animate({ scrollTop: oBlock.offset().top }, 1000);
+    }
+// jQuery('body, html').animate({ scrollTop: jQuery('#block-newID').offset().top }, 1000);
+// заменить #block-newID на ID элемента, к которому идет прокрутка
+return false;
+});
+
+EOT;
+
+$this->registerJs($sJs, View::POS_READY, 'prettyscroll');
