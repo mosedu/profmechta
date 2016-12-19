@@ -101,7 +101,10 @@ class UsertalkSearch extends Usertalk
             ->orderBy(['usertalk_created' => SORT_DESC])
             ->limit(150)
             ->column();
-        shuffle($aId);
+        $i = mt_rand(4, 9);
+        while($i-- > 0) {
+            shuffle($aId);
+        }
         if( count($aId) > $nCount ) {
             $aId = array_splice($aId, 0, $nCount);
         }
