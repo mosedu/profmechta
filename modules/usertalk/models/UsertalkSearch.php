@@ -98,6 +98,8 @@ class UsertalkSearch extends Usertalk
             ->andFilterWhere([
                 'usertalk_status' => self::USER_TALK_STATUS_VISIBLE,
             ])
+            ->orderBy(['usertalk_created' => SORT_DESC])
+            ->limit(150)
             ->column();
         shuffle($aId);
         if( count($aId) > $nCount ) {
