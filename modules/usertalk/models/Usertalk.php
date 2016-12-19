@@ -24,6 +24,7 @@ use app\modules\usertalk\components\ActionBehavior;
 class Usertalk extends \yii\db\ActiveRecord
 {
     const USER_TALK_STATUS_ACTIVE = 1; // активное сообщение
+    const USER_TALK_MAX_TEXT_LENGTH = 400; // максимальная длина текста для отправки
 
     public $notifyEmails = [
 //        'devmosedu@yandex.ru',
@@ -89,7 +90,7 @@ class Usertalk extends \yii\db\ActiveRecord
         return [
             [['usertalk_text', 'usertalk_fio', 'usertalk_email', ], 'required'],
             [['usertalk_email', ], 'email'],
-            [['usertalk_text'], 'string', 'min' => 30, 'max' => 400, ],
+            [['usertalk_text'], 'string', 'min' => 30, 'max' => self::USER_TALK_MAX_TEXT_LENGTH, ],
             [['usertalk_status', 'usertalk_created_ip'], 'integer'],
             [['usertalk_created'], 'safe'],
             [['usertalk_fio', 'usertalk_email'], 'string', 'max' => 64],

@@ -37,7 +37,7 @@ if( $nearestLesson !== null ) {
             </div>
 
 <!--            <h1 style="text-align: center;">--><?= '' // Html::encode($nearestLesson->lesson->les_title) ?><!--</h1>-->
-            <div style="margin: 0; padding: 0;<?=  $bTopBlock ? '' : ' height: 240px;' ?>">
+            <div style="margin: 0; padding: 0; <?=  $bTopBlock ? '' : ' height: 240px;' ?> overflow: hidden; position: relative;">
                 <p style="text-align: center; margin-top: 18px; margin-bottom: 0; font-size: 15px;"><strong><?= Html::encode($nearestLesson->lector->lec_fam) ?></strong></p>
 
                 <p style="text-align: center; margin-bottom: 0px; font-size: 15px;"><?= Html::encode($nearestLesson->lector->lec_profession) ?></p>
@@ -45,9 +45,15 @@ if( $nearestLesson !== null ) {
                 <p style="text-align: center; margin: 0; font-size: 0px; margin-bottom: 10px; margin-top: 6px;"><span class="thin-border"></span></p>
 
                 <p style="text-align: center; font-size: 13px;"><?= Html::encode($nearestLesson->lesson->les_description) ?></p>
+
+<!--                <div style="background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 1) 100%) repeat scroll 0 0; left: 0; bottom: 0; height: 30px; width: 100%; position: absolute;"></div>-->
+<!--                cursor: pointer;-->
+<!--                display: block;-->
+<!--                padding: 0.5em 0;-->
+<!--                text-align: center;-->
             </div>
 
-            <p style="text-align: center;"><?= Html::a('Участвуй', Url::toRoute(['/lessons/leslect/view', 'id' => $nearestLesson->ll_id,]), ['class' => 'btn btn-success showinmodal', 'title' => $nearestLesson->lesson->les_title . ', ' . date('d.m.Y H:i', strtotime($nearestLesson->ll_date))]) ?></p>
+            <p style="text-align: center; margin-top: 18px;"><?= Html::a('Участвуй', Url::toRoute(['/lessons/leslect/view', 'id' => $nearestLesson->ll_id,]), ['class' => 'btn btn-success showinmodal', 'title' => $nearestLesson->lesson->les_title . ', ' . date('d.m.Y H:i', strtotime($nearestLesson->ll_date))]) ?></p>
         </div>
     <!-- /div -->
 
