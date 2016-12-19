@@ -25,7 +25,7 @@ use app\modules\usertalk\models\UsertalkSearch;
 //    }
 //);
 
-$aUserTalks = (new UsertalkSearch())->getRundomMessages(4);
+$aUserTalks = (new UsertalkSearch())->getRundomMessages(6);
 $aSpeaker = ArrayHelper::map(
     $aUserTalks,
     'usertalk_id',
