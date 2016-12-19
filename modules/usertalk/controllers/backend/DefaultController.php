@@ -112,12 +112,29 @@ class DefaultController extends Controller
      * @param integer $id
      * @return mixed
      */
-//    public function actionDelete($id)
-//    {
-//        $this->findModel($id)->delete();
-//
-//        return $this->redirect(['index']);
-//    }
+    public function actionDelete($id)
+    {
+        $model = $this->findModel($id);
+        $model->usertalk_status = Usertalk::USER_TALK_STATUS_DELETED;
+        $model->save();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionSetflag($id)
+    {
+        $model = $this->findModel($id);
+        $aFlags = Usertalk::getStatuses();
+        $nStatus = Yii::$app->request->getQueryParam('flag', Usertalk::USER_TALK_STATUS_ACTIVE);
+        $model->usertalk_status = isset($aFlags[$nStatus]) ? $nStatus : Usertalk::USER_TALK_STATUS_ACTIVE;
+        $model->save();
+
+        return $this->redirect(['index']);
+    }
 
     /**
      * Finds the Usertalk model based on its primary key value.

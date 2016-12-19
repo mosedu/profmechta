@@ -24,6 +24,9 @@ use app\modules\usertalk\components\ActionBehavior;
 class Usertalk extends \yii\db\ActiveRecord
 {
     const USER_TALK_STATUS_ACTIVE = 1; // активное сообщение
+    const USER_TALK_STATUS_DELETED = 2; // скрытое сообщение
+    const USER_TALK_STATUS_VISIBLE = 3; // видимое сообщение
+
     const USER_TALK_MAX_TEXT_LENGTH = 400; // максимальная длина текста для отправки
 
     public $notifyEmails = [
@@ -110,6 +113,14 @@ class Usertalk extends \yii\db\ActiveRecord
             'usertalk_status' => Module::t('usertalk', 'USERTALK_STATUS'),
             'usertalk_created_ip' => Module::t('usertalk', 'USERTALK_CREATED_IP'),
             'usertalk_created' => Module::t('usertalk', 'USERTALK_CREATED'),
+        ];
+    }
+
+    public static function getStatuses() {
+        return [
+            self::USER_TALK_STATUS_ACTIVE => 'Новое',
+//            self::USER_TALK_STATUS_DELETED => 'Удаленное',
+            self::USER_TALK_STATUS_VISIBLE => 'Видимое',
         ];
     }
 

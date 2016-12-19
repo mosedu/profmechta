@@ -75,7 +75,7 @@ class UsertalkSearch extends Usertalk
         // grid filtering conditions
         $query->andFilterWhere([
             'usertalk_id' => $this->usertalk_id,
-            'usertalk_status' => $this->usertalk_status,
+            'usertalk_status' => empty($this->usertalk_status) ? [self::USER_TALK_STATUS_ACTIVE, self::USER_TALK_STATUS_VISIBLE,] : $this->usertalk_status,
             'usertalk_created_ip' => $this->usertalk_created_ip,
             'usertalk_created' => $this->usertalk_created,
         ]);
@@ -85,5 +85,27 @@ class UsertalkSearch extends Usertalk
             ->andFilterWhere(['like', 'usertalk_text', $this->usertalk_text]);
 
         return $dataProvider;
+    }
+
+    /**
+     * @param int $nCount
+     * @return array
+     */
+    public function getRundomMessages($nCount = 3) {
+        $aResult = [];
+        $aId = Usertalk::find()
+            ->select('usertalk_id')
+            ->andFilterWhere([
+                'usertalk_status' => self::USER_TALK_STATUS_VISIBLE,
+            ])
+            ->column();
+        shuffle($aId);
+        if( count($aId) > $nCount ) {
+            $aId = array_splice($aId, 0, $nCount);
+        }
+        if( count($aId) > 0 ) {
+            $aResult = Usertalk::findAll(['usertalk_id' => $aId]);
+        }
+        return $aResult;
     }
 }

@@ -4,24 +4,42 @@ use evgeniyrru\yii2slick\Slick;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
 use app\modules\talks\models\ReplySearch;
+use app\modules\usertalk\models\UsertalkSearch;
 
 // block-reply
 /* @var $this yii\web\View */
 /* @var $nearestLesson app\modules\lessons\models\Lesson */
 
-$aReplyArray = ReplySearch::searchSome(4);
+
+//$aReplyArray = ReplySearch::searchSome(4);
+//$aSpeaker = ArrayHelper::map(
+//    $aReplyArray,
+//    'reply_id',
+//    function($ob) {
+//        /** @var app\modules\talks\models\Reply $ob */
+//        return [
+//            'name' => $ob->reply_fio,
+//            'text' => $ob->reply_text,
+//            'src' => $ob->getImage('base'),
+//        ];
+//    }
+//);
+
+$aUserTalks = (new UsertalkSearch())->getRundomMessages(4);
 $aSpeaker = ArrayHelper::map(
-    $aReplyArray,
-    'reply_id',
+    $aUserTalks,
+    'usertalk_id',
     function($ob) {
         /** @var app\modules\talks\models\Reply $ob */
         return [
-            'name' => $ob->reply_fio,
-            'text' => $ob->reply_text,
-            'src' => $ob->getImage('base'),
+            'name' => $ob->usertalk_fio,
+            'text' => $ob->usertalk_text,
+            'src' => '', // $ob->getImage('base'),
         ];
     }
 );
+
+$sId = implode(', ', array_keys($aSpeaker));
 
 $aReply = [];
 foreach($aSpeaker As $data) {

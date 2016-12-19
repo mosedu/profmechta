@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\modules\usertalk\Module;
+use app\modules\usertalk\models\Usertalk;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\usertalk\models\UsertalkSearch */
@@ -40,10 +41,49 @@ $buttonOptions = [
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update}', // {delete}
+                'template' => '{update} {setflag} {delete}', // {delete}
                 'buttonOptions' => $buttonOptions,
                 'contentOptions' => [
                     'style' => 'white-space: nowrap;',
+                ],
+                'buttons' => [
+                    'setflag' => function ($url, $model, $key) {
+                        /** @var Usertalk $model */
+                        $aButtondata = [
+                            Usertalk::USER_TALK_STATUS_ACTIVE => [
+                                'title' => 'Скрыть',
+                                'icon' => 'eye-close',
+                            ],
+                            Usertalk::USER_TALK_STATUS_VISIBLE => [
+                                'title' => 'Показать',
+                                'icon' => 'eye-open',
+                            ],
+                        ];
+
+                        $aStatus = Usertalk::getStatuses();
+                        $aOut = [];
+
+//                        foreach($aButtondata As $k => $v) {
+//                            if( $model->ask_flag == $k ) {
+//                                continue;
+//                            }
+                        $sKey = Usertalk::USER_TALK_STATUS_VISIBLE;
+                        if( $model->usertalk_status != Usertalk::USER_TALK_STATUS_ACTIVE ) {
+                            $sKey = Usertalk::USER_TALK_STATUS_ACTIVE;
+                        }
+                        $v = $aButtondata[$sKey];
+                        $options = [
+                            'title' => $v['title'],
+                            'aria-label' => $v['title'],
+                            'data-confirm' => 'Вы уверены, что хотите данное сообщение ' . $v['title'],
+                            'data-method' => 'post',
+                            'data-pjax' => '0',
+                            'class' => 'btn btn-default',
+                        ];
+                        $aOut[] = Html::a('<span class="glyphicon glyphicon-'.$v['icon'].'"></span>', $url . '?flag=' . $sKey, $options);
+//                        }
+                        return implode(' ', $aOut);
+                    }
                 ],
             ],
         ],

@@ -111,9 +111,9 @@ oContactForm
 //   console.log("beforeSubmit()");
 })
 .on('afterValidate', function (event, messages) {
-    console.log("afterValidate()", event);
-    console.log(messages);
-    console.log(hasErrors(messages) ? 'error+' : 'error-');
+//    console.log("afterValidate()", event);
+//    console.log(messages);
+//    console.log(hasErrors(messages) ? 'error+' : 'error-');
     if( !hasErrors(messages) ) {
         jQuery("#messagetitle").hide();
         jQuery("#okmessagesend").show();
