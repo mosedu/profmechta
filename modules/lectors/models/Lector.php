@@ -89,9 +89,9 @@ class Lector extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['lec_description', 'lec_fam', 'lec_profession'], 'required'],
+            [['lec_fam', 'lec_profession'], 'required'],
             [['lec_active'], 'integer'],
-            [['lec_description'], 'string'],
+            [['lec_description'], 'string', 'max' => 600],
             [['lec_created'], 'safe'],
             [['lec_group'], 'string', 'max' => 16],
             [['lec_email', 'lec_fam', 'lec_profession'], 'string', 'max' => 64],

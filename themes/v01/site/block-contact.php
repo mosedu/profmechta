@@ -19,7 +19,7 @@ $aLabels = $model->attributeLabels();
 
 <div class="index-contact">
     <h3 id="messagetitle">Поделись с нами своей мечтой</h3>
-    <h3 id="okmessagesend" style="display: none;">Спасибо за поделение мечтой!</h3>
+    <h3 id="okmessagesend" style="display: none;">Спасибо за Ваше сообщение.</h3>
 
 
     <div class="row">
@@ -179,7 +179,7 @@ var oTextArea = jQuery("#{$sTextId}"),
             curLength = sText.length,
             nMaxLength = {$nMaxLength};
 
-//        console.log("sText: " + sText);
+        console.log("sText: " + sText);
         if( curLength > nMaxLength ) {
             sText = sText.substr(0, {$nMaxLength});
             curLength = {$nMaxLength};
