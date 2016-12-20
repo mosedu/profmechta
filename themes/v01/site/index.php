@@ -57,12 +57,12 @@ $this->title = Yii::$app->name;
                 'name' => 'speaker-block',
             ]
         ) ?>
-        <?= $this->render(
+        <?= '' /* $this->render(
             '//site/block-team',
             [
                 'name' => 'team-block',
             ]
-        ) ?>
+        ) */ ?>
         <?= $this->render(
             '//site/block-contact',
             [

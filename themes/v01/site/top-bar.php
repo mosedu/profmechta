@@ -47,7 +47,7 @@ use yii\bootstrap\NavBar;
             ['label' => 'АФИША', 'url' => '/#afisha-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
             ['label' => 'О ПРОЕКТЕ', 'url' => '/#about-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
             ['label' => 'СПИКЕРЫ', 'url' => '/#speaker-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
-            ['label' => 'КОМАНДА', 'url' => '/#team-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
+//            ['label' => 'КОМАНДА', 'url' => '/#team-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
             ['label' => 'ОТЗЫВЫ', 'url' => '/#reply-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
             ['label' => 'КОНТАКТЫ', 'url' => '/#adress-block', 'linkOptions' => ['class' => 'prettyscroll', ], ],
             ['label' => Html::img(
