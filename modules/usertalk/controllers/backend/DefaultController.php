@@ -73,6 +73,9 @@ class DefaultController extends Controller
             if( count($aError) == 0 ) {
                 $model->save();
             }
+            else {
+                Yii::info('Validate error: ' . print_r($aError, true));
+            }
             return $aError;
         }
 
