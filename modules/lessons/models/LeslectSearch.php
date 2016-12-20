@@ -28,6 +28,7 @@ class LeslectSearch extends Leslect
             [['ll_id', 'll_lesson_id', 'll_lector_id'], 'integer'],
             [['lectorfio', 'year', ], 'integer'],
             [['lectorprof'], 'string', 'max' => 255, ],
+            [['ll_reglink'], 'string', 'max' => 255, ],
             [['ll_date'], 'safe'],
         ];
     }

@@ -13,6 +13,7 @@ use app\modules\lessons\models\Lesson;
  * @property integer $ll_lesson_id
  * @property integer $ll_lector_id
  * @property string $ll_date
+ * @property string $ll_reglink
  */
 class Leslect extends \yii\db\ActiveRecord
 {
@@ -50,6 +51,8 @@ class Leslect extends \yii\db\ActiveRecord
                 }
             ],
             [['ll_lesson_id', 'll_lector_id'], 'required'],
+            [['ll_reglink'], 'string'],
+            [['ll_reglink'], 'url'],
             [['ll_lesson_id', 'll_lector_id'], 'integer'],
             [['ll_date'], 'safe'],
         ];
@@ -65,6 +68,7 @@ class Leslect extends \yii\db\ActiveRecord
             'll_lesson_id' => 'Лекция', // Yii::t('lesson', 'Лекция'),
             'll_lector_id' => 'Лектор', // Yii::t('lesson', 'Лектор'),
             'll_date' => 'Дата', // Yii::t('lesson', 'Дата'),
+            'll_reglink' => 'Ссылка на регистрацию', // Yii::t('lesson', 'Дата'),
         ];
     }
 

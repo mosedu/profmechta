@@ -75,7 +75,7 @@ $sImg = $lector->getImage('base');
                 <h3>Лектор:</h3>
                 <p><?= Html::encode($lector->lec_fam) ?></p>
                 <p><?= Html::encode($lector->lec_profession) ?></p>
-                <p><?= Html::a('Страница регистрации', '#', ['class' => 'btn btn-success']) ?></p>
+                <p><?= empty($model->ll_reglink) ? '' : Html::a('Страница регистрации', $model->ll_reglink, ['class' => 'btn btn-success', 'target' => 'blank',]) ?></p>
             </div>
         </div>
     </div>

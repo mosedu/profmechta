@@ -494,3 +494,5 @@ php d:\php566\composer.phar require kartik-v/yii2-widget-select2
 yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\talks\migrations  add_reply_table
 yii migrate/up --migrationPath=D:\projects\web\profmechta\modules\talks\migrations
 
+yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\lessons\migrations  add_connect_link
+yii migrate/up 1 --migrationPath=D:\projects\web\profmechta\modules\lessons\migrations

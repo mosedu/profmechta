@@ -88,6 +88,20 @@ $this->registerJs($sJs, View::POS_READY);
             ],
 //            'll_lector_id',
             'll_date',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'll_reglink',
+                'filter' => false,
+//                'filter' => ArrayHelper::map(Msgflags::getStateData(), 'fl_id', 'fl_sname'),
+//                'filterOptions' => ['class' => 'gridwidth7'],
+                'content' => function ($model, $key, $index, $column) {
+                    return empty($model->ll_reglink) ? '' : Html::a(Html::encode($model->ll_reglink), $model->ll_reglink, ['target' => '_blank']);
+                },
+//                'contentOptions' => [
+//                    'class' => 'griddate',
+//                ],
+            ],
+
 
             [
                 'class' => 'yii\grid\ActionColumn',

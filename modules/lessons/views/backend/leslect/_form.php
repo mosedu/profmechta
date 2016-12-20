@@ -138,14 +138,14 @@ $aPluginLectorOptions = [
     <?= '' // $form->field($model, 'll_lesson_id')->textInput() ?>
     <?= $form->field($model, 'll_lesson_id', ['template' => "{input}"])->hiddenInput() ?>
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-6">
             <?= '' // $form->field($model, 'll_lector_id')->textInput() ?>
             <?= $form->field($model, 'll_lector_id')->widget(
                 Select2::className(),
                 $aPluginLectorOptions
             ) ?>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-3">
             <?= '' // $form->field($model, 'll_date')->textInput() ?>
             <?= $form->field($model, 'll_date')->widget(
                 DateTimePicker::classname(),
@@ -157,6 +157,9 @@ $aPluginLectorOptions = [
                     'pluginOptions' => $aPluginDateOptions,
                 ]
             ) ?>
+        </div>
+        <div class="col-xs-3">
+            <?= $form->field($model, 'll_reglink')->textInput() ?>
         </div>
     </div>
 
