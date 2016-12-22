@@ -28,6 +28,9 @@ use yii\helpers\ArrayHelper;
  */
 class Lector extends \yii\db\ActiveRecord
 {
+    const LECTOR_STATE_ACTIVE = 2;
+    const LECTOR_STATE_DELETED = 1;
+
     public $image; // картинка для вывода в списке лекторов
 
     public $imageDir = '';
@@ -70,7 +73,7 @@ class Lector extends \yii\db\ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => 'lec_active',
                 ],
-                'value' => 0,
+                'value' => self::LECTOR_STATE_ACTIVE,
             ],
         ];
     }
@@ -81,6 +84,14 @@ class Lector extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return '{{%lector}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function delete() {
+        $this->lec_active = self::LECTOR_STATE_DELETED;
+        $this->save(false, ['lec_active']);
     }
 
     /**

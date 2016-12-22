@@ -131,10 +131,12 @@ class DefaultController extends Controller
     public function actionSetflag($id)
     {
         $model = $this->findModel($id);
-        $aFlags = Usertalk::getStatuses();
+        $aFlags = Usertalk::getAllStatuses();
         $nStatus = Yii::$app->request->getQueryParam('flag', Usertalk::USER_TALK_STATUS_ACTIVE);
         $model->usertalk_status = isset($aFlags[$nStatus]) ? $nStatus : Usertalk::USER_TALK_STATUS_ACTIVE;
         $model->save();
+
+        return $this->renderContent($model->getStatus());
 
         return $this->redirect(['index']);
     }

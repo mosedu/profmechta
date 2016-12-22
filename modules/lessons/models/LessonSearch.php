@@ -45,9 +45,22 @@ class LessonSearch extends Lesson
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => $query,
+//        ]);
+
+        $aDataConf = [
             'query' => $query,
-        ]);
+            'sort'=> [
+                'defaultOrder' => isset($params['sort']) ? $params['sort'] : ['les_created' => SORT_DESC, ]
+            ]
+        ];
+
+        $aDataConf['pagination'] = [
+            'pageSize' => isset($params['pagesize']) ? $params['pagesize'] : 10,
+        ];
+
+        $dataProvider = new ActiveDataProvider($aDataConf);
 
         $this->load($params);
 
@@ -60,7 +73,7 @@ class LessonSearch extends Lesson
         // grid filtering conditions
         $query->andFilterWhere([
             'les_id' => $this->les_id,
-            'les_active' => ($this->les_active == '') ? self::LESSON_STATUS_ACTIVE : $this->les_active,
+            'les_active' => $this->les_active, // ($this->les_active == '') ? self::LESSON_STATUS_ACTIVE : $this->les_active,
             'les_created' => $this->les_created,
         ]);
 

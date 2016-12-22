@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\web\View;
 use app\modules\usertalk\Module;
 use app\modules\usertalk\models\Usertalk;
 
@@ -15,6 +16,34 @@ $this->params['breadcrumbs'][] = $this->title;
 $buttonOptions = [
     'class' => 'btn btn-default',
 ];
+
+$sJs = <<<EOT
+jQuery(".toggleusertalk")
+    .on(
+        "click",
+        function(event) {
+            event.preventDefault();
+            var oLink = jQuery(this),
+                sLink = oLink.attr("href");
+            jQuery.post({
+                type: "POST",
+                url: sLink,
+                data: {},
+                success: function(data, textStatus, jqXHR ) {
+                    console.log("Ok: " + textStatus, data);
+                    window.location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("Error: " + textStatus, errorThrown);
+                },
+                dataType: "html"
+            });
+            return false;
+        }
+    );
+EOT;
+
+$this->registerJs($sJs, View::POS_READY);
 
 ?>
 <div class="usertalk-index">
@@ -36,6 +65,17 @@ $buttonOptions = [
             'usertalk_email:email',
             'usertalk_text:ntext',
             'usertalk_created',
+            [
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'usertalk_status',
+                'filter' => Usertalk::getAllStatuses(),
+                'contentOptions' => [
+                    'style' => 'white-space: nowrap;'
+                ],
+                'content' => function ($model, $key, $index, $column) {
+                    return Html::encode($model->status);
+                },
+            ],
 //            'usertalk_status',
             // 'usertalk_created_ip',
 
@@ -51,16 +91,16 @@ $buttonOptions = [
                         /** @var Usertalk $model */
                         $aButtondata = [
                             Usertalk::USER_TALK_STATUS_ACTIVE => [
-                                'title' => 'Скрыть',
-                                'icon' => 'eye-close',
+                                'title' => 'Убрать с публикации',
+                                'icon' => 'remove',
                             ],
                             Usertalk::USER_TALK_STATUS_VISIBLE => [
-                                'title' => 'Показать',
-                                'icon' => 'eye-open',
+                                'title' => 'Опубликовать',
+                                'icon' => 'ok',
                             ],
                         ];
 
-                        $aStatus = Usertalk::getStatuses();
+//                        $aStatus = Usertalk::getStatuses();
                         $aOut = [];
 
 //                        foreach($aButtondata As $k => $v) {
@@ -78,7 +118,7 @@ $buttonOptions = [
                             'data-confirm' => 'Вы уверены, что хотите данное сообщение ' . $v['title'],
                             'data-method' => 'post',
                             'data-pjax' => '0',
-                            'class' => 'btn btn-default',
+                            'class' => 'toggleusertalk btn btn-default',
                         ];
                         $aOut[] = Html::a('<span class="glyphicon glyphicon-'.$v['icon'].'"></span>', $url . '?flag=' . $sKey, $options);
 //                        }

@@ -73,6 +73,13 @@ class DefaultController extends Controller
             if( count($aError) == 0 ) {
                 $model->save();
             }
+            else {
+                $aErrorFields = [str_repeat('-', 30) . ' ' . date('d.m.Y H:i:s') . ' ' . str_repeat('-', 30)];
+                foreach($model->getErrors() As $attr=>$err) {
+                    $aErrorFields[] = $attr . ' = ' . $model->{$attr};
+                }
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'error-usertalk.txt', implode("\n", $aErrorFields), FILE_APPEND);
+            }
             return $aError;
         }
 

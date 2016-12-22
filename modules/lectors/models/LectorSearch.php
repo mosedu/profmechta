@@ -45,11 +45,20 @@ class LectorSearch extends Lector
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
-
         $this->load($params);
+
+        $aDataConf = [
+            'query' => $query,
+            'sort'=> [
+                'defaultOrder' => isset($params['sort']) ? $params['sort'] : ['lec_created' => SORT_DESC, ]
+            ]
+        ];
+
+        $aDataConf['pagination'] = [
+            'pageSize' => isset($params['pagesize']) ? $params['pagesize'] : 10,
+        ];
+
+        $dataProvider = new ActiveDataProvider($aDataConf);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -60,7 +69,7 @@ class LectorSearch extends Lector
         // grid filtering conditions
         $query->andFilterWhere([
             'lec_id' => $this->lec_id,
-            'lec_active' => $this->lec_active,
+            'lec_active' => empty($this->lec_active) ? self::LECTOR_STATE_ACTIVE : $this->lec_active,
             'lec_created' => $this->lec_created,
         ]);
 

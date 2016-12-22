@@ -119,13 +119,13 @@ class Usertalk extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getStatuses() {
-        return [
-            self::USER_TALK_STATUS_ACTIVE => 'Новое',
-//            self::USER_TALK_STATUS_DELETED => 'Удаленное',
-            self::USER_TALK_STATUS_VISIBLE => 'Видимое',
-        ];
-    }
+//    public static function getStatuses() {
+//        return [
+//            self::USER_TALK_STATUS_ACTIVE => 'Новое',
+////            self::USER_TALK_STATUS_DELETED => 'Удаленное',
+//            self::USER_TALK_STATUS_VISIBLE => 'Видимое',
+//        ];
+//    }
 
     public function notifyNewMessage() {
         $aMails = [];
@@ -174,4 +174,29 @@ EOT;
             Yii::info($sLog);
         }
     }
+
+    /**
+     * @param bool $bAll
+     * @return array
+     */
+    public static function getAllStatuses($bAll = false) {
+        $a = [
+            self::USER_TALK_STATUS_ACTIVE => 'Не опубликовано',
+            self::USER_TALK_STATUS_VISIBLE => 'Опубликовано',
+        ];
+        if( $bAll ) {
+            $a[self::USER_TALK_STATUS_DELETED] = 'Удалено';
+        }
+        return $a;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus() {
+        $aStatus = self::getAllStatuses(true);
+        return (isset($aStatus[$this->usertalk_status]) ? $aStatus[$this->usertalk_status] : '??');
+    }
+
+
 }

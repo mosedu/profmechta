@@ -7,8 +7,8 @@ return [
     'TITLE_LESSONS' => 'Лекции',
     'TITLE_AFISHA' => 'АФИША СОБЫТИЙ',
 
-    'BUTTON_TITLE_HIDE' => 'Скрыть',
-    'BUTTON_TITLE_SHOW' => 'Показать',
+    'BUTTON_TITLE_HIDE' => 'Убрать с публикации',
+    'BUTTON_TITLE_SHOW' => 'Опубликовать',
     'BUTTON_TITLE_CREATE_DATE' => 'Добавить дату',
     'TITLE_CREATE_DATE' => 'Создание даты лекции',
     'TITLE_UPDATE_DATE' => 'Изменение даты лекции',

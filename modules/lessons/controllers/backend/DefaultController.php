@@ -118,8 +118,8 @@ class DefaultController extends Controller
 //        $this->findModel($id)->delete();
 
         $model = $this->findModel($id);
-        $model->les_active = Lesson::LESSON_STATUS_HIDDEN;
-        $model->save();
+        $model->les_active = Lesson::LESSON_STATUS_DELETED;
+        $model->save(false);
 
         return $this->redirect(['index']);
     }
