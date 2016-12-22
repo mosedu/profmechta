@@ -20,7 +20,7 @@ use yii\web\JsExpression;
         </div>
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="row">
-                <div class="col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-1 col-xs-1 col-xs-offset-1"><div class="prev-speaker">&lt;</div></div>
+                <div class="col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-1 col-xs-1 col-xs-offset-1"><div class="prev-speaker"><?= count($nextLessons) == 0 ? '' : '&lt;' ?></div></div>
                 <?php
                     $aSpeaker = [];
 //                    for($i=0; $i<6; $i++) {
@@ -33,7 +33,7 @@ use yii\web\JsExpression;
 //                        $aSpeaker[] = $aSpeaker[count($aSpeaker)%$nCou];
 //                    }
                 ?>
-                <?= Slick::widget([
+                <?= count($nextLessons) == 0 ? 'В ближайшем будущем не будет никаких событий' : Slick::widget([
 
                     // HTML tag for container. Div is default.
                     'itemContainer' => 'div',
@@ -86,7 +86,7 @@ use yii\web\JsExpression;
 
                 ])
                 ?>
-                <div class="col-xs-1 col-sm-1 col-md-1"><div class="next-speaker">&gt;</div></div>
+                <div class="col-xs-1 col-sm-1 col-md-1"><div class="next-speaker"><?= count($nextLessons) == 0 ? '' : '&gt;' ?></div></div>
             </div>
         </div>
     </div>

@@ -37,16 +37,16 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/']],
-            ['label' => 'About', 'url' => ['about']],
-            ['label' => 'Contact', 'url' => ['contact']],
+            ['label' => 'Главная', 'url' => ['/']],
+//            ['label' => 'About', 'url' => ['about']],
+//            ['label' => 'Contact', 'url' => ['contact']],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['login']]
+                ['label' => 'Вход', 'url' => ['login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Выход (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -58,9 +58,9 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
+        <?= '' /* Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+        ]) */ ?>
         <?= $content ?>
     </div>
 </div>
@@ -69,7 +69,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; <?= Yii::$app->name ?> <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><?= '' // Yii::powered() ?></p>
     </div>
 </footer>
 

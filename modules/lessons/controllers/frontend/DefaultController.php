@@ -33,16 +33,16 @@ class DefaultController extends Controller
      * Lists all Lesson models.
      * @return mixed
      */
-    public function actionIndex()
-    {
-        $searchModel = new LessonSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+//    public function actionIndex()
+//    {
+//        $searchModel = new LessonSearch();
+//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+//
+//        return $this->render('index', [
+//            'searchModel' => $searchModel,
+//            'dataProvider' => $dataProvider,
+//        ]);
+//    }
 
     /**
      * Displays a single Lesson model.
