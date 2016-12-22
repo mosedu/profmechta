@@ -108,7 +108,7 @@ $this->registerJs($sJs, View::POS_READY);
                             'aria-label' => Yii::t('yii', 'Update'),
                             'data-pjax' => '0',
                         ], $buttonOptions);
-                        return ($model->les_active == Lesson::LESSON_STATUS_ACTIVE) ? Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options) : '';
+                        return in_array($model->les_active, [Lesson::LESSON_STATUS_ACTIVE, Lesson::LESSON_STATUS_HIDDEN, ]) ? Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options) : '';
                     },
                     'delete' => function ($url, $model, $key) use($buttonOptions) {
                         $bHidden = $model->isHidden();
