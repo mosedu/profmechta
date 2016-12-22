@@ -78,7 +78,7 @@ class DefaultController extends Controller
                 foreach($model->getErrors() As $attr=>$err) {
                     $aErrorFields[] = $attr . ' = ' . $model->{$attr};
                 }
-                file_put_contents($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'error-usertalk.txt', implode("\n", $aErrorFields), FILE_APPEND);
+                file_put_contents($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'error-usertalk.txt', implode("\n", $aErrorFields) . "\n\n", FILE_APPEND);
             }
             return $aError;
         }
