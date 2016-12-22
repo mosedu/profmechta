@@ -75,8 +75,8 @@ class LectorSearch extends Lector
 
         $query->andFilterWhere(['like', 'lec_group', $this->lec_group])
             ->andFilterWhere(['like', 'lec_email', $this->lec_email])
-            ->andFilterWhere(['like', 'lec_fam', $this->lec_fam])
-            ->andFilterWhere(['like', 'lec_profession', $this->lec_profession])
+            ->andFilterWhere(['or', ['like', 'lec_fam', $this->lec_fam], ['like', 'lec_profession', $this->lec_fam], ])
+//            ->andFilterWhere(['like', 'lec_profession', $this->lec_profession])
             ->andFilterWhere(['like', 'lec_description', $this->lec_description])
             ->andFilterWhere(['like', 'lec_pass', $this->lec_pass])
             ->andFilterWhere(['like', 'lec_key', $this->lec_key]);

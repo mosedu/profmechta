@@ -52,7 +52,8 @@ $buttonOptions = [
             [
                 'class' => 'yii\grid\DataColumn',
                 'attribute' => 'lec_description',
-//                'filter' => false,
+                'filter' => false,
+                'header' => 'Изображение',
                 'contentOptions' => [
                     'style' => 'vertical-align: top;',
                 ],
@@ -75,6 +76,7 @@ $buttonOptions = [
 
             [
                 'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
                 'contentOptions' => [
                     'style' => 'white-space: nowrap;',
                 ],
