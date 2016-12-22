@@ -94,7 +94,7 @@ class Usertalk extends \yii\db\ActiveRecord
             [['usertalk_text', 'usertalk_fio', 'usertalk_email', ], 'required'],
             [['usertalk_text'], 'filter', 'filter' => function($value) { return str_replace("\r", "", $value); } ],
             [['usertalk_email', ], 'email'],
-            [['usertalk_text'], function ($attribute, $params){ $nLen = mb_strlen($this->$attribute); /* Yii::info("text = " . ($this->$attribute) . "\n" . $nLen . " : " .  strlen($this->$attribute) ); */ if( $nLen > self::USER_TALK_MAX_TEXT_LENGTH ) {$this->addError($attribute, 'Длина сообщения не должна превышать ' . self::USER_TALK_MAX_TEXT_LENGTH . ' символов. Текущая длина сообщения - ' . $nLen);} }, ],
+            [['usertalk_text'], function ($attribute, $params){ $nLen = mb_strlen($this->$attribute, 'UTF-8'); /* Yii::info("text = " . ($this->$attribute) . "\n" . $nLen . " : " .  strlen($this->$attribute) ); */ if( $nLen > self::USER_TALK_MAX_TEXT_LENGTH ) {$this->addError($attribute, 'Длина сообщения не должна превышать ' . self::USER_TALK_MAX_TEXT_LENGTH . ' символов. Текущая длина сообщения - ' . $nLen);} }, ],
             [['usertalk_text'], 'string', 'min' => 30, /*'max' => self::USER_TALK_MAX_TEXT_LENGTH, */],
             [['usertalk_status', 'usertalk_created_ip'], 'integer'],
             [['usertalk_created'], 'safe'],
