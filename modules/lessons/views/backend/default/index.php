@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use yii\web\View;
 use app\modules\lessons\Module;
 use app\modules\lessons\models\Lesson;
+use app\modules\lessons\models\Leslect;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\lessons\models\LessonSearch */
@@ -71,8 +72,19 @@ $this->registerJs($sJs, View::POS_READY);
                     'style' => 'white-space: nowrap;'
                 ],
                 'content' => function ($model, $key, $index, $column) {
+                    /** @var Lesson $model */
                     $bHidden = $model->isHidden();
-                    return Html::encode($model->status)
+
+                    $sNearest = '';
+                    if( count($model->nearest) > 0 ) {
+                        $sNearest = "\n" . '<span style="color: #777777; font-size: 12px;">Ближайшие даты:</span>';
+                        foreach($model->nearest As $oLeslec) {
+                            /** @var Leslect $oLeslec */
+                            $sNearest .= "\n" . '<span style="white-space: nowrap;">' . date('d.m.Y H:i', strtotime($oLeslec->ll_date)) . '</span>';
+                        }
+                    }
+                    return '<strong>' . Html::encode($model->status) . '</strong>'
+                        . nl2br($sNearest)
 /*                        . ' '
                         . Html::a(
                             '<span class="glyphicon glyphicon-'.($bHidden ? 'ok' : 'remove').'"></span>',

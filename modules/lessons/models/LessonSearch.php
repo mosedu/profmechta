@@ -42,6 +42,7 @@ class LessonSearch extends Lesson
     public function search($params)
     {
         $query = Lesson::find();
+        $query->with('nearest');
 
         // add conditions that should always apply here
 

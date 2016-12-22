@@ -96,6 +96,20 @@ class Lesson extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNearest() {
+        return $this->hasMany(
+            Leslect::className(),
+            ['ll_lesson_id' => 'les_id']
+        )
+            ->where(['>', 'll_date', date('Y-m-d h:i:s')])
+            ->orderBy(['ll_date' => SORT_ASC])
+            ->limit(4);
+    }
+
+
+    /**
      * @param array $aDates
      * @param string $tStart
      */
