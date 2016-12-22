@@ -22,7 +22,28 @@ $lesson = $model->lesson;
 $lector = $model->lector;
 
 $sImg = $lector->getImage('base');
+/*
+ *  style="overflow-y: hidden;"
+$sTimeStyle = ' style="font-size: 24px; border: 0px none transparent; padding: 0 12px 0 0;"';
+$sLectorStyle = ' style="font-size: 24px; border: 0px none transparent; padding: 0 12px 0 36px;"';
+$sLectorNameStyle = ' style="font-size: 24px; border: 0px none transparent; padding: 0 12px 0 0; white-space: nowrap; overflow: hidden; max-width: 340px;"';
+$sLectorProfStyle = ' style="font-size: 14px; border: 0px none transparent; padding: 0 12px 0 0; max-width: 340px;"';
+<!-- table>
+                    <tr>
+                        <td<?= $sTimeStyle ?>>Дата:</td>
+<td<?= $sTimeStyle ?>><?= date('d.m.Y', strtotime($model->ll_date)) ?></td>
+<td<?= $sLectorStyle ?>>Лектор:</td>
+<td<?= $sLectorNameStyle ?>><span><?= Html::encode($lector->lec_fam) ?></span></td>
+</tr>
+<tr>
+    <td<?= $sTimeStyle ?>>Время:</td>
+    <td<?= $sTimeStyle ?>><?= date('H:i', strtotime($model->ll_date)) ?></td>
+    <td<?= $sTimeStyle ?>>&nbsp;</td>
+    <td<?= $sLectorProfStyle ?>><?= Html::encode($lector->lec_profession) ?></td>
+</tr>
+</table -->
 
+*/
 ?>
 <div class="lesson-view">
 
@@ -68,10 +89,16 @@ $sImg = $lector->getImage('base');
                 ?>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
-                <h3><?= date('Дата: d.m.Y', strtotime($model->ll_date)) ?><br />
-                    <?= date('Время: H:i', strtotime($model->ll_date)) ?></h3>
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                        <h3 style="color: #777777;">Дата:<br/>Время:</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-7">
+                        <h3><?= date('d.m.Y', strtotime($model->ll_date)) ?><br/><?= date('H:i', strtotime($model->ll_date)) ?></h3>
+                    </div>
+                </div>
                 <!-- p><strong><?= date('d.m.Y H:i', strtotime($model->ll_date)) ?></strong></p -->
-                <p><?= Html::encode($lesson->les_description) ?></p>
+                <p style="margin-top: 24px; font-size: 16px;"><?= Html::encode($lesson->les_description) ?></p>
                 <h3>Лектор:</h3>
                 <p><?= Html::encode($lector->lec_fam) ?></p>
                 <p><?= Html::encode($lector->lec_profession) ?></p>
