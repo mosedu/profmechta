@@ -51,7 +51,7 @@ $buttonOptions = [
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update}', // {delete}
+                'template' => '{update} {delete}', // {delete}
                 'buttonOptions' => $buttonOptions,
                 'contentOptions' => [
                     'style' => 'white-space: nowrap;',

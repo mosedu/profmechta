@@ -21,7 +21,8 @@ use yii\db\Expression;
  */
 class Subscribe extends \yii\db\ActiveRecord
 {
-    const SUBSCRIBE_STATUS_ACTIVE = 1; // активнsq подписчик
+    const SUBSCRIBE_STATUS_ACTIVE = 1; // активный подписчик
+    const SUBSCRIBE_STATUS_DELETED = 2; // удаленный подписчик
 
     /**
      * @inheritdoc
@@ -103,5 +104,13 @@ class Subscribe extends \yii\db\ActiveRecord
             'subscr_created_ip' => Module::t('subscribe', 'IP'),
             'subscr_created' => Module::t('subscribe', 'SUBSCRIBE_CREATED'),
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function delete() {
+        $this->subscr_status = self::SUBSCRIBE_STATUS_DELETED;
+        $this->save(false);
     }
 }

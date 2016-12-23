@@ -60,7 +60,7 @@ class SubscribeSearch extends Subscribe
         // grid filtering conditions
         $query->andFilterWhere([
             'subscr_id' => $this->subscr_id,
-            'subscr_status' => $this->subscr_status,
+            'subscr_status' => empty($this->subscr_status) ? [self::SUBSCRIBE_STATUS_ACTIVE] : $this->subscr_status,
             'subscr_created_ip' => $this->subscr_created_ip,
             'subscr_created' => $this->subscr_created,
         ]);

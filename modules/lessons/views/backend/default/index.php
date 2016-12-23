@@ -101,7 +101,7 @@ $this->registerJs($sJs, View::POS_READY);
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update} {delete}',
+                'template' => '{view} {update} {toggle} {delete}',
                 'contentOptions' => [
                     'style' => 'white-space: nowrap;',
                 ],
@@ -122,7 +122,7 @@ $this->registerJs($sJs, View::POS_READY);
                         ], $buttonOptions);
                         return in_array($model->les_active, [Lesson::LESSON_STATUS_ACTIVE, Lesson::LESSON_STATUS_HIDDEN, ]) ? Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options) : '';
                     },
-                    'delete' => function ($url, $model, $key) use($buttonOptions) {
+                    'toggle' => function ($url, $model, $key) use($buttonOptions) {
                         $bHidden = $model->isHidden();
                         $options = array_merge([
                             'title' => Yii::t('yii', 'Delete'),
@@ -140,6 +140,25 @@ $this->registerJs($sJs, View::POS_READY);
                                 'title' => Module::t('lesson', $bHidden ? 'BUTTON_TITLE_SHOW' : 'BUTTON_TITLE_HIDE'),
                             ]
                         );
+                    },
+                    'delete' => function ($url, $model, $key) use($buttonOptions) {
+                        $bHidden = $model->isHidden();
+                        $options = array_merge([
+                            'title' => Yii::t('yii', 'Delete'),
+                            'aria-label' => Yii::t('yii', 'Delete'),
+                            'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                            'data-method' => 'post',
+                            'data-pjax' => '0',
+                        ], $buttonOptions);
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
+//                        return Html::a(
+//                            '<span class="glyphicon glyphicon-'.($bHidden ? 'ok' : 'remove').'"></span>',
+//                            ['default/toggle', 'id'=>$model->les_id],
+//                            [
+//                                'class' => 'togglelesson btn ' . ($bHidden ? 'btn-success' : 'btn-default'),
+//                                'title' => Module::t('lesson', $bHidden ? 'BUTTON_TITLE_SHOW' : 'BUTTON_TITLE_HIDE'),
+//                            ]
+//                        );
                     },
 
     ],
