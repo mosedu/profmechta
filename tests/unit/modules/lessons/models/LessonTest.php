@@ -77,7 +77,7 @@ class LessonTest extends \Codeception\Test\Unit
             $oLeslec->ll_lesson_id = $oLesson->les_id;
             $oLeslec->ll_lector_id = $data[0];
             $oLeslec->ll_date = $data[1];
-            $oLeslec->ll_reglink = $data[2];
+            $oLeslec->ll_reglink = isset($data[2]) ? $data[2] : '';
             $this->assertTrue($oLeslec->save(), 'Ok Lesson Date model should be saved');
         }
 
@@ -105,7 +105,7 @@ class LessonTest extends \Codeception\Test\Unit
             $oLeslec->ll_lesson_id = $oLesson->les_id;
             $oLeslec->ll_lector_id = $data[0];
             $oLeslec->ll_date = $data[1];
-            $oLeslec->ll_reglink = $data[2];
+            $oLeslec->ll_reglink = isset($data[2]) ? $data[2] : '';
             $this->assertTrue($oLeslec->save(), 'Ok Lesson Date model should be saved');
         }
 
@@ -121,7 +121,7 @@ class LessonTest extends \Codeception\Test\Unit
                 'll_lesson_id' => $oLesson->les_id,
                 'll_lector_id' => $data[0],
                 'll_date' => $data[1],
-                'll_reglink' => $data[2],
+                'll_reglink' => isset($data[2]) ? $data[2] : '',
             ];
         }
 
@@ -145,7 +145,7 @@ class LessonTest extends \Codeception\Test\Unit
                 ['lesson 1', 'lesson description 1'], // lesson data
                 [ // lector data
                     [1, '2016-12-10 10:00:00', 'http://ya.ru'],
-                    [1, '2016-12-12 10:00:00', 'http://ya.ru'],
+                    [1, '2016-12-12 10:00:00', ],
                     [1, '2016-12-15 10:00:00', 'http://ya.ru'],
                 ]
             ],
