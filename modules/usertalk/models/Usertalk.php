@@ -60,7 +60,7 @@ class Usertalk extends \yii\db\ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['usertalk_created_ip'],
                 ],
-                'value' => ip2long($_SERVER['REMOTE_ADDR']),
+                'value' => ip2long(isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1'),
             ],
             [
                 'class' => ActionBehavior::className(),

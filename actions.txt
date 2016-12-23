@@ -498,3 +498,14 @@ yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\lessons\mi
 yii migrate/up 1 --migrationPath=D:\projects\web\profmechta\modules\lessons\migrations
 
 yii migrate/create --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations  change_lector_states
+
+
+-------------------------------------------------------------------------------------------------
+
+Для правки тестов опять применяем новые мограции:
+tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\lectors\migrations --interactive=0
+tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\lessons\migrations --interactive=0
+tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\talks\migrations --interactive=0
+tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\usertalk\migrations --interactive=0
+tests\bin\yii  migrate/up --migrationPath=D:\projects\web\profmechta\modules\subscribe\migrations --interactive=0
+
